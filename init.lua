@@ -154,6 +154,8 @@ return {
     -- Keep highlight after search
     vim.on_key(function() end, vim.api.nvim_get_namespaces()["auto_hlsearch"])
 
+    vim.notify = function(_,_,_) end
+
     -- Set up custom filetypes
     -- vim.filetype.add {
     --   extension = {

@@ -138,7 +138,7 @@ return {
     -- Highlight group for LSP is changed in Onedarkpro theme
 
     -- Load last session if no args are passed to nvim
-    if vim.fn.argidx() == 0 then
+    if vim.fn.argc() == 0 then
       require("resession").load(vim.fn.getcwd(), { dir = "dirsession" })
     end
 

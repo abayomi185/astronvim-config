@@ -8,7 +8,7 @@ return {
     signcolumn = "yes:1",   -- sets vim.opt.signcolumn to auto
     wrap = false,           -- sets vim.opt.wrap
     cmdheight = 1,          -- sets vim.opt.cmdheight
-    updatetime = 25,        -- sets vim.opt.updatetime
+    updatetime = 100,        -- sets vim.opt.updatetime
   },
   g = {
     mapleader = " ",                 -- sets vim.g.mapleader

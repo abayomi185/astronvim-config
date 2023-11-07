@@ -114,21 +114,25 @@ return {
       {              -- file tree padding
         condition = function(self)
           self.winid = vim.api.nvim_tabpage_list_wins(0)[1]
-          return status.condition.buffer_matches(
-            { filetype = { "aerial", "dapui_.", "neo%-tree", "NvimTree" } },
-            vim.api.nvim_win_get_buf(self.winid)
+          return status.condition.buffer_matches({
+            filetype = {
+              "NvimTree",
+              "OverseerList",
+              "aerial",
+              "dap-repl",
+              "dapui_.",
+              "edgy",
+              "neo%-tree",
+              "undotree",
+            },
+          }, vim.api.nvim_win_get_buf(self.winid)
           )
         end,
         provider = function(self) return string.rep(" ", vim.api.nvim_win_get_width(self.winid) + 1) end,
-        hl = { bg = "dark_bg" },
+        hl = { bg = "tabline_bg" },
       },
       status.heirline.make_buflist(status.component.tabline_file_info(
         {
-          hl = function(self)
-            local tab_type = self.tab_type
-            if self._show_picker and self.tab_type ~= "buffer_active" then tab_type = "buffer_visible" end
-            return hl.get_attributes(tab_type)
-          end,
           surround = {
             separator = "custom_right",
             color = function(self) return self.tab_type == "buffer_active" and { left = C.blue } or C.none end

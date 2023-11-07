@@ -332,6 +332,15 @@ return {
     lazy = false
   },
 
+  -- OLLAMA
+  {
+    "David-Kunz/gen.nvim",
+    opts = {
+      model = "mistral_7b_openorca"
+    },
+    lazy = false
+  }
+
   -- NOTE: Likely not needed
   -- TELESCOPE
   -- {

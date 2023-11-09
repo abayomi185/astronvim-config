@@ -12,10 +12,11 @@ return {
       -- null_ls.builtins.formatting.stylua,
       -- null_ls.builtins.formatting.prettier, 
 
-      null_ls.builtins.formatting.isort.with({
-        filetypes = { "python" },
-        extra_args = { "--profile", "black" },
-      }),
+      -- NOTE: isort formatter
+      -- null_ls.builtins.formatting.isort.with({
+      --   filetypes = { "python" },
+      --   extra_args = { "--profile", "black" },
+      -- }),
 
       null_ls.builtins.diagnostics.flake8.with({
         extra_args = {

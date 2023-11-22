@@ -100,7 +100,8 @@ return {
     event = "User AstroLspSetup",
     opts = {
       main_image = "file",
-    }
+    },
+    enabled = false
   },
 
   -- MARKDOWN

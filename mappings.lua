@@ -6,7 +6,7 @@
 local ui = require "astronvim.utils.ui"
 
 return {
-  -- NOTE: Normal Mode
+  -- INFO: Normal Mode
   n = {
     -- second key is the lefthand side of the map
     -- mappings seen under group name "Buffer"
@@ -18,7 +18,7 @@ return {
     -- this is useful for naming menus
     -- quick save
     ["<M-s>"] = { ":w<cr>", desc = "Save File" }, -- change description but the same command
-    -- Terminal
+    -- NOTE: Terminal
     ["<C-t>"] = { ":ToggleTerm<cr>", desc = "ToggleTerm" },
 
     ["<leader>h"] = { ":nohlsearch<cr>", desc = "No Highlight" },
@@ -26,7 +26,10 @@ return {
     -- ["<C-s>"] = ":w<CR>",
     -- ["<M-s>"] = ":w<CR>", 
 
-    -- Move line
+    -- NOTE: Git Diff
+    ["<leader>gD"] = { ":DiffviewClose<cr>", desc = "Close Git Diff"},
+
+    -- NOTE: Move line
     ["<M-j>"] = ":m .+1<CR>==",
     ["<M-k>"] = ":m .-2<CR>==",
 
@@ -119,7 +122,7 @@ return {
     ["<leader>RC"] = { "<cmd>lua require('crates').open_crates_io()<CR>", desc = "Open Crate.io" },
   },
 
-  -- NOTE: Visual Mode
+  -- INFO: Visual Mode
   v = {
     ["<leader>d"] = '"_d', -- register
 
@@ -132,7 +135,7 @@ return {
     [">"] = ">gv",
   },
 
-  -- NOTE: Terminal Mode
+  -- INFO: Terminal Mode
   t = {
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,

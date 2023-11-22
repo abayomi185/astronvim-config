@@ -45,7 +45,10 @@ return {
           -- "go",
         },
         ignore_filetypes = { -- disable format on save for specified filetypes
-          -- "python",
+          "python",
+          "javascript",
+          "typescript",
+          "typescriptreact"
         },
       },
       disabled = { -- disable formatting capabilities for the listed language servers

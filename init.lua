@@ -60,6 +60,17 @@ return {
     servers = {
       -- "pyright"
     },
+    ["server-settings"] = {
+      -- eslint = {
+      --   on_attach = function(client, bufnr)
+      --     vim.api.nvim_create_autocmd("BufWritePre", {
+      --       buffer = bufnr,
+      --       pattern = { "*.tsx", "*.ts", "*.jsx", "*.js" },
+      --       command = "silent! EslintFixAll",
+      --     })
+      --   end,
+      -- },
+    },
     skip_setup = { "rust_analyzer" },
     mappings = {
       n = {
@@ -136,6 +147,9 @@ return {
 
     -- Load last session
     require("resession").load(vim.fn.getcwd(), { dir = "dirsession" })
+
+    -- Load launch.json
+    require('dap.ext.vscode').load_launchjs()
 
     -- Telescope file ignore patterns
     -- require('telescope').setup { defaults = { file_ignore_patterns = { "node_modules" } } }

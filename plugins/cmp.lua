@@ -5,19 +5,22 @@ return {
       symbol_map = {
         Copilot = "",
       },
-    }
+    },
   },
-  {                           -- override nvim-cmp plugin
+  { -- override nvim-cmp plugin
     "hrsh7th/nvim-cmp",
     keys = { ":", "/", "?" }, -- lazy load cmp on more keys along with insert mode
     dependencies = {
-      "hrsh7th/cmp-buffer",   -- add cmp-buffer as dependency of cmp
-      "hrsh7th/cmp-cmdline",  -- add cmp-cmdline as dependency of cmp
+      "hrsh7th/cmp-buffer", -- add cmp-buffer as dependency of cmp
+      "hrsh7th/cmp-cmdline", -- add cmp-cmdline as dependency of cmp
     },
     config = function(plugin, opts)
       local cmp = require "cmp"
 
-      local compare = require("cmp.config.compare")
+      local compare = require "cmp.config.compare"
+
+      opts.mapping["<PageUp>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" })
+      opts.mapping["<PageDown>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" })
 
       opts.sorting = {
         priority_weight = 2,
@@ -70,47 +73,47 @@ return {
         },
         {
           name = "nvim_lsp",
-          priority = 1400
+          priority = 1400,
         },
         {
           name = "path",
-          priority = 1300
+          priority = 1300,
         },
         {
           name = "luasnip",
-          priority = 1200
+          priority = 1200,
         },
         {
           name = "cmp_tabnine",
-          priority = 1100
+          priority = 1100,
         },
         {
           name = "nvim_lua",
-          priority = 1000
+          priority = 1000,
         },
         {
           name = "buffer",
-          priority = 900
+          priority = 900,
         },
         {
           name = "calc",
-          priority = 800
+          priority = 800,
         },
         {
           name = "emoji",
-          priority = 700
+          priority = 700,
         },
         {
           name = "treesitter",
-          priority = 600
+          priority = 600,
         },
         {
           name = "crates",
-          priority = 500
+          priority = 500,
         },
         {
           name = "tmux",
-          priority = 400
+          priority = 400,
         },
       }
 
@@ -118,7 +121,7 @@ return {
       cmp.setup(opts)
 
       -- configure `cmp-cmdline` as described in their repo: https://github.com/hrsh7th/cmp-cmdline#setup
-      cmp.setup.cmdline({ "/", '?' }, {
+      cmp.setup.cmdline({ "/", "?" }, {
         mapping = cmp.mapping.preset.cmdline(),
         sources = {
           { name = "buffer" },
@@ -126,14 +129,11 @@ return {
       })
       cmp.setup.cmdline(":", {
         mapping = cmp.mapping.preset.cmdline(),
-        sources = cmp.config.sources(
-          {
-            { name = 'path' }
-          },
-          {
-            { name = 'cmdline' }
-          }
-        )
+        sources = cmp.config.sources({
+          { name = "path" },
+        }, {
+          { name = "cmdline" },
+        }),
       })
     end,
   },

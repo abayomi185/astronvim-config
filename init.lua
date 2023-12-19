@@ -140,6 +140,9 @@ return {
     -- Load last session if no args are passed to nvim
     if vim.fn.argc() == 0 then require("resession").load(vim.fn.getcwd(), { dir = "dirsession" }) end
 
+    -- Load launch.json
+    require("dap.ext.vscode").load_launchjs(nil, { rt_lldb = { "rust" }, ["probe-rs-debug"] = { "rust" } })
+
     -- Telescope file ignore patterns
     -- require('telescope').setup { defaults = { file_ignore_patterns = { "node_modules" } } }
 

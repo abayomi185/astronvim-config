@@ -12,20 +12,29 @@ return {
       -- null_ls.builtins.formatting.stylua,
       -- null_ls.builtins.formatting.prettier,
 
-      null_ls.builtins.formatting.taplo.with({
+      null_ls.builtins.formatting.taplo.with {
         filetypes = { "toml" },
-      }),
-      null_ls.builtins.formatting.black.with({
+      },
+      null_ls.builtins.formatting.black.with {
         filetypes = { "python" },
-      }),
-      null_ls.builtins.formatting.isort.with({
+      },
+      null_ls.builtins.formatting.isort.with {
         filetypes = { "python" },
         extra_args = { "--profile", "black" },
-      }),
-      null_ls.builtins.formatting.prettierd.with({
-        filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue", "svelte", "json", "jsonc" }
-      }),
-
+      },
+      null_ls.builtins.formatting.prettierd.with {
+        filetypes = {
+          "typescript",
+          "typescriptreact",
+          "javascript",
+          "javascriptreact",
+          "vue",
+          "svelte",
+          "json",
+          "jsonc",
+          "markdown",
+        },
+      },
     }
     return config -- return final config table
   end,

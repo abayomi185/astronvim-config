@@ -13,4 +13,9 @@ return {
       dap.listeners.before.event_exited["dapui_config"] = nil
     end,
   },
+  {
+    "abayomi185/nvim-dap-probe-rs",
+    config = function(plugin, opts) require("dap-probe-rs").setup() end,
+    lazy = false,
+  },
 }

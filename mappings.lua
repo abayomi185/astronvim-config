@@ -65,9 +65,9 @@ return {
     -- ["<leader>lL"] = { "<cmd>lua vim.lsp.codelens.refresh()<cr>", desc = "LSP CodeLens refresh" },
 
     -- NOTE: Debug Mappings
-    ["<leader>db"] = { ":PBToggleBreakpoint<CR>" },
-    ["<leader>dB"] = { ":PBClearAllBreakpoints<CR>" },
-    ["<leader>dC"] = { ":PBSetConditionalBreakpoint<CR>" },
+    ["<leader>db"] = { ":PBToggleBreakpoint<CR>", desc = "Toggle Breakpoint" },
+    ["<leader>dB"] = { ":PBClearAllBreakpoints<CR>", desc = "Clear All Breakpoints" },
+    ["<leader>dC"] = { ":PBSetConditionalBreakpoint<CR>", desc = "Set Conditional Breakpoint" },
 
     -- NOTE: Spell Check
     -- ["zt"] = ":set spell!<CR>"

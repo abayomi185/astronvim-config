@@ -253,6 +253,13 @@ return {
     end,
   },
   {
+    "Weissle/persistent-breakpoints.nvim",
+    opts = {
+      load_breakpoints_event = { "BufReadPost" },
+    },
+    lazy = false,
+  },
+  {
     "williamboman/mason-lspconfig.nvim",
     opts = {
       ensure_installed = { "rust_analyzer" },

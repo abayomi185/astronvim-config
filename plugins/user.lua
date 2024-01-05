@@ -65,9 +65,9 @@ return {
       -- modify the sources part of the options table
       opts.sources = cmp.config.sources {
         { name = "nvim_lsp", priority = 1000 },
-        { name = "luasnip", priority = 750 },
-        { name = "buffer", priority = 500 },
-        { name = "path", priority = 250 },
+        { name = "luasnip",  priority = 750 },
+        { name = "buffer",   priority = 500 },
+        { name = "path",     priority = 250 },
       }
 
       -- return the new table to be used
@@ -103,6 +103,13 @@ return {
     cmd = { "Glow" },
   },
   {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && yarn install",
+    init = function() vim.g.mkdp_filetypes = { "markdown" } end,
+    ft = { "markdown" },
+  },
+  {
     "nvim-telescope/telescope.nvim",
     opts = function(_, opts)
       local actions = require "telescope.actions"
@@ -135,7 +142,7 @@ return {
   {
     "rcarriga/nvim-notify",
     config = function(plugin, opts)
-      require "plugins.configs.notify"(plugin, opts)
+      require "plugins.configs.notify" (plugin, opts)
       local notify = require "notify"
       notify.setup {
         background_colour = "#000000",
@@ -156,7 +163,7 @@ return {
     "romgrk/nvim-treesitter-context",
     config = function()
       require("treesitter-context").setup {
-        enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+        enable = true,   -- Enable this plugin (Can be enabled/disabled later via commands)
         throttle = true, -- Throttles plugin updates (may improve performance)
         patterns = {
           -- Match patterns for TS nodes. These get wrapped to match at word boundaries.

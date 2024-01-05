@@ -94,5 +94,11 @@ return {
       -- return opts
       require("neo-tree").setup(opts)
     end,
-  }
+  },
+  {
+    "akinsho/toggleterm.nvim",
+    opts = {
+      shell = "pwsh",
+    },
+  },
 }

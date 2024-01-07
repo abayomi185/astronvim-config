@@ -19,6 +19,17 @@ return {
     icons_enabled = true, -- disable icons in the UI (disable if no nerd font is available, requires :PackerSync after changing)
     ui_notifications_enabled = false, -- disable notifications when toggling UI elements
     resession_enabled = true, -- enable resession at start
+    clipboard = {
+      name = "OSC 52",
+      copy = {
+        ["+"] = require("vim.ui.clipboard.osc52").copy "+",
+        ["*"] = require("vim.ui.clipboard.osc52").copy "*",
+      },
+      paste = {
+        ["+"] = "win32yank.exe -o --crlf",
+        ["*"] = "win32yank.exe -o --crlf",
+      },
+    },
   },
   o = {
     background = "dark", -- sets vim.o.background

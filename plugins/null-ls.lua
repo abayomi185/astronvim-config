@@ -10,23 +10,34 @@ return {
     config.sources = {
       -- Set a formatter
       -- null_ls.builtins.formatting.stylua,
-      -- null_ls.builtins.formatting.prettier, 
+      -- null_ls.builtins.formatting.prettier,
 
       -- NOTE: isort formatter
       -- null_ls.builtins.formatting.isort.with({
       --   filetypes = { "python" },
-      --   extra_args = { "--profile", "black" },
+      --   extra_args = { "--line-length", "115" },
       -- }),
 
-      null_ls.builtins.diagnostics.flake8.with({
+      -- NOTE: black formatter
+      -- null_ls.builtins.formatting.black.with({
+      --  filetypes = { "python" },
+      --  extra_args = { "--line-length", "115" },
+      --  }),
+
+      -- NOTE: Flake8 linter
+      null_ls.builtins.diagnostics.flake8.with {
         extra_args = {
-          "--format", "default",
+          "--format",
+          "default",
           "--stdin-display-name",
-          "$FILENAME", "-", "--count",
-          "--max-line-length", "115",
-          "--exclude=snapshots"
+          "$FILENAME",
+          "-",
+          "--count",
+          "--max-line-length",
+          "115",
+          "--exclude=snapshots",
         },
-      }),
+      },
     }
     return config -- return final config table
   end,

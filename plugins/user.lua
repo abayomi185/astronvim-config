@@ -24,12 +24,12 @@ return {
         LspReferenceText = { underline = true },
       },
       colors = {
-        cursorline = "#22252b"
+        cursorline = "#22252b",
       },
       options = {
-        cursorline = true
+        cursorline = true,
       },
-    }
+    },
   },
   -- NOTE: Already in AstroNvim
   -- {
@@ -53,12 +53,12 @@ return {
   --     })
   --   end,
   -- },
-  
+
   -- NECK PAIN
   {
     "shortcuts/no-neck-pain.nvim",
     version = "*",
-    lazy = false
+    lazy = false,
   },
 
   -- CMP
@@ -72,9 +72,9 @@ return {
       -- modify the sources part of the options table
       opts.sources = cmp.config.sources {
         { name = "nvim_lsp", priority = 1000 },
-        { name = "luasnip",  priority = 750 },
-        { name = "buffer",   priority = 500 },
-        { name = "path",     priority = 250 },
+        { name = "luasnip", priority = 750 },
+        { name = "buffer", priority = 500 },
+        { name = "path", priority = 250 },
       }
 
       -- return the new table to be used
@@ -96,12 +96,12 @@ return {
 
   -- DISCORD
   {
-    'andweeb/presence.nvim',
+    "andweeb/presence.nvim",
     event = "User AstroLspSetup",
     opts = {
       main_image = "file",
     },
-    enabled = false
+    enabled = false,
   },
 
   -- MARKDOWN
@@ -110,19 +110,19 @@ return {
     ft = { "markdown" },
     cmd = { "Glow" },
   },
-{
-  "nvim-telescope/telescope.nvim",
-  opts = function(_, opts)
-    local actions = require "telescope.actions"
-    opts.mappings = {
-      i = {
-        ["<C-j>"] = actions.cycle_history_next,
-        ["<C-k>"] = actions.cycle_history_prev,
-      },
-    }
-    return opts
-  end
-},
+  {
+    "nvim-telescope/telescope.nvim",
+    opts = function(_, opts)
+      local actions = require "telescope.actions"
+      opts.mappings = {
+        i = {
+          ["<C-j>"] = actions.cycle_history_next,
+          ["<C-k>"] = actions.cycle_history_prev,
+        },
+      }
+      return opts
+    end,
+  },
   -- OTHER
   {
     "folke/trouble.nvim",
@@ -138,33 +138,33 @@ return {
         -- refer to the configuration section below
       }
     end,
-    lazy = false
+    lazy = false,
   },
   {
     "rcarriga/nvim-notify",
     config = function(plugin, opts)
-      require("plugins.configs.notify")(plugin, opts)
+      require "plugins.configs.notify"(plugin, opts)
       local notify = require "notify"
-      notify.setup({
-        background_colour = "#000000"
-      })
+      notify.setup {
+        background_colour = "#000000",
+      }
     end,
   },
   {
     "ThePrimeagen/harpoon",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-      require("telescope").load_extension('harpoon')
+      require("telescope").load_extension "harpoon"
       require("harpoon").setup()
     end,
-    lazy = false
+    lazy = false,
   },
   { "nvim-treesitter/playground" },
   {
     "romgrk/nvim-treesitter-context",
     config = function()
       require("treesitter-context").setup {
-        enable = true,   -- Enable this plugin (Can be enabled/disabled later via commands)
+        enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
         throttle = true, -- Throttles plugin updates (may improve performance)
         patterns = {
           -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
@@ -173,14 +173,14 @@ return {
           -- By setting the 'default' entry below, you can control which nodes you want to
           -- appear in the context window.
           default = {
-            'class',
-            'function',
-            'method',
+            "class",
+            "function",
+            "method",
           },
         },
       }
     end,
-    lazy = false
+    lazy = false,
   },
   {
     "RRethy/vim-illuminate",
@@ -188,7 +188,7 @@ return {
     opts = {
       options = {
         delay = 120,
-      }
+      },
     },
     config = function(_, opts) require("illuminate").configure(opts) end,
   },
@@ -286,7 +286,7 @@ return {
                 enable = true,
                 command = "clippy",
               },
-            }
+            },
           },
         },
         dap = { adapter = adapter },
@@ -303,18 +303,14 @@ return {
   -- LSP
   {
     "j-hui/fidget.nvim",
-    config = function()
-      require("fidget").setup()
-    end,
-    lazy = false
+    config = function() require("fidget").setup() end,
+    lazy = false,
   },
   {
-    'saecki/crates.nvim',
+    "saecki/crates.nvim",
     event = { "BufRead Cargo.toml" },
-    dependencies = { { 'nvim-lua/plenary.nvim' } },
-    config = function()
-      require('crates').setup()
-    end,
+    dependencies = { { "nvim-lua/plenary.nvim" } },
+    config = function() require("crates").setup() end,
   },
 
   -- FIXME:
@@ -325,19 +321,25 @@ return {
     event = { "InsertEnter" },
     opts = {
       suggestion = {
-        enabled = false
+        enabled = false,
       },
-      panel = { enabled = false }
+      panel = { enabled = false },
     },
-    lazy = false
+    lazy = false,
   },
   {
     "zbirenbaum/copilot-cmp",
     after = { "copilot.lua", "nvim-cmp" },
-    config = function()
-      require("copilot_cmp").setup()
-    end,
-    lazy = false
+    config = function() require("copilot_cmp").setup() end,
+    lazy = false,
+  },
+  {
+    "David-Kunz/gen.nvim",
+    opts = {
+      model = "mistral_7b_instruct_v0.2",
+      command = "curl --silent --no-buffer -X POST https://astrysk-ollama-testflight.duckdns.org/api/generate -d $body",
+    },
+    lazy = false,
   },
 
   -- NOTE: Likely not needed

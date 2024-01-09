@@ -137,15 +137,15 @@ return {
     -- NOTE: Some Docs
     -- Highlight group for LSP is changed in Onedarkpro theme
 
+    vim.cmd [[let &shell = '"C:\Program Files\Git\bin\bash.exe"']]
+    vim.cmd [[let &shellcmdflag = '-s']]
+
     -- Load last session if no args are passed to nvim
     if vim.fn.argc() == 0 then
       -- In case things go wrong
       -- require("resession").delete(vim.fn.getcwd(), { dir = "dirsession" })
       require("resession").load(vim.fn.getcwd(), { dir = "dirsession" })
     end
-
-    -- Load launch.json
-    require("dap.ext.vscode").load_launchjs(nil, { rt_lldb = { "rust" }, ["probe-rs-debug"] = { "rust" } })
 
     -- Telescope file ignore patterns
     -- require('telescope').setup { defaults = { file_ignore_patterns = { "node_modules" } } }
@@ -176,27 +176,8 @@ return {
     --   },
     -- }
 
-    if vim.fn.has "win32" == 1 then
-      --     vim.g.clipboard = {
-      --       name = "OSC 52",
-      --       copy = {
-      --         ["+"] = require("vim.ui.clipboard.osc52").copy "+",
-      --         ["*"] = require("vim.ui.clipboard.osc52").copy "*",
-      --       },
-      --       paste = {
-      --         ["+"] = require("vim.ui.clipboard.osc52").paste "+",
-      --         ["*"] = require("vim.ui.clipboard.osc52").paste "*",
-      --       },
-      --     }
-      vim.g.clipboard = {
-        name = "win32 clipboard",
-        copy = { ["+"] = { "clip.exe" }, ["*"] = { "clip.exe" } },
-        paste = {
-          ["+"] = { "powershell.exe Get-Clipboard | tr -d '\r' | sed -z '$ s/\n$//'" },
-          ["*"] = { "powershell.exe Get-Clipboard | tr -d '\r' | sed -z '$ s/\n$//'" },
-        },
-        cache_enabled = true,
-      }
-    end
+    -- This can fail on windows because DAP has to be specifically enabled on Windows
+    -- Load launch.json
+    require("dap.ext.vscode").load_launchjs(nil, { rt_lldb = { "rust" }, ["probe-rs-debug"] = { "rust" } })
   end,
 }

@@ -41,6 +41,17 @@ return {
 
     ["<leader>v"] = { "<C-v>", desc = "Visual Block" },
 
+    -- Lazygit
+    ["<leader>gg"] = {
+      function()
+        local utils = require "astronvim.utils"
+        local worktree = require("astronvim.utils.git").file_worktree()
+        local flags = worktree and (" --work-tree=%s --git-dir=%s"):format(worktree.toplevel, worktree.gitdir) or ""
+        utils.toggle_term_cmd("lazygit " .. flags)
+      end,
+      desc = "ToggleTerm lazygit",
+    },
+
     -- NOTE: Telescope mappings
     -- ["<leader>sg"] = ":Telescope grep_string<CR>",
     ["<leader>fw"] = {

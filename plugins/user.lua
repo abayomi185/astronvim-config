@@ -54,6 +54,13 @@ return {
   --   end,
   -- },
 
+  -- NECK PAIN
+  {
+    "shortcuts/no-neck-pain.nvim",
+    version = "*",
+    lazy = false,
+  },
+
   -- CMP
   { -- override nvim-cmp plugin
     "hrsh7th/nvim-cmp",

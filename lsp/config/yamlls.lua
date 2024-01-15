@@ -20,8 +20,8 @@ return {
         "!ImportValue",
         "!Select",
         "!Split",
-        "!Join sequence"
-      }
-    }
-  }
+        "!Join sequence",
+      },
+    },
+  },
 }

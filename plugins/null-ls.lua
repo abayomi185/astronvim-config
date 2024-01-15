@@ -18,10 +18,10 @@ return {
       null_ls.builtins.formatting.black.with {
         filetypes = { "python" },
       },
-      null_ls.builtins.formatting.isort.with {
-        filetypes = { "python" },
-        extra_args = { "--profile", "black" },
-      },
+      -- null_ls.builtins.formatting.isort.with {
+      --   filetypes = { "python" },
+      --   extra_args = { "--profile", "black" },
+      -- },
       null_ls.builtins.formatting.prettierd.with {
         filetypes = {
           "typescript",
@@ -33,6 +33,20 @@ return {
           "json",
           "jsonc",
           "markdown",
+        },
+      },
+      -- NOTE: Flake8 linter
+      null_ls.builtins.diagnostics.flake8.with {
+        extra_args = {
+          "--format",
+          "default",
+          "--stdin-display-name",
+          "$FILENAME",
+          "-",
+          "--count",
+          "--max-line-length",
+          "115",
+          "--exclude=snapshots",
         },
       },
     }

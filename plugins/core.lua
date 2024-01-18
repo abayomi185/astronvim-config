@@ -17,6 +17,11 @@ return {
         "    ██  ██ ██  ██  ██  ██ ██  ██  ██",
         "    ██   ████   ████   ██ ██      ██",
       }
+
+      local button, get_icon = require("astronvim.utils").alpha_button, require("astronvim.utils").get_icon
+      local new_button = button("LDR S .", get_icon("FolderClosed", 2, true) .. "Current Dir Session  ")
+      table.insert(opts.section.buttons.val, 1, new_button)
+
       return opts
     end,
   },
@@ -94,5 +99,5 @@ return {
       -- return opts
       require("neo-tree").setup(opts)
     end,
-  }
+  },
 }

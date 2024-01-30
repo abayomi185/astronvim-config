@@ -138,12 +138,13 @@ return {
     -- NOTE: Some Docs
     -- Highlight group for LSP is changed in Onedarkpro theme
 
+    -- @deprecated - Now using alpha.nvim to load last session
     -- Load last session if no args are passed to nvim
-    if vim.fn.argc() == 0 then
-      -- In case things go wrong
-      -- require("resession").delete(vim.fn.getcwd(), { dir = "dirsession" })
-      require("resession").load(vim.fn.getcwd(), { dir = "dirsession" })
-    end
+    -- if vim.fn.argc() == 0 then
+    --   -- In case things go wrong
+    --   -- require("resession").delete(vim.fn.getcwd(), { dir = "dirsession" })
+    --   require("resession").load(vim.fn.getcwd(), { dir = "dirsession" })
+    -- end
 
     -- Load launch.json
     require("dap.ext.vscode").load_launchjs(nil, { rt_lldb = { "rust" }, ["probe-rs-debug"] = { "rust" } })

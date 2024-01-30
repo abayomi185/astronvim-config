@@ -53,6 +53,9 @@ return {
     ["<C-M-l>"] = ":vertical resize -2<CR>",
     ["<C-M-h>"] = ":vertical resize +2<CR>",
 
+    -- NOTE: Git Diff
+    -- ["<leader>gD"] = { ":DiffviewClose<cr>", desc = "Close Git Diff" },
+
     -- NOTE: Copilot mapping
     ["gp"] = ":Copilot panel<CR>",
 

@@ -143,7 +143,10 @@ return {
         condition = function() return #vim.api.nvim_list_tabpages() >= 2 end, -- only show tabs if there are more than one
         status.heirline.make_tablist { -- component for each tab
           provider = status.provider.tabnr(),
-          hl = function(self) return status.hl.get_attributes(status.heirline.tab_type(self, "tab"), true) end,
+          hl = function(self)
+            local attributes = status.hl.get_attributes(status.heirline.tab_type(self, "tab"), true)
+            return attributes.fg
+          end,
         },
         { -- close button for current tab
           provider = status.provider.close_button { kind = "TabClose", padding = { left = 1, right = 1 } },

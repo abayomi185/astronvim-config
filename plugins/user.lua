@@ -191,6 +191,7 @@ return {
       },
     },
     config = function(_, opts) require("illuminate").configure(opts) end,
+    -- enabled = false,
   },
 
   -- RUST
@@ -311,6 +312,25 @@ return {
     event = { "BufRead Cargo.toml" },
     dependencies = { { "nvim-lua/plenary.nvim" } },
     config = function() require("crates").setup() end,
+  },
+
+  -- DEBUG
+  {
+    "Joakker/lua-json5",
+    -- run = 'powershell ./install.ps1'
+    build = "./install.sh",
+    lazy = false,
+  },
+  {
+    "mfussenegger/nvim-dap-python",
+    lazy = false,
+  },
+  {
+    "Weissle/persistent-breakpoints.nvim",
+    opts = {
+      load_breakpoints_event = { "BufReadPost" },
+    },
+    lazy = false,
   },
 
   -- FIXME:

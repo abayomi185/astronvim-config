@@ -76,6 +76,8 @@ return {
     ["<leader>dB"] = { ":PBClearAllBreakpoints<CR>", desc = "Clear All Breakpoints" },
     ["<leader>dC"] = { ":PBSetConditionalBreakpoint<CR>", desc = "Set Conditional Breakpoint" },
     -- ["<leader>dh"] = { function() require("dap.ui.widgets").preview() end, desc = "Debugger Hover" },
+    -- Close all dap-ui hover windows
+    -- ["<leader>dx"] = { "", desc = "Close all dap-ui hovers" },
 
     -- NOTE: Buffer
     ["<leader>bh"] = {

@@ -24,25 +24,33 @@ return {
     ["<leader>h"] = { ":nohlsearch<cr>", desc = "No Highlight" },
 
     -- ["<C-s>"] = ":w<CR>",
-    -- ["<M-s>"] = ":w<CR>", 
+    -- ["<M-s>"] = ":w<CR>",
 
     -- NOTE: Git Diff
-    ["<leader>gD"] = { ":DiffviewClose<cr>", desc = "Close Git Diff"},
+    ["<leader>gd"] = { ":DiffviewOpen<cr>", desc = "Open Git Diff" },
+    ["<leader>gD"] = { ":DiffviewClose<cr>", desc = "Close Git Diff" },
 
     -- NOTE: Move line
     ["<M-j>"] = ":m .+1<CR>==",
     ["<M-k>"] = ":m .-2<CR>==",
 
-    ["<S-l>"] = { function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end, desc =
-    "Next buffer" },
-    ["<S-h>"] = { function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end, desc =
-    "Previous buffer" },
+    ["<S-l>"] = {
+      function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end,
+      desc = "Next buffer",
+    },
+    ["<S-h>"] = {
+      function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
+      desc = "Previous buffer",
+    },
 
     ["<leader>v"] = { "<C-v>", desc = "Visual Block" },
 
     -- NOTE: Telescope mappings
     -- ["<leader>sg"] = ":Telescope grep_string<CR>",
-    ["<leader>fw"] = { function() require("telescope").extensions.live_grep_args.live_grep_args() end, desc = "Find Words" },
+    ["<leader>fw"] = {
+      function() require("telescope").extensions.live_grep_args.live_grep_args() end,
+      desc = "Find Words",
+    },
     ["<leader>bf"] = { function() require("telescope.builtin").buffers() end, desc = "Buffer List" },
 
     -- NOTE: Custom workaround for vertical resize on macOS
@@ -63,11 +71,21 @@ return {
     -- NOTE: Spell Check
     -- ["zt"] = ":set spell!<CR>"
 
+    -- NOTE: Debug Mappings
+    ["<leader>db"] = { ":PBToggleBreakpoint<CR>", desc = "Toggle Breakpoint" },
+    ["<leader>dB"] = { ":PBClearAllBreakpoints<CR>", desc = "Clear All Breakpoints" },
+    ["<leader>dC"] = { ":PBSetConditionalBreakpoint<CR>", desc = "Set Conditional Breakpoint" },
+    -- ["<leader>dh"] = { function() require("dap.ui.widgets").preview() end, desc = "Debugger Hover" },
+
     -- NOTE: Buffer
-    ["<leader>bh"] =
-    { function() require("astronvim.utils.buffer").close_left() end, desc = "Close all buffers to the left" },
-    ["<leader>bl"] =
-    { function() require("astronvim.utils.buffer").close_right() end, desc = "Close all buffers to the right" },
+    ["<leader>bh"] = {
+      function() require("astronvim.utils.buffer").close_left() end,
+      desc = "Close all buffers to the left",
+    },
+    ["<leader>bl"] = {
+      function() require("astronvim.utils.buffer").close_right() end,
+      desc = "Close all buffers to the right",
+    },
     ["<leader>br"] = false,
 
     -- NOTE: Harpoon
@@ -140,6 +158,6 @@ return {
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,
     ["<leader><esc>"] = "<C-\\><C-n>",
-    ["<C-space>"] = "<C-\\><C-n>"
+    ["<C-space>"] = "<C-\\><C-n>",
   },
 }

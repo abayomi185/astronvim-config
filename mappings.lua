@@ -71,6 +71,9 @@ return {
     ["<leader>db"] = { ":PBToggleBreakpoint<CR>", desc = "Toggle Breakpoint" },
     ["<leader>dB"] = { ":PBClearAllBreakpoints<CR>", desc = "Clear All Breakpoints" },
     ["<leader>dC"] = { ":PBSetConditionalBreakpoint<CR>", desc = "Set Conditional Breakpoint" },
+    -- ["<leader>dh"] = { function() require("dap.ui.widgets").preview() end, desc = "Debugger Hover" },
+    -- Close all dap-ui hover windows
+    -- ["<leader>dx"] = { "", desc = "Close all dap-ui hovers" },
 
     -- NOTE: Spell Check
     -- ["zt"] = ":set spell!<CR>"
@@ -136,11 +139,18 @@ return {
     ["<leader>RR"] = { "<cmd>lua require('crates').open_repository()<CR>", desc = "Open Repository" },
     ["<leader>RD"] = { "<cmd>lua require('crates').open_documentation()<CR>", desc = "Open Documentation" },
     ["<leader>RC"] = { "<cmd>lua require('crates').open_crates_io()<CR>", desc = "Open Crate.io" },
+
+    -- OSC52
+    -- ["<leader>y"] = { "<cmd>lua require('osc52').copy_operator()<CR>", desc = "OSC52 yank" },
+    -- ["<leader>yy"] = { "<leader>y_", desc = "OSC52 yank line" },
   },
 
   -- NOTE: Visual Mode
   v = {
     ["<leader>d"] = '"_d', -- register
+
+    -- OSC52
+    ["<leader>y"] = { "<cmd>lua require('osc52').copy_visual()<CR>", desc = "OSC52 yank" },
 
     -- Move line
     ["<A-j>"] = ":m '>+1<CR>gv-gv",

@@ -1,3 +1,13 @@
+local function addPythonPathToDapConfigs(configurations, venv_path)
+  if not venv_path then return end
+  for _, config in ipairs(configurations) do
+    if (config.type == "python" or config.type == "debugpy") and config.pythonPath == nil then
+      local pathSuffix = vim.fn.has "win32" == 1 and "/Scripts/python" or "/bin/python"
+      config.pythonPath = venv_path .. pathSuffix
+    end
+  end
+end
+
 return {
   -- Configure AstroNvim updates
   updater = {
@@ -146,9 +156,6 @@ return {
     --   require("resession").load(vim.fn.getcwd(), { dir = "dirsession" })
     -- end
 
-    -- Load launch.json
-    require("dap.ext.vscode").load_launchjs(nil, { rt_lldb = { "rust" }, ["probe-rs-debug"] = { "rust" } })
-
     -- Telescope file ignore patterns
     -- require('telescope').setup { defaults = { file_ignore_patterns = { "node_modules" } } }
 
@@ -177,5 +184,20 @@ return {
     --     ["~/%.config/foo/.*"] = "fooscript",
     --   },
     -- }
+
+    -- NOTE: DAP
+    -- Load launch.json
+    require("dap.ext.vscode").json_decode = require("json5").parse
+    -- Add remapping for debugpy
+    require("dap.ext.vscode").load_launchjs(
+      nil,
+      { debugpy = { "python" }, rt_lldb = { "rust" }, ["probe-rs-debug"] = { "rust" } }
+    )
+
+    -- Debugpy adapter for dap needs to be set
+    local dap = require "dap"
+    dap.adapters.debugpy = dap.adapters.python
+
+    addPythonPathToDapConfigs(dap.configurations.python, os.getenv "VIRTUAL_ENV" or os.getenv "CONDA_PREFIX")
   end,
 }

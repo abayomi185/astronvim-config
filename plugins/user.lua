@@ -297,6 +297,7 @@ return {
         enabled = false,
       },
       panel = { enabled = false },
+      filetypes = { yaml = true },
     },
     lazy = false,
   },
@@ -312,6 +313,7 @@ return {
     "David-Kunz/gen.nvim",
     opts = {
       model = "mistral_7b_openorca",
+      command = "curl --silent --no-buffer -X POST https://astrysk-ollama-testflight.duckdns.org/api/generate -d $body",
     },
     lazy = false,
   },
@@ -324,4 +326,13 @@ return {
   --     require("telescope").load_extension("live_grep_args")
   --   end
   -- },
+
+  -- Clipboard
+  {
+    "ojroques/nvim-osc52",
+    opts = {
+      silent = true,
+      tmux_passthrough = true,
+    },
+  },
 }

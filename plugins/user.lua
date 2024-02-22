@@ -105,10 +105,17 @@ return {
   },
 
   -- MARKDOWN
+  -- {
+  --   "npxbr/glow.nvim",
+  --   ft = { "markdown" },
+  --   cmd = { "Glow" },
+  -- },
   {
-    "npxbr/glow.nvim",
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && yarn install",
+    init = function() vim.g.mkdp_filetypes = { "markdown" } end,
     ft = { "markdown" },
-    cmd = { "Glow" },
   },
   {
     "nvim-telescope/telescope.nvim",
@@ -344,6 +351,10 @@ return {
         enabled = false,
       },
       panel = { enabled = false },
+      filetypes = {
+        yaml = true,
+        -- markdown = true,
+      },
     },
     lazy = false,
   },

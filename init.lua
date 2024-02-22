@@ -1,3 +1,19 @@
+local function addPythonPathToDapConfigs(configurations, venv_path)
+  if not venv_path then return end
+  for _, config in ipairs(configurations) do
+    if (config.type == "python" or config.type == "debugpy") and config.pythonPath == nil then
+      local pathSuffix = vim.fn.has "win32" == 1 and "/Scripts/python" or "/bin/python"
+      config.pythonPath = venv_path .. pathSuffix
+    end
+  end
+end
+
+-- Set spell checking for markdown files
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function() vim.opt_local.spell = true end,
+})
+
 return {
   -- Configure AstroNvim updates
   updater = {
@@ -198,16 +214,6 @@ return {
     -- Debugpy adapter for dap needs to be set
     local dap = require "dap"
     dap.adapters.debugpy = dap.adapters.python
-
-    local function addPythonPathToDapConfigs(configurations, venv_path)
-      if not venv_path then return end
-      for _, config in ipairs(configurations) do
-        if (config.type == "python" or config.type == "debugpy") and config.pythonPath == nil then
-          local pathSuffix = vim.fn.has "win32" == 1 and "/Scripts/python" or "/bin/python"
-          config.pythonPath = venv_path .. pathSuffix
-        end
-      end
-    end
 
     addPythonPathToDapConfigs(dap.configurations.python, os.getenv "VIRTUAL_ENV" or os.getenv "CONDA_PREFIX")
   end,

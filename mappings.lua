@@ -5,6 +5,20 @@
 -- automatically pick-up stored data by this setting.)
 local ui = require "astronvim.utils.ui"
 
+local widgets = require "dap.ui.widgets"
+
+local function custom_hover(expr, winopts)
+  local value = widgets.eval_expression(expr)
+  local view = widgets
+    .builder(widgets.expression)
+    .new_win(M.with_resize(widgets.with_winopts(M.new_cursor_anchored_float_win, winopts)))
+    .build()
+  local buf = view.open(value)
+  vim.api.nvim_buf_set_name(buf, "dap-hover-" .. tostring(buf) .. ": " .. value)
+  vim.api.nvim_win_set_cursor(view.win, { 1, 0 })
+  return view
+end
+
 return {
   -- INFO: Normal Mode
   n = {
@@ -76,6 +90,10 @@ return {
     ["<leader>dB"] = { ":PBClearAllBreakpoints<CR>", desc = "Clear All Breakpoints" },
     ["<leader>dC"] = { ":PBSetConditionalBreakpoint<CR>", desc = "Set Conditional Breakpoint" },
     -- ["<leader>dh"] = { function() require("dap.ui.widgets").preview() end, desc = "Debugger Hover" },
+    -- ["<leader>dh"] = {
+    --   function() custom_hover() end,
+    --   desc = "Debugger Hover",
+    -- },
     -- Close all dap-ui hover windows
     -- ["<leader>dx"] = { "", desc = "Close all dap-ui hovers" },
 

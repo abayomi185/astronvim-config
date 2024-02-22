@@ -1,6 +1,9 @@
 return {
   settings = {
     yaml = {
+      hover = true,
+      completion = true,
+      validate = { enable = true },
       customTags = {
         "!Ref",
         "!GetAtt",

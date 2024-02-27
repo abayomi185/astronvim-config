@@ -21,7 +21,8 @@ return {
     resession_enabled = true, -- enable resession at start
   },
   o = {
-    background = "dark", -- sets vim.o.background
+    -- background = "dark", -- sets vim.o.background
+    background = "", -- This can be left unset for most themes
     hls = true, -- sets vim.o.hls
   },
 }

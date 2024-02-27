@@ -26,6 +26,10 @@ return {
     -- ["<C-s>"] = ":w<CR>",
     -- ["<M-s>"] = ":w<CR>",
 
+    -- NOTE: Git Diff
+    ["<leader>gd"] = { ":DiffviewOpen<cr>", desc = "Open Git Diff" },
+    ["<leader>gD"] = { ":DiffviewClose<cr>", desc = "Close Git Diff" },
+
     -- Move line
     ["<M-j>"] = ":m .+1<CR>==",
     ["<M-k>"] = ":m .-2<CR>==",
@@ -58,6 +62,10 @@ return {
 
     -- NOTE: Copilot mapping
     ["gp"] = ":Copilot panel<CR>",
+
+    -- NOTE: Code Companion
+    ["<leader>lc"] = { "<cmd>CodeCompanionActions<CR>", desc = "Show CodeCompanion Actions" },
+    ["<leader>lt"] = { "<cmd>CodeCompanionToggle<CR>", desc = "Toggle CodeCompanion" },
 
     -- NOTE: Telescope mappings
     -- ["<leader>ss"] = ":Telescope<CR>",
@@ -159,6 +167,10 @@ return {
     -- Better indenting
     ["<"] = "<gv",
     [">"] = ">gv",
+
+    -- NOTE: Code Companion
+    ["<leader>lc"] = { "<cmd>CodeCompanionActions<cr>", desc = "Show CodeCompanion Actions" },
+    ["<leader>lt"] = { "<cmd>CodeCompanionToggle<cr>", desc = "Toggle CodeCompanion" },
   },
 
   -- NOTE: Terminal Mode

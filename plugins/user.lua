@@ -24,7 +24,12 @@ return {
         LspReferenceText = { underline = true },
       },
       colors = {
-        cursorline = "#22252b",
+        dark = {
+          cursorline = "#22252b",
+        },
+        light = {
+          cursorline = "#f0f0f0",
+        },
       },
       options = {
         cursorline = true,

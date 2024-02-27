@@ -35,8 +35,9 @@ return {
 
   -- Set colorscheme to use
   -- colorscheme = "onedark",
+  colorscheme = "onelight",
   -- colorscheme = "catppuccin-latte",
-  colorscheme = "kanagawa-lotus",
+  -- colorscheme = "kanagawa-lotus",
 
   -- add new user interface icon
   icons = {

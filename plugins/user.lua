@@ -65,9 +65,9 @@ return {
       -- modify the sources part of the options table
       opts.sources = cmp.config.sources {
         { name = "nvim_lsp", priority = 1000 },
-        { name = "luasnip",  priority = 750 },
-        { name = "buffer",   priority = 500 },
-        { name = "path",     priority = 250 },
+        { name = "luasnip", priority = 750 },
+        { name = "buffer", priority = 500 },
+        { name = "path", priority = 250 },
       }
 
       -- return the new table to be used
@@ -142,7 +142,7 @@ return {
   {
     "rcarriga/nvim-notify",
     config = function(plugin, opts)
-      require "plugins.configs.notify" (plugin, opts)
+      require "plugins.configs.notify"(plugin, opts)
       local notify = require "notify"
       notify.setup {
         background_colour = "#000000",
@@ -163,7 +163,7 @@ return {
     "romgrk/nvim-treesitter-context",
     config = function()
       require("treesitter-context").setup {
-        enable = true,   -- Enable this plugin (Can be enabled/disabled later via commands)
+        enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
         throttle = true, -- Throttles plugin updates (may improve performance)
         patterns = {
           -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
@@ -308,13 +308,58 @@ return {
     lazy = false,
   },
 
-  -- OLLAMA
+  -- AI
+  -- {
+  --   "MunifTanjim/nui.nvim",
+  --   lazy = false,
+  -- },
+  -- {
+  --   "jackMort/ChatGPT.nvim",
+  --   event = "VeryLazy",
+  --   config = function()
+  --     local home = vim.fn.expand "$HOME"
+  --     require("chatgpt").setup {
+  --       api_key_cmd = "gpg --decrypt " .. home .. "/.openai-api-key.gpg",
+  --     }
+  --   end,
+  --   dependencies = {
+  --     "MunifTanjim/nui.nvim",
+  --     "nvim-lua/plenary.nvim",
+  --     "folke/trouble.nvim",
+  --     "nvim-telescope/telescope.nvim",
+  --   },
+  -- },
   {
-    "David-Kunz/gen.nvim",
+    "abayomi185/gen.nvim",
+    dir = "~/s-projek/gen.nvim",
     opts = {
-      model = "mistral_7b_openorca",
-      command = "curl --silent --no-buffer -X POST https://astrysk-ollama-testflight.duckdns.org/api/generate -d $body",
+      model = "gemma_7b_instruct",
+      command = "curl --silent --no-buffer -X POST https://astrysk-ollama-testflight.duckdns.org/api/chat -d $body",
+      debug = true,
+      no_auto_close = true,
+      -- show_model = true,
+      -- display_mode = "split",
+      -- ollama_url = "https://astrysk-ollama-testflight.duckdns.org/api/generate",
     },
+    lazy = false,
+  },
+  {
+    "abayomi185/llm.nvim",
+    dir = "~/s-projek/llm.nvim",
+    opts = {
+      backend = "openai",
+    },
+    lazy = false,
+    enabled = false,
+  },
+  {
+    "olimorris/codecompanion.nvim",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-lua/plenary.nvim",
+      "stevearc/dressing.nvim", -- Optional: Improves the default Neovim UI
+    },
+    config = true,
     lazy = false,
   },
 
@@ -334,5 +379,12 @@ return {
       silent = true,
       tmux_passthrough = true,
     },
+  },
+
+  -- Utils
+  {
+    "Joakker/lua-json5",
+    build = "./install.sh",
+    lazy = false,
   },
 }

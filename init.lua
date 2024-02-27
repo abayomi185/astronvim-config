@@ -1,3 +1,9 @@
+-- NOTE: This is a global function
+P = function(v)
+  print(vim.inspect(v))
+  return v
+end
+
 local function addPythonPathToDapConfigs(configurations, venv_path)
   if not venv_path then return end
   for _, config in ipairs(configurations) do
@@ -8,19 +14,33 @@ local function addPythonPathToDapConfigs(configurations, venv_path)
   end
 end
 
+function _G.dump_lsp_config_to_buffer()
+  -- Capture the output of the Lua command
+  local output = vim.inspect(require("lspconfig").yamlls)
+
+  -- Create a new buffer
+  vim.cmd "new"
+
+  -- Get the buffer number of the new buffer
+  local bufnr = vim.api.nvim_get_current_buf()
+
+  -- Insert the output into the new buffer
+  vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, vim.split(output, "\n"))
+end
+
 return {
   -- Configure AstroNvim updates
   updater = {
-    remote = "origin",     -- remote to use
-    channel = "stable",    -- "stable" or "nightly"
-    version = "v3.*",      -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
-    branch = "nightly",    -- branch name (NIGHTLY ONLY)
-    commit = nil,          -- commit hash (NIGHTLY ONLY)
-    pin_plugins = nil,     -- nil, true, false (nil will pin plugins on stable only)
-    skip_prompts = false,  -- skip prompts about breaking changes
+    remote = "origin", -- remote to use
+    channel = "stable", -- "stable" or "nightly"
+    version = "v3.*", -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
+    branch = "nightly", -- branch name (NIGHTLY ONLY)
+    commit = nil, -- commit hash (NIGHTLY ONLY)
+    pin_plugins = nil, -- nil, true, false (nil will pin plugins on stable only)
+    skip_prompts = false, -- skip prompts about breaking changes
     show_changelog = true, -- show the changelog after performing an update
-    auto_quit = false,     -- automatically quit the current session after a successful update
-    remotes = {            -- easily add new remotes to track
+    auto_quit = false, -- automatically quit the current session after a successful update
+    remotes = { -- easily add new remotes to track
       --   ["remote_name"] = "https://remote_url.come/repo.git", -- full remote url
       --   ["remote2"] = "github_user/repo", -- GitHub user/repo shortcut,
       --   ["remote3"] = "github_user", -- GitHub user assume AstroNvim fork
@@ -50,7 +70,7 @@ return {
     formatting = {
       -- control auto formatting on save
       format_on_save = {
-        enabled = true,     -- enable or disable format on save globally
+        enabled = true, -- enable or disable format on save globally
         allow_filetypes = { -- enable format on save for specified filetypes only
           -- "go",
         },
@@ -187,7 +207,7 @@ return {
 
     -- NOTE: DAP
     -- Load launch.json
-    require("dap.ext.vscode").json_decode = require("json5").parse
+    -- require("dap.ext.vscode").json_decode = require("json5").parse
     -- Add remapping for debugpy
     require("dap.ext.vscode").load_launchjs(
       nil,
@@ -200,4 +220,7 @@ return {
 
     addPythonPathToDapConfigs(dap.configurations.python, os.getenv "VIRTUAL_ENV" or os.getenv "CONDA_PREFIX")
   end,
+
+  -- Bind the function to a command
+  vim.cmd "command! DumpLSPConfig lua dump_lsp_config_to_buffer()",
 }

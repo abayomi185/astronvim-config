@@ -44,6 +44,10 @@ return {
     ["<leader>gd"] = { ":DiffviewOpen<cr>", desc = "Open Git Diff" },
     ["<leader>gD"] = { ":DiffviewClose<cr>", desc = "Close Git Diff" },
 
+    -- NOTE: Git Signs
+    ["<leader>gn"] = { ":Gitsigns next_hunk<CR>", desc = "Next Hunk" },
+    ["<leader>gN"] = { ":Gitsigns prev_hunk<CR>", desc = "Previous Hunk" },
+
     -- NOTE: Move line
     ["<M-j>"] = ":m .+1<CR>==",
     ["<M-k>"] = ":m .-2<CR>==",
@@ -59,6 +63,10 @@ return {
 
     ["<leader>v"] = { "<C-v>", desc = "Visual Block" },
 
+    -- NOTE: Horizontal scroll
+    ["<ScrollWheelLeft>"] = { "zh", desc = "Scroll left" },
+    ["<ScrollWheelRight>"] = { "zl", desc = "Scroll right" },
+
     -- NOTE: Telescope mappings
     -- ["<leader>sg"] = ":Telescope grep_string<CR>",
     ["<leader>fw"] = {
@@ -73,6 +81,10 @@ return {
 
     -- NOTE: Copilot mapping
     ["gp"] = ":Copilot panel<CR>",
+
+    -- NOTE: Code Companion
+    ["<leader>lc"] = { "<cmd>CodeCompanionActions<CR>", desc = "Show CodeCompanion Actions" },
+    ["<leader>lt"] = { "<cmd>CodeCompanionToggle<CR>", desc = "Toggle CodeCompanion" },
 
     -- NOTE: Telescope mappings
     -- ["<leader>ss"] = ":Telescope<CR>",
@@ -171,6 +183,10 @@ return {
     -- Better indenting
     ["<"] = "<gv",
     [">"] = ">gv",
+
+    -- NOTE: Code Companion
+    ["<leader>lc"] = { "<cmd>CodeCompanionActions<cr>", desc = "Show CodeCompanion Actions" },
+    ["<leader>lt"] = { "<cmd>CodeCompanionToggle<cr>", desc = "Toggle CodeCompanion" },
   },
 
   -- INFO: Terminal Mode

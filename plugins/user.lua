@@ -276,6 +276,83 @@ return {
       }
     end,
   },
+  -- {
+  --   "mrcjkb/rustaceanvim",
+  --   version = "^3", -- Recommended
+  --   ft = { "rust", "rs" },
+  --   opts = function()
+  --     local adapter
+  --     local success, package = pcall(function() return require("mason-registry").get_package "codelldb" end)
+  --     local cfg = require "rustaceanvim.config"
+  --
+  --     if success then
+  --       local package_path = package:get_install_path()
+  --       local codelldb_path = package_path .. "/codelldb"
+  --       local liblldb_path = package_path .. "/extension/lldb/lib/liblldb"
+  --       local this_os = vim.loop.os_uname().sysname
+  --       -- The path in windows is different
+  --       if this_os:find "Windows" then
+  --         codelldb_path = package_path .. "\\extension\\adapter\\codelldb.exe"
+  --         liblldb_path = package_path .. "\\extension\\lldb\\bin\\liblldb.dll"
+  --       else
+  --         -- The liblldb extension is .so for linux and .dylib for macOS
+  --         liblldb_path = liblldb_path .. (this_os == "Linux" and ".so" or ".dylib")
+  --       end
+  --       adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path)
+  --     else
+  --       adapter = cfg.get_codelldb_adapter()
+  --     end
+  --
+  --     return {
+  --       server = {
+  --         on_attach = require("astronvim.utils.lsp").on_attach,
+  --         settings = {
+  --           ["rust-analyzer"] = {
+  --             cargo = {
+  --               allFeatures = true,
+  --             },
+  --             checkOnSave = {
+  --               enable = true,
+  --               command = "clippy",
+  --             },
+  --             assist = {
+  --               importEnforceGranularity = true,
+  --               importPrefix = "crate",
+  --             },
+  --             completion = {
+  --               postfix = {
+  --                 enable = false,
+  --               },
+  --             },
+  --             inlayHints = {
+  --               lifetimeElisionHints = {
+  --                 enable = true,
+  --                 useParameterNames = true,
+  --               },
+  --             },
+  --           },
+  --         },
+  --       },
+  --       tools = {
+  --         inlay_hints = {
+  --           parameter_hints_prefix = "  ",
+  --           other_hints_prefix = "  ",
+  --         },
+  --         autoSetHints = true,
+  --         runnables = {
+  --           use_telescope = true,
+  --         },
+  --         -- hover_with_actions = true,
+  --         -- deprecated
+  --         -- hover_actions = {
+  --         --   auto_focus = true,
+  --         -- },
+  --       },
+  --       dap = { adapter = adapter },
+  --     }
+  --   end,
+  --   config = function(_, opts) vim.g.rustaceanvim = require("astrocore").extend_tbl(opts, vim.g.rustaceanvim) end,
+  -- },
   {
     "williamboman/mason-lspconfig.nvim",
     opts = {

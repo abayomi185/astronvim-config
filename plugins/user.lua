@@ -221,48 +221,6 @@ return {
   -- RUST
   {
     "simrat39/rust-tools.nvim",
-    -- event = "User AstroLspSetup",
-    -- config = function()
-    --   require("rust-tools").setup({
-    --     tools = {
-    --       inlay_hints = {
-    --         parameter_hints_prefix = "  ",
-    --         other_hints_prefix = "  ",
-    --       },
-    --       autoSetHints = true,
-    --       -- hover_with_actions = true,
-    --       runnables = {
-    --         use_telescope = true,
-    --       },
-    --       -- deprecated
-    --       -- hover_actions = {
-    --       --   auto_focus = true,
-    --       -- },
-    --     },
-    --     server = {
-    --       -- cmd_env = requested_server._default_options.cmd_env,
-
-    --       -- on_init = require("lvim.lsp").common_on_init, -- Looks to be lvim specific
-    --       on_attach = require("astronvim.utils.lsp").on_attach,
-
-    --       settings = {
-    --         ["rust-analyzer"] = {
-    --           cargo = {
-    --             allFeatures = true,
-    --           },
-    --           checkOnSave = {
-    --             enable = true,
-    --             command = "clippy",
-    --           },
-    --         }
-    --       },
-    --     },
-    --     dap = {
-    --       adapter = require('rust-tools.dap').get_codelldb_adapter(
-    --         codelldb_path, liblldb_path)
-    --     }
-    --   })
-    -- end,
     ft = { "rust", "rs" },
     -- init = function() astronvim.lsp.skip_setup = utils.list_insert_unique(astronvim.lsp.skip_setup, "rust_analyzer") end,
     opts = function()

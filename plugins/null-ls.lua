@@ -13,16 +13,15 @@ return {
       -- null_ls.builtins.formatting.prettier,
 
       -- NOTE: isort formatter
-      -- null_ls.builtins.formatting.isort.with({
-      --   filetypes = { "python" },
-      --   extra_args = { "--line-length", "115" },
-      -- }),
+      null_ls.builtins.formatting.isort.with {
+        filetypes = { "python" },
+        extra_args = { "--line-length", "115" },
+      },
 
       -- NOTE: black formatter
-      -- null_ls.builtins.formatting.black.with({
-      --  filetypes = { "python" },
-      --  extra_args = { "--line-length", "115" },
-      --  }),
+      null_ls.builtins.formatting.black.with {
+        filetypes = { "python" },
+      },
 
       -- NOTE: Flake8 linter
       null_ls.builtins.diagnostics.flake8.with {

@@ -419,10 +419,35 @@ return {
   {
     "David-Kunz/gen.nvim",
     opts = {
-      model = "mistral_7b_instruct_v0.2",
-      command = "curl --silent --no-buffer -X POST https://astrysk-ollama-testflight.duckdns.org/api/generate -d $body",
+      model = "gemma_7b_instruct",
+      command = "curl --silent --no-buffer -X POST https://astrysk-ollama-testflight.duckdns.org/api/chat -d $body",
     },
     lazy = false,
+  },
+  {
+    "olimorris/codecompanion.nvim",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-lua/plenary.nvim",
+      "stevearc/dressing.nvim", -- Optional: Improves the default Neovim UI
+    },
+    config = true,
+    lazy = false,
+  },
+
+  -- NOTE: UI
+  {
+    "folke/edgy.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.opt.laststatus = 3
+      vim.opt.splitkeep = "screen"
+    end,
+    opts = {
+      right = {
+        { ft = "codecompanion", title = "Code Companion Chat", size = { width = 0.45 } },
+      },
+    },
   },
 
   -- NOTE: Likely not needed

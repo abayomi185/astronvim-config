@@ -34,8 +34,8 @@ return {
   },
 
   -- Set colorscheme to use
-  -- colorscheme = "onedark",
-  colorscheme = "onelight",
+  colorscheme = "onedark",
+  -- colorscheme = "onelight",
   -- colorscheme = "catppuccin-latte",
   -- colorscheme = "kanagawa-lotus",
 

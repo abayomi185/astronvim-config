@@ -5,6 +5,12 @@
 -- automatically pick-up stored data by this setting.)
 local ui = require "astronvim.utils.ui"
 
+function saveWithoutFormatting()
+  require("astronvim.utils.ui").toggle_buffer_autoformat()
+  vim.cmd "write" -- Execute the ':write' command to save the buffer
+  require("astronvim.utils.ui").toggle_buffer_autoformat()
+end
+
 return {
   -- NOTE: Normal Mode
   n = {
@@ -18,6 +24,8 @@ return {
     -- this is useful for naming menus
     -- quick save
     ["<M-s>"] = { ":w<cr>", desc = "Save File" }, -- change description but the same command
+    ["<leader>W"] = { "<cmd>lua saveWithoutFormatting()<CR>", desc = "Save without formatting" },
+
     -- Terminal
     ["<C-t>"] = { ":ToggleTerm<cr>", desc = "ToggleTerm" },
 
@@ -30,16 +38,23 @@ return {
     ["<leader>gd"] = { ":DiffviewOpen<cr>", desc = "Open Git Diff" },
     ["<leader>gD"] = { ":DiffviewClose<cr>", desc = "Close Git Diff" },
 
+    -- NOTE: Git Signs
+    ["<leader>gn"] = { ":Gitsigns next_hunk<CR>", desc = "Next Hunk" },
+    ["<leader>gN"] = { ":Gitsigns prev_hunk<CR>", desc = "Previous Hunk" },
+
+    -- NOTE: Legendary
+    ["<C-p>"] = { ":Legendary<CR>", desc = "Toggle Legendary" },
+
     -- Move line
     ["<M-j>"] = ":m .+1<CR>==",
     ["<M-k>"] = ":m .-2<CR>==",
 
     ["<S-l>"] = {
-      function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end,
+      "<cmd>lua require('astronvim.utils.buffer').nav(vim.v.count > 0 and vim.v.count or 1)<CR>",
       desc = "Next buffer",
     },
     ["<S-h>"] = {
-      function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
+      "<cmd>lua require('astronvim.utils.buffer').nav(-(vim.v.count > 0 and vim.v.count or 1))<CR>",
       desc = "Previous buffer",
     },
 
@@ -48,10 +63,9 @@ return {
     -- NOTE: Telescope mappings
     -- ["<leader>sg"] = ":Telescope grep_string<CR>",
     ["<leader>fw"] = {
-      function() require("telescope").extensions.live_grep_args.live_grep_args() end,
+      "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
       desc = "Find Words",
     },
-    ["<leader>bf"] = { function() require("telescope.builtin").buffers() end, desc = "Buffer List" },
 
     -- NOTE: Custom workaround for vertical resize on macOS
     ["<C-M-l>"] = ":vertical resize -2<CR>",
@@ -88,14 +102,14 @@ return {
 
     -- NOTE: Buffer
     ["<leader>bh"] = {
-      function() require("astronvim.utils.buffer").close_left() end,
+      "<cmd>lua require('astronvim.utils.buffer').close_left()<CR>",
       desc = "Close all buffers to the left",
     },
     ["<leader>bl"] = {
-      function() require("astronvim.utils.buffer").close_right() end,
+      "<cmd>lua require('astronvim.utils.buffer').close_right()<CR>",
       desc = "Close all buffers to the right",
     },
-    ["<leader>br"] = false,
+    -- ["<leader>br"] = false, -- Disabled for Legendary.nvim support
 
     -- NOTE: Harpoon
     ["<leader>m"] = { name = "Harpoon" },

@@ -54,7 +54,22 @@ return {
   --   end,
   -- },
 
-  -- CMP
+  -- NOTE: UI
+  {
+    "folke/edgy.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.opt.laststatus = 3
+      vim.opt.splitkeep = "screen"
+    end,
+    opts = {
+      right = {
+        { ft = "codecompanion", title = "Code Companion Chat", size = { width = 0.45 } },
+      },
+    },
+  },
+
+  -- NOTE: CMP
   { -- override nvim-cmp plugin
     "hrsh7th/nvim-cmp",
     -- override the options table that is used in the `require("cmp").setup()` call
@@ -97,11 +112,11 @@ return {
   },
 
   -- MARKDOWN
-  {
-    "npxbr/glow.nvim",
-    ft = { "markdown" },
-    cmd = { "Glow" },
-  },
+  -- {
+  --   "npxbr/glow.nvim",
+  --   ft = { "markdown" },
+  --   cmd = { "Glow" },
+  -- },
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
@@ -354,6 +369,7 @@ return {
   },
   {
     "olimorris/codecompanion.nvim",
+    dir = "~/s-projek/codecompanion.nvim",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-lua/plenary.nvim",

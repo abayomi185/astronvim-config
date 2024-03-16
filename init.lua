@@ -28,6 +28,12 @@ function _G.dump_lsp_config_to_buffer()
   vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, vim.split(output, "\n"))
 end
 
+-- Set spell checking for markdown files
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function() vim.opt_local.spell = true end,
+})
+
 return {
   -- Configure AstroNvim updates
   updater = {

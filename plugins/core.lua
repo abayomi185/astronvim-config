@@ -101,4 +101,12 @@ return {
       require("neo-tree").setup(opts)
     end,
   },
+  {
+    "nvim-notify",
+    opts = function(_, opts)
+      -- customize the notification position
+      opts.top_down = false
+      return opts
+    end,
+  },
 }

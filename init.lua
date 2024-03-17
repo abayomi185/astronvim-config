@@ -90,6 +90,7 @@ return {
         -- "sumneko_lua",
         "tsserver",
         "jsonls",
+        "lua_ls",
       },
       timeout_ms = 1000, -- default format timeout
       -- filter = function(client) -- fully override the default formatting function
@@ -160,8 +161,6 @@ return {
     --   },
     -- },
   },
-
-  -- highlights = {},
 
   -- This function is run last and is a good place to configuring
   -- augroups/autocommands and custom filetypes also this just pure lua so

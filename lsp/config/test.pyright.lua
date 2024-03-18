@@ -1,0 +1,35 @@
+return {
+  -- settings = {
+  --   single_file_support = false,
+  -- },
+  -- settings = {
+  --   python = {
+  --     analysis = {
+  --       typeCheckingMode = "basic",
+  --       -- autoSearchPaths = true,
+  --       -- useLibraryCodeForTypes = true,
+  --       -- diagnosticMode = "workspace",
+  --       -- typeCheckingMode = "basic",
+  --       -- autoImportCompletions = true,
+  --       -- autoSearchPaths = true,
+  --       -- diagnosticSeverityOverrides = {
+  --       --   reportUnusedImport = "information",
+  --       --   reportMissingImports = "information",
+  --       --   reportUndefinedVariable = "information",
+  --       --   reportMissingTypeStubs = "information",
+  --       --   reportMissingModuleSource = "information",
+  --       -- },
+  --     },
+  --   },
+  -- },
+}
+
+-- python = {
+--       analysis = {
+--         autoImportCompletions = true,
+--         autoSearchPaths = true,
+--         diagnosticMode = "workspace", -- openFilesOnly, workspace
+--         typeCheckingMode = "basic", -- off, basic, strict
+--         useLibraryCodeForTypes = true
+--       }
+--     }

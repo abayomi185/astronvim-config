@@ -66,6 +66,10 @@ return {
       "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
       desc = "Find Words",
     },
+    ["<leader>bm"] = {
+      "<cmd>lua require('telescope.builtin').marks()<CR>",
+      desc = "Telescope Marks",
+    },
 
     -- NOTE: Custom workaround for vertical resize on macOS
     ["<C-M-l>"] = ":vertical resize -2<CR>",

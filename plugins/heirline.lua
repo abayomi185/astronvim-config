@@ -5,6 +5,30 @@ return {
     local hl = require "astronvim.utils.status.hl"
     local C = require("astronvim.utils.status.env").fallback_colors
 
+    -- print(vim.inspect(opts["statusline"]))
+
+    opts.statusline = { -- statusline
+      opts.statusline,
+      {
+        static = {
+          processing = false,
+        },
+        update = {
+          "User",
+          pattern = "CodeCompanionRequest",
+          callback = function(self, args)
+            self.processing = (args.data.status == "started")
+            vim.cmd "redrawstatus"
+          end,
+        },
+        {
+          condition = function(self) return self.processing end,
+          provider = " ",
+          hl = { fg = "yellow" },
+        },
+      },
+    }
+
     opts.tabline = { -- tabline
       unpack(opts.tabline),
       { -- file tree padding

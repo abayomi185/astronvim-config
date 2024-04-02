@@ -369,13 +369,29 @@ return {
   },
   {
     "olimorris/codecompanion.nvim",
-    dir = "~/s-projek/codecompanion.nvim",
+    dir = "~/oss-projek/codecompanion.nvim",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-lua/plenary.nvim",
       "stevearc/dressing.nvim", -- Optional: Improves the default Neovim UI
     },
-    config = true,
+    opts = function(_, opts)
+      return {
+        adapters = {
+          opts.adapters,
+          chat = require("codecompanion.adapters").use("openai", {
+            env = {
+              api_key = "cmd:gpg --decrypt ~/.openai-api-key.gpg 2>/dev/null",
+            },
+          }),
+          inline = require("codecompanion.adapters").use("openai", {
+            env = {
+              api_key = "cmd:gpg --decrypt ~/.openai-api-key.gpg 2>/dev/null",
+            },
+          }),
+        },
+      }
+    end,
     lazy = false,
   },
 

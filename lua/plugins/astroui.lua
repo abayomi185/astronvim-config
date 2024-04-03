@@ -40,11 +40,11 @@ return {
         -- tab = { "", "" },
         -- block = { "█", "" },
         custom_right = { " ", "" },
-      }
+      },
     },
     attributes = {
       -- mode = { bold = true },
       buffer_active = { bold = true, italic = false },
-    }
+    },
   },
 }

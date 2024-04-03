@@ -1,4 +1,7 @@
 if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+
+-- WARN: This file breaks neovim and causes memory usage to go out of control
+
 ---@type LazySpec
 return {
   -- NOTE: persistent-breakpoints
@@ -71,5 +74,6 @@ return {
     "abayomi185/nvim-dap-probe-rs",
     config = function(plugin, opts) require("dap-probe-rs").setup() end,
     lazy = false,
+    enabled = false,
   },
 }

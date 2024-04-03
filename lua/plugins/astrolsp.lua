@@ -39,7 +39,7 @@ return {
     servers = {
       -- "pyright"
       -- WARN: Change here when using NixOS
-      -- "rust_analyzer
+      "rust_analyzer",
     },
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields

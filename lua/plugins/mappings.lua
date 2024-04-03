@@ -10,8 +10,6 @@ return {
       n = {
         -- second key is the lefthand side of the map
 
-        ["<Leader>h"] = { ":noh<CR>", desc = "Buffers" },
-
         -- navigate buffer tabs with `H` and `L`
         L = {
           function() require("astrocore.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end,
@@ -37,23 +35,23 @@ return {
 
         -- NOTE: Save
         ["<M-s>"] = { ":w<cr>", desc = "Save File" }, -- change description but the same command
-        ["<leader>W"] = { "<cmd>lua saveWithoutFormatting()<CR>", desc = "Save without formatting" },
+        ["<Leader>W"] = { "<cmd>lua saveWithoutFormatting()<CR>", desc = "Save without formatting" },
 
         -- Terminal
         ["<C-t>"] = { ":ToggleTerm<cr>", desc = "ToggleTerm" },
 
-        ["<leader>h"] = { ":nohlsearch<cr>", desc = "No Highlight" },
+        ["<Leader>h"] = { ":nohlsearch<cr>", desc = "No Highlight" },
 
         -- ["<C-s>"] = ":w<CR>",
         -- ["<M-s>"] = ":w<CR>",
 
         -- NOTE: Git Diff
-        ["<leader>gd"] = { ":DiffviewOpen<cr>", desc = "Open Git Diff" },
-        ["<leader>gD"] = { ":DiffviewClose<cr>", desc = "Close Git Diff" },
+        ["<Leader>gd"] = { ":DiffviewOpen<cr>", desc = "Open Git Diff" },
+        ["<Leader>gD"] = { ":DiffviewClose<cr>", desc = "Close Git Diff" },
 
         -- NOTE: Git Signs
-        ["<leader>gn"] = { ":Gitsigns next_hunk<CR>", desc = "Next Hunk" },
-        ["<leader>gN"] = { ":Gitsigns prev_hunk<CR>", desc = "Previous Hunk" },
+        ["<Leader>gn"] = { ":Gitsigns next_hunk<CR>", desc = "Next Hunk" },
+        ["<Leader>gN"] = { ":Gitsigns prev_hunk<CR>", desc = "Previous Hunk" },
 
         -- NOTE: Legendary
         ["<C-p>"] = { ":Legendary<CR>", desc = "Toggle Legendary" },
@@ -62,15 +60,15 @@ return {
         ["<M-j>"] = ":m .+1<CR>==",
         ["<M-k>"] = ":m .-2<CR>==",
 
-        ["<leader>v"] = { "<C-v>", desc = "Visual Block" },
+        ["<Leader>v"] = { "<C-v>", desc = "Visual Block" },
 
         -- NOTE: Telescope mappings
-        -- ["<leader>sg"] = ":Telescope grep_string<CR>",
-        ["<leader>fw"] = {
+        -- ["<Leader>sg"] = ":Telescope grep_string<CR>",
+        ["<Leader>fw"] = {
           "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
           desc = "Find Words",
         },
-        ["<leader>bm"] = {
+        ["<Leader>bm"] = {
           "<cmd>lua require('telescope.builtin').marks()<CR>",
           desc = "Telescope Marks",
         },
@@ -80,57 +78,57 @@ return {
         ["<C-M-h>"] = ":vertical resize +2<CR>",
 
         -- NOTE: Git Diff
-        -- ["<leader>gD"] = { ":DiffviewClose<cr>", desc = "Close Git Diff" },
+        -- ["<Leader>gD"] = { ":DiffviewClose<cr>", desc = "Close Git Diff" },
 
         -- NOTE: Copilot mapping
         ["gp"] = ":Copilot panel<CR>",
 
         -- NOTE: Code Companion
-        ["<leader>lc"] = { "<cmd>CodeCompanionActions<CR>", desc = "Show CodeCompanion Actions" },
-        ["<leader>lt"] = { "<cmd>CodeCompanionToggle<CR>", desc = "Toggle CodeCompanion" },
+        ["<Leader>lc"] = { "<cmd>CodeCompanionActions<CR>", desc = "Show CodeCompanion Actions" },
+        ["<Leader>lt"] = { "<cmd>CodeCompanionToggle<CR>", desc = "Toggle CodeCompanion" },
 
         -- NOTE: Telescope mappings
-        -- ["<leader>ss"] = ":Telescope<CR>",
+        -- ["<Leader>ss"] = ":Telescope<CR>",
 
         -- NOTE: LSP mappings
         ["gh"] = { "<cmd>lua vim.lsp.buf.hover()<cr>", desc = "Show hover" },
-        -- ["<leader>ll"] = { "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "LSP CodeLens run" },
-        -- ["<leader>lL"] = { "<cmd>lua vim.lsp.codelens.refresh()<cr>", desc = "LSP CodeLens refresh" },
+        ["<Leader>ll"] = { "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "LSP CodeLens run" },
+        ["<Leader>lL"] = { "<cmd>lua vim.lsp.codelens.refresh()<cr>", desc = "LSP CodeLens refresh" },
 
         -- NOTE: Debug Mappings
-        ["<leader>db"] = { ":PBToggleBreakpoint<CR>", desc = "Toggle Breakpoint" },
-        ["<leader>dB"] = { ":PBClearAllBreakpoints<CR>", desc = "Clear All Breakpoints" },
-        ["<leader>dC"] = { ":PBSetConditionalBreakpoint<CR>", desc = "Set Conditional Breakpoint" },
-        -- ["<leader>dh"] = { function() require("dap.ui.widgets").preview() end, desc = "Debugger Hover" },
+        ["<Leader>db"] = { ":PBToggleBreakpoint<CR>", desc = "Toggle Breakpoint" },
+        ["<Leader>dB"] = { ":PBClearAllBreakpoints<CR>", desc = "Clear All Breakpoints" },
+        ["<Leader>dC"] = { ":PBSetConditionalBreakpoint<CR>", desc = "Set Conditional Breakpoint" },
+        -- ["<Leader>dh"] = { function() require("dap.ui.widgets").preview() end, desc = "Debugger Hover" },
         -- Close all dap-ui hover windows
-        -- ["<leader>dx"] = { "", desc = "Close all dap-ui hovers" },
+        -- ["<Leader>dx"] = { "", desc = "Close all dap-ui hovers" },
 
         -- NOTE: Spell Check
         -- ["zt"] = ":set spell!<CR>"
 
         -- NOTE: Buffer
-        ["<leader>bh"] = {
+        ["<Leader>bh"] = {
           "<cmd>lua require('astrocore.buffer').close_left()<CR>",
           desc = "Close all buffers to the left",
         },
-        ["<leader>bl"] = {
+        ["<Leader>bl"] = {
           "<cmd>lua require('astrocore.buffer').close_right()<CR>",
           desc = "Close all buffers to the right",
         },
-        -- ["<leader>br"] = false, -- Disabled for Legendary.nvim support
+        -- ["<Leader>br"] = false, -- Disabled for Legendary.nvim support
 
         -- NOTE: Harpoon
-        ["<leader>m"] = { name = "Harpoon" },
-        ["<leader>mm"] = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", desc = "Quick Menu" },
-        ["<leader>mt"] = { "<cmd>lua require('harpoon.ui').toggle_file()<CR>", desc = "Toggle File" },
-        ["<leader>ml"] = { "<cmd>lua require('harpoon.ui').nav_next()<CR>", desc = "Navigate next" },
-        ["<leader>mh"] = { "<cmd>lua require('harpoon.ui').nav_prev()<CR>", desc = "Navigate previous" },
+        ["<Leader>m"] = { name = "Harpoon" },
+        ["<Leader>mm"] = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", desc = "Quick Menu" },
+        ["<Leader>mt"] = { "<cmd>lua require('harpoon.ui').toggle_file()<CR>", desc = "Toggle File" },
+        ["<Leader>ml"] = { "<cmd>lua require('harpoon.ui').nav_next()<CR>", desc = "Navigate next" },
+        ["<Leader>mh"] = { "<cmd>lua require('harpoon.ui').nav_prev()<CR>", desc = "Navigate previous" },
 
-        ["<leader>1"] = { "<cmd>lua require('harpoon.ui').nav_file(1)<CR>", desc = "Harpoon 1" },
-        ["<leader>2"] = { "<cmd>lua require('harpoon.ui').nav_file(2)<CR>", desc = "Harpoon 2" },
-        ["<leader>3"] = { "<cmd>lua require('harpoon.ui').nav_file(3)<CR>", desc = "Harpoon 3" },
-        ["<leader>4"] = { "<cmd>lua require('harpoon.ui').nav_file(4)<CR>", desc = "Harpoon 4" },
-        -- ["<leader>5"] = { "<cmd>lua require('harpoon.ui').nav_file(5)<CR>", desc = "Harpoon 5" },
+        ["<Leader>1"] = { "<cmd>lua require('harpoon.ui').nav_file(1)<CR>", desc = "Harpoon 1" },
+        ["<Leader>2"] = { "<cmd>lua require('harpoon.ui').nav_file(2)<CR>", desc = "Harpoon 2" },
+        ["<Leader>3"] = { "<cmd>lua require('harpoon.ui').nav_file(3)<CR>", desc = "Harpoon 3" },
+        ["<Leader>4"] = { "<cmd>lua require('harpoon.ui').nav_file(4)<CR>", desc = "Harpoon 4" },
+        -- ["<Leader>5"] = { "<cmd>lua require('harpoon.ui').nav_file(5)<CR>", desc = "Harpoon 5" },
 
         -- NOTE: Live Grep
         -- lvim.builtin.which_key.mappings["st"] = {
@@ -138,49 +136,49 @@ return {
         -- }
 
         -- NOTE: Rust
-        ["<leader>r"] = { name = "Rust" },
-        ["<leader>rj"] = { "<cmd>RustRunnables<Cr>", desc = "Runnables" },
-        ["<leader>rt"] = { "<cmd>lua _CARGO_TEST()<cr>", desc = "Cargo Test" },
-        ["<leader>rm"] = { "<cmd>RustExpandMacro<Cr>", desc = "Expand Macro" },
-        ["<leader>rc"] = { "<cmd>RustOpenCargo<Cr>", desc = "Open Cargo" },
-        ["<leader>rp"] = { "<cmd>RustParentModule<Cr>", desc = "Parent Module" },
-        ["<leader>rd"] = { "<cmd>RustDebuggables<Cr>", desc = "Debuggables" },
-        ["<leader>rv"] = { "<cmd>RustViewCrateGraph<Cr>", desc = "View Crate Graph" },
-        ["<leader>rR"] = {
+        ["<Leader>r"] = { name = "Rust" },
+        ["<Leader>rj"] = { "<cmd>RustRunnables<Cr>", desc = "Runnables" },
+        ["<Leader>rt"] = { "<cmd>lua _CARGO_TEST()<cr>", desc = "Cargo Test" },
+        ["<Leader>rm"] = { "<cmd>RustExpandMacro<Cr>", desc = "Expand Macro" },
+        ["<Leader>rc"] = { "<cmd>RustOpenCargo<Cr>", desc = "Open Cargo" },
+        ["<Leader>rp"] = { "<cmd>RustParentModule<Cr>", desc = "Parent Module" },
+        ["<Leader>rd"] = { "<cmd>RustDebuggables<Cr>", desc = "Debuggables" },
+        ["<Leader>rv"] = { "<cmd>RustViewCrateGraph<Cr>", desc = "View Crate Graph" },
+        ["<Leader>rR"] = {
           "<cmd>lua require('rust-tools/workspace_refresh')._reload_workspace_from_cargo_toml()<Cr>",
           desc = "Reload Workspace",
         },
 
         -- NOTE: Crates
-        ["<leader>R"] = { name = "Crates" },
-        ["<leader>Ro"] = { "<cmd>lua require('crates').show_popup()<CR>", desc = "Show popup" },
-        ["<leader>Rr"] = { "<cmd>lua require('crates').reload()<CR>", desc = "Reload" },
-        ["<leader>Rv"] = { "<cmd>lua require('crates').show_versions_popup()<CR>", desc = "Show Versions" },
-        ["<leader>Rf"] = { "<cmd>lua require('crates').show_features_popup()<CR>", desc = "Show Features" },
-        ["<leader>Rd"] = {
+        ["<Leader>R"] = { name = "Crates" },
+        ["<Leader>Ro"] = { "<cmd>lua require('crates').show_popup()<CR>", desc = "Show popup" },
+        ["<Leader>Rr"] = { "<cmd>lua require('crates').reload()<CR>", desc = "Reload" },
+        ["<Leader>Rv"] = { "<cmd>lua require('crates').show_versions_popup()<CR>", desc = "Show Versions" },
+        ["<Leader>Rf"] = { "<cmd>lua require('crates').show_features_popup()<CR>", desc = "Show Features" },
+        ["<Leader>Rd"] = {
           "<cmd>lua require('crates').show_dependencies_popup()<CR>",
           desc = "Show Dependencies Popup",
         },
-        ["<leader>Ru"] = { "<cmd>lua require('crates').update_crate()<CR>", desc = "Update Crate" },
-        ["<leader>Ra"] = { "<cmd>lua require('crates').update_all_crates()<CR>", desc = "Update All Crates" },
-        ["<leader>RU"] = { "<cmd>lua require('crates').upgrade_crate<CR>", desc = "Upgrade Crate" },
-        ["<leader>RA"] = { "<cmd>lua require('crates').upgrade_all_crates(true)<CR>", desc = "Upgrade All Crates" },
-        ["<leader>RH"] = { "<cmd>lua require('crates').open_homepage()<CR>", desc = "Open Homepage" },
-        ["<leader>RR"] = { "<cmd>lua require('crates').open_repository()<CR>", desc = "Open Repository" },
-        ["<leader>RD"] = { "<cmd>lua require('crates').open_documentation()<CR>", desc = "Open Documentation" },
-        ["<leader>RC"] = { "<cmd>lua require('crates').open_crates_io()<CR>", desc = "Open Crate.io" },
+        ["<Leader>Ru"] = { "<cmd>lua require('crates').update_crate()<CR>", desc = "Update Crate" },
+        ["<Leader>Ra"] = { "<cmd>lua require('crates').update_all_crates()<CR>", desc = "Update All Crates" },
+        ["<Leader>RU"] = { "<cmd>lua require('crates').upgrade_crate<CR>", desc = "Upgrade Crate" },
+        ["<Leader>RA"] = { "<cmd>lua require('crates').upgrade_all_crates(true)<CR>", desc = "Upgrade All Crates" },
+        ["<Leader>RH"] = { "<cmd>lua require('crates').open_homepage()<CR>", desc = "Open Homepage" },
+        ["<Leader>RR"] = { "<cmd>lua require('crates').open_repository()<CR>", desc = "Open Repository" },
+        ["<Leader>RD"] = { "<cmd>lua require('crates').open_documentation()<CR>", desc = "Open Documentation" },
+        ["<Leader>RC"] = { "<cmd>lua require('crates').open_crates_io()<CR>", desc = "Open Crate.io" },
 
         -- OSC52
-        -- ["<leader>y"] = { "<cmd>lua require('osc52').copy_operator()<CR>", desc = "OSC52 yank" },
-        -- ["<leader>yy"] = { "<leader>y_", desc = "OSC52 yank line" },
+        -- ["<Leader>y"] = { "<cmd>lua require('osc52').copy_operator()<CR>", desc = "OSC52 yank" },
+        -- ["<Leader>yy"] = { "<leader>y_", desc = "OSC52 yank line" },
       },
 
       -- PASSED: Visual Mode
       v = {
-        ["<leader>d"] = '"_d', -- register
+        ["<Leader>d"] = '"_d', -- register
 
         -- OSC52
-        ["<leader>y"] = { "<cmd>lua require('osc52').copy_visual()<CR>", desc = "OSC52 yank" },
+        ["<Leader>y"] = { "<cmd>lua require('osc52').copy_visual()<CR>", desc = "OSC52 yank" },
 
         -- Move line
         ["<A-j>"] = ":m '>+1<CR>gv-gv",
@@ -191,15 +189,15 @@ return {
         [">"] = ">gv",
 
         -- NOTE: Code Companion
-        ["<leader>lc"] = { "<cmd>CodeCompanionActions<cr>", desc = "Show CodeCompanion Actions" },
-        ["<leader>lt"] = { "<cmd>CodeCompanionToggle<cr>", desc = "Toggle CodeCompanion" },
+        ["<Leader>lc"] = { "<cmd>CodeCompanionActions<cr>", desc = "Show CodeCompanion Actions" },
+        ["<Leader>lt"] = { "<cmd>CodeCompanionToggle<cr>", desc = "Toggle CodeCompanion" },
       },
 
       -- PASSED: Terminal
       t = {
         -- setting a mapping to false will disable it
         -- ["<esc>"] = false,
-        ["<leader><esc>"] = "<C-\\><C-n>",
+        ["<Leader><esc>"] = "<C-\\><C-n>",
         ["<C-space>"] = "<C-\\><C-n>",
       },
     },

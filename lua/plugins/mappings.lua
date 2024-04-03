@@ -10,6 +10,8 @@ return {
       n = {
         -- second key is the lefthand side of the map
 
+        ["<Leader>h"] = { ":noh<CR>", desc = "Buffers" },
+
         -- navigate buffer tabs with `H` and `L`
         L = {
           function() require("astrocore.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end,
@@ -155,7 +157,10 @@ return {
         ["<leader>Rr"] = { "<cmd>lua require('crates').reload()<CR>", desc = "Reload" },
         ["<leader>Rv"] = { "<cmd>lua require('crates').show_versions_popup()<CR>", desc = "Show Versions" },
         ["<leader>Rf"] = { "<cmd>lua require('crates').show_features_popup()<CR>", desc = "Show Features" },
-        ["<leader>Rd"] = { "<cmd>lua require('crates').show_dependencies_popup()<CR>", desc = "Show Dependencies Popup" },
+        ["<leader>Rd"] = {
+          "<cmd>lua require('crates').show_dependencies_popup()<CR>",
+          desc = "Show Dependencies Popup",
+        },
         ["<leader>Ru"] = { "<cmd>lua require('crates').update_crate()<CR>", desc = "Update Crate" },
         ["<leader>Ra"] = { "<cmd>lua require('crates').update_all_crates()<CR>", desc = "Update All Crates" },
         ["<leader>RU"] = { "<cmd>lua require('crates').upgrade_crate<CR>", desc = "Upgrade Crate" },
@@ -170,7 +175,7 @@ return {
         -- ["<leader>yy"] = { "<leader>y_", desc = "OSC52 yank line" },
       },
 
-    -- PASSED: Visual Mode
+      -- PASSED: Visual Mode
       v = {
         ["<leader>d"] = '"_d', -- register
 

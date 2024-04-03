@@ -31,5 +31,20 @@ return {
       LSPLoading9 = "⠇",
       LSPLoading10 = "⠏",
     },
+    status = {
+      separators = {
+        path = " ❯ ",
+        breadcrumbs = " » ",
+        -- left = { "", " " }, -- separator for the left side of the statusline
+        -- right = { " ", "" }, -- separator for the right side of the statusline
+        -- tab = { "", "" },
+        -- block = { "█", "" },
+        custom_right = { " ", "" },
+      }
+    },
+    attributes = {
+      -- mode = { bold = true },
+      buffer_active = { bold = true, italic = false },
+    }
   },
 }

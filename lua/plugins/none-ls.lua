@@ -15,9 +15,13 @@ return {
       -- null_ls.builtins.formatting.stylua,
       -- null_ls.builtins.formatting.prettier,
 
-      null_ls.builtins.formatting.taplo.with {
-        filetypes = { "toml" },
+      null_ls.builtins.formatting.stylua.with {
+        filetypes = { "lua" },
       },
+      -- Has native support for LSP
+      -- null_ls.builtins.formatting.taplo.with {
+      --   filetypes = { "toml" },
+      -- },
       null_ls.builtins.formatting.black.with {
         filetypes = { "python" },
       },

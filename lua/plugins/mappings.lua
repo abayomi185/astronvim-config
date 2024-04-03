@@ -92,8 +92,8 @@ return {
 
         -- NOTE: LSP mappings
         ["gh"] = { "<cmd>lua vim.lsp.buf.hover()<cr>", desc = "Show hover" },
-        ["<Leader>ll"] = { "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "LSP CodeLens run" },
-        ["<Leader>lL"] = { "<cmd>lua vim.lsp.codelens.refresh()<cr>", desc = "LSP CodeLens refresh" },
+        -- ["<Leader>ll"] = { "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "LSP CodeLens run" },
+        -- ["<Leader>lL"] = { "<cmd>lua vim.lsp.codelens.refresh()<cr>", desc = "LSP CodeLens refresh" },
 
         -- NOTE: Debug Mappings
         ["<Leader>db"] = { ":PBToggleBreakpoint<CR>", desc = "Toggle Breakpoint" },

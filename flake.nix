@@ -11,7 +11,7 @@
       let
         pkgs = import nixpkgs
           {
-            inherit system overlays;
+            inherit system;
           };
       in
       with pkgs;
@@ -21,6 +21,9 @@
             stylua
             lua-language-server
           ];
+          shellHook = ''
+            alias lua_ls="lua-language-server"
+          '';
         };
       }
     );

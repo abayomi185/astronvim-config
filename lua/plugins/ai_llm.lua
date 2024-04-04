@@ -14,6 +14,7 @@ return {
       -- ollama_url = "https://astrysk-ollama-testflight.duckdns.org/api/generate",
     },
     lazy = false,
+    enabled = false,
   },
 
   -- NOTE: llm.nvim
@@ -30,7 +31,7 @@ return {
   -- NOTE: codecompanion
   {
     "olimorris/codecompanion.nvim",
-    dir = "~/oss-projek/codecompanion.nvim",
+    -- dir = "~/oss-projek/codecompanion.nvim",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-lua/plenary.nvim",

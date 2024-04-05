@@ -41,6 +41,7 @@ return {
       -- WARN: Change here when using NixOS
       "rust_analyzer",
       "lua_ls",
+      "nil_ls",
     },
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields

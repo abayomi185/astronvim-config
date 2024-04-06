@@ -50,7 +50,8 @@ return {
     "lukas-reineke/indent-blankline.nvim",
     opts = {
       scope = {
-        highlight = { "IndentBlanklineContextChar" },
+        -- Using hlchunk instead
+        -- highlight = { "IndentBlanklineContextChar" },
       },
     },
   },

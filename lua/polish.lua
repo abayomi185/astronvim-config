@@ -58,7 +58,6 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function() vim.opt_local.spell = true end,
 })
 
-
 -- NOTE: Macros - 'quote' a word
 vim.api.nvim_set_keymap("n", "qw", ":silent! normal mpea'<Esc>bi'<Esc>`pl<CR>", { noremap = true })
 -- Double "quote" a word
@@ -71,6 +70,9 @@ vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 
 -- Keep highlight after search
 vim.on_key(function() end, vim.api.nvim_get_namespaces()["auto_hlsearch"])
+
+-- Disable auto-dark-mode on startup
+require("auto-dark-mode").disable()
 
 -- NOTE: DAP
 -- Load launch.json
@@ -86,4 +88,3 @@ local dap = require "dap"
 dap.adapters.debugpy = dap.adapters.python
 
 addPythonPathToDapConfigs(dap.configurations.python, os.getenv "VIRTUAL_ENV" or os.getenv "CONDA_PREFIX")
-

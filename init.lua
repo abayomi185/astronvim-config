@@ -80,6 +80,7 @@ return {
         -- "sumneko_lua",
         "tsserver",
         "lua_ls",
+        "yamlls",
       },
       timeout_ms = 2000, -- default format timeout
       -- filter = function(client) -- fully override the default formatting function

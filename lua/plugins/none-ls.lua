@@ -18,6 +18,11 @@ return {
       null_ls.builtins.formatting.stylua.with {
         filetypes = { "lua" },
       },
+
+      null_ls.builtins.formatting.alejandra.with {
+        filetypes = { "nix" },
+      },
+
       -- Has native support for LSP
       -- null_ls.builtins.formatting.taplo.with {
       --   filetypes = { "toml" },

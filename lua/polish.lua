@@ -58,7 +58,6 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function() vim.opt_local.spell = true end,
 })
 
-
 -- NOTE: Macros - 'quote' a word
 vim.api.nvim_set_keymap("n", "qw", ":silent! normal mpea'<Esc>bi'<Esc>`pl<CR>", { noremap = true })
 -- Double "quote" a word
@@ -86,4 +85,3 @@ local dap = require "dap"
 dap.adapters.debugpy = dap.adapters.python
 
 addPythonPathToDapConfigs(dap.configurations.python, os.getenv "VIRTUAL_ENV" or os.getenv "CONDA_PREFIX")
-

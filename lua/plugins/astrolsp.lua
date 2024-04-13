@@ -40,6 +40,8 @@ return {
       -- "pyright"
       -- WARN: Change here when using NixOS
       "rust_analyzer",
+      "tsserver",
+      "yamlls",
     },
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields

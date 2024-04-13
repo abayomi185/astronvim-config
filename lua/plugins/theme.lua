@@ -50,7 +50,7 @@ return {
     "lukas-reineke/indent-blankline.nvim",
     opts = {
       scope = {
-        highlight = { "IndentBlanklineContextChar" },
+        -- highlight = { "IndentBlanklineContextChar" },
       },
     },
   },

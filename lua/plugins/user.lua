@@ -12,6 +12,7 @@ return {
     opts = {
       main_image = "file",
     },
+    enable = false,
   },
   {
     "ray-x/lsp_signature.nvim",

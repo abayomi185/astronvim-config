@@ -75,6 +75,6 @@ return {
     end,
     shading_factor = 2,
     direction = "float",
-    float_opts = { border = "rounded" },
+    float_opts = { border = "rounded", height = 33 },
   },
 }

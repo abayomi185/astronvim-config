@@ -40,17 +40,15 @@ return {
     opts = function(_, opts)
       return {
         adapters = {
-          opts.adapters,
-          chat = require("codecompanion.adapters").use("openai", {
+          openai = require("codecompanion.adapters").use("openai", {
             env = {
               api_key = "cmd:gpg --decrypt ~/.openai-api-key.gpg 2>/dev/null",
             },
           }),
-          inline = require("codecompanion.adapters").use("openai", {
-            env = {
-              api_key = "cmd:gpg --decrypt ~/.openai-api-key.gpg 2>/dev/null",
-            },
-          }),
+          strategies = {
+            chat = "openai",
+            inline = "openai",
+          },
         },
       }
     end,

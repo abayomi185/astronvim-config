@@ -42,6 +42,7 @@ return {
       "rust_analyzer",
       "lua_ls",
       "nil_ls",
+      "astro",
     },
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields

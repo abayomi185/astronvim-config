@@ -28,6 +28,7 @@ return {
       },
       disabled = { -- disable formatting capabilities for the listed language servers
         "tsserver",
+        "typescript-tools",
         "lua_ls",
       },
       timeout_ms = 2000, -- default format timeout

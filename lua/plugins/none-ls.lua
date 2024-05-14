@@ -50,6 +50,16 @@ return {
           "markdown",
         },
       },
+      require("none-ls.diagnostics.eslint").with {
+        filetypes = {
+          "javascript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact",
+          "vue",
+          "svelte",
+        },
+      },
 
       -- NOTE: Flake8 linter
       require("none-ls.diagnostics.flake8").with {

@@ -3,7 +3,6 @@ return {
   -- NOTE: gen.nvim
   {
     "abayomi185/gen.nvim",
-    dir = "~/s-projek/gen.nvim",
     opts = {
       model = "gemma_7b_instruct",
       command = "curl --silent --no-buffer -X POST https://astrysk-ollama-testflight.duckdns.org/api/chat -d $body",
@@ -14,12 +13,12 @@ return {
       -- ollama_url = "https://astrysk-ollama-testflight.duckdns.org/api/generate",
     },
     lazy = false,
+    enabled = false,
   },
 
   -- NOTE: llm.nvim
   {
     "abayomi185/llm.nvim",
-    dir = "~/s-projek/llm.nvim",
     opts = {
       backend = "openai",
     },
@@ -30,7 +29,6 @@ return {
   -- NOTE: codecompanion
   {
     "olimorris/codecompanion.nvim",
-    dir = "~/oss-projek/codecompanion.nvim",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-lua/plenary.nvim",

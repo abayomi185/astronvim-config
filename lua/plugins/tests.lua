@@ -6,6 +6,8 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-neotest/nvim-nio",
+      "nvim-neotest/neotest-python",
+      "nvim-neotest/neotest-jest",
       {
         "AstroNvim/astrocore",
         opts = {
@@ -42,6 +44,19 @@ return {
         end,
       },
     },
+    opts = function(_, opts)
+      if not opts.adapters then opts.adapters = {} end
+      table.insert(opts.adapters, require "neotest-python"(require("astrocore").plugin_opts "neotest-python"))
+      table.insert(opts.adapters, require "neotest-jest"(require("astrocore").plugin_opts "neotest-jest"))
+      -- table.insert(opts.adapters, require "neotest-jest"({
+      --     jestCommand = "npm test --",
+      --     jestConfigFile = "custom.jest.config.ts",
+      --     env = { CI = true },
+      --     cwd = function(path)
+      --       return vim.fn.getcwd()
+      --     end,
+      --   })
+    end,
     config = function(_, opts)
       vim.diagnostic.config({
         virtual_text = {

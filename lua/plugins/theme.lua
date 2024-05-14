@@ -45,12 +45,24 @@ return {
       },
     },
   },
-
   {
     "lukas-reineke/indent-blankline.nvim",
     opts = {
       scope = {
         -- highlight = { "IndentBlanklineContextChar" },
+      },
+    },
+  },
+  {
+    "folke/edgy.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.opt.laststatus = 3
+      vim.opt.splitkeep = "screen"
+    end,
+    opts = {
+      right = {
+        { ft = "codecompanion", title = "Code Companion Chat", size = { width = 0.45 } },
       },
     },
   },

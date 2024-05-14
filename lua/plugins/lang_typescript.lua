@@ -39,8 +39,13 @@ return {
     },
     ft = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
     -- get AstroLSP provided options like `on_attach` and `capabilities`
-    opts = function()
+    opts = function(_, opts)
       local astrolsp_avail, astrolsp = pcall(require, "astrolsp")
+      -- -- New
+      -- opts.server = astrolsp_avail and astrolsp.lsp_opts "typescript-tools"
+      -- opts.server.root_dir = require("lspconfig.util").root_pattern ".git"
+      -- return opts
+      -- Old
       if astrolsp_avail then return astrolsp.lsp_opts "typescript-tools" end
     end,
   },

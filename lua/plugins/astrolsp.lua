@@ -48,6 +48,10 @@ return {
     ---@diagnostic disable: missing-fields
     config = {
       -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
+      -- ["tsserver"] = function(opts)
+      --   opts.root_dir = require("lspconfig.util").root_pattern ".git"
+      --   return opts
+      -- end,
     },
     -- customize how language servers are attached
     handlers = {

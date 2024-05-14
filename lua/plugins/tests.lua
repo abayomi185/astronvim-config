@@ -7,7 +7,25 @@ return {
       "nvim-lua/plenary.nvim",
       "nvim-neotest/nvim-nio",
       "nvim-neotest/neotest-python",
-      "nvim-neotest/neotest-jest",
+      {
+        "nvim-neotest/neotest-jest",
+        opts = {
+          -- jestConfigFile = function(file)
+          --   if string.find(file, "/packages/") then return string.match(file, "(.-/[^/]+/)src") .. "jest.config.ts" end
+          --
+          --   return vim.fn.getcwd() .. "/jest.config.ts"
+          -- end,
+          -- -- May not need this below depending on the project
+          -- cwd = function(file)
+          --   if string.find(file, "/packages/") then return string.match(file, "(.-/[^/]+/)src") end
+          --   return vim.fn.getcwd()
+          -- end,
+
+          jestConfigFile = "jest.config.ts",
+          cwd = function(path) return vim.fn.getcwd() end,
+        },
+        config = function(_, opts) end,
+      },
       {
         "AstroNvim/astrocore",
         opts = {

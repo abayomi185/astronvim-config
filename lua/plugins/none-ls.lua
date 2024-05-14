@@ -3,6 +3,9 @@
 ---@type LazySpec
 return {
   "nvimtools/none-ls.nvim",
+  dependencies = {
+    "nvimtools/none-ls-extras.nvim",
+  },
   opts = function(_, config)
     -- config variable is the default configuration table for the setup function call
     local null_ls = require "null-ls"
@@ -45,6 +48,21 @@ return {
           "json",
           "jsonc",
           "markdown",
+        },
+      },
+
+      -- NOTE: Flake8 linter
+      require("none-ls.diagnostics.flake8").with {
+        extra_args = {
+          "--format",
+          "default",
+          "--stdin-display-name",
+          "$FILENAME",
+          "-",
+          "--count",
+          "--max-line-length",
+          "115",
+          "--exclude=snapshots",
         },
       },
     }

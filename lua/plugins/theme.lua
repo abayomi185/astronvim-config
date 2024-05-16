@@ -54,4 +54,32 @@ return {
       },
     },
   },
+
+  {
+    "f-person/auto-dark-mode.nvim",
+    opts = {
+      set_dark_mode = function()
+        -- vim.api.nvim_set_option("background", "dark")
+        vim.cmd "colorscheme onedark"
+      end,
+      set_light_mode = function()
+        -- vim.api.nvim_set_option("background", "light")
+        vim.cmd "colorscheme onelight"
+      end,
+    },
+  },
+
+  {
+    "folke/edgy.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.opt.laststatus = 3
+      vim.opt.splitkeep = "screen"
+    end,
+    opts = {
+      right = {
+        { ft = "codecompanion", title = "Code Companion Chat", size = { width = 0.45 } },
+      },
+    },
+  },
 }

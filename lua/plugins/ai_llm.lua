@@ -3,7 +3,7 @@ return {
   -- NOTE: gen.nvim
   {
     "abayomi185/gen.nvim",
-    dir = "~/s-projek/gen.nvim",
+    -- dir = "~/s-projek/gen.nvim",
     opts = {
       model = "gemma_7b_instruct",
       command = "curl --silent --no-buffer -X POST https://astrysk-ollama-testflight.duckdns.org/api/chat -d $body",
@@ -30,7 +30,7 @@ return {
   -- NOTE: codecompanion
   {
     "olimorris/codecompanion.nvim",
-    dir = "~/oss-projek/codecompanion.nvim",
+    -- dir = "~/oss-projek/codecompanion.nvim",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-lua/plenary.nvim",
@@ -39,17 +39,15 @@ return {
     opts = function(_, opts)
       return {
         adapters = {
-          opts.adapters,
-          chat = require("codecompanion.adapters").use("openai", {
+          openai = require("codecompanion.adapters").use("openai", {
             env = {
-              api_key = "cmd:gpg --decrypt ~/.openai-api-key.gpg 2>/dev/null",
+              api_key = "cmd:age -d -i ~/.ssh/id_ed25519 ~/.openai-api-key.age",
             },
           }),
-          inline = require("codecompanion.adapters").use("openai", {
-            env = {
-              api_key = "cmd:gpg --decrypt ~/.openai-api-key.gpg 2>/dev/null",
-            },
-          }),
+          strategies = {
+            chat = "openai",
+            inline = "openai",
+          },
         },
       }
     end,

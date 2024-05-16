@@ -29,9 +29,6 @@ return {
       disabled = { -- disable formatting capabilities for the listed language servers
         "tsserver",
         "lua_ls",
-        "rust_analyzer",
-        "nil_ls",
-        "astro",
       },
       timeout_ms = 2000, -- default format timeout
       -- filter = function(client) -- fully override the default formatting function
@@ -45,6 +42,9 @@ return {
       "rust_analyzer",
       "tsserver",
       "yamlls",
+      "nil_ls",
+      "lua_ls",
+      "astro",
     },
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields

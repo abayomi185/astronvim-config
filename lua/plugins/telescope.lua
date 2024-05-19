@@ -21,6 +21,10 @@ return {
           ["<C-k>"] = actions.cycle_history_prev,
           ["<PageUp>"] = actions.preview_scrolling_up,
           ["<PageDown>"] = actions.preview_scrolling_down,
+          -- ["<Tab>"] = actions.toggle_selection + actions.move_selection_next,
+          -- ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_previous,
+          ["<Tab>"] = actions.move_selection_next,
+          ["<S-Tab>"] = actions.move_selection_previous,
         },
       }
       return opts

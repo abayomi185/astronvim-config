@@ -66,6 +66,7 @@ return {
     opts = {
       -- customize the notification position
       top_down = false,
+      fps = 1,
     },
   },
 }

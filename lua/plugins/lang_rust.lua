@@ -48,16 +48,19 @@ return {
       local success, package = pcall(function() return require("mason-registry").get_package "codelldb" end)
       local cfg = require "rustaceanvim.config"
 
+      local this_os = vim.loop.os_uname().sysname
+
       local code_lldb_path = vim.fn.getenv "CODE_LLDB_PATH"
       local lib_lldb_path = vim.fn.getenv "LIB_LLDB_PATH"
 
       if code_lldb_path and lib_lldb_path then
+        lib_lldb_path = lib_lldb_path .. (this_os == "Linux" and ".so" or ".dylib")
+
         adapter = cfg.get_codelldb_adapter(code_lldb_path, lib_lldb_path)
       elseif success then
         local package_path = package:get_install_path()
         local codelldb_path = package_path .. "/codelldb"
         local liblldb_path = package_path .. "/extension/lldb/lib/liblldb"
-        local this_os = vim.loop.os_uname().sysname
 
         -- The path in windows is different
         if this_os:find "Windows" then

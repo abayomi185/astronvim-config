@@ -39,12 +39,16 @@ return {
     servers = {
       -- "pyright"
       -- WARN: Change here when using NixOS
+      "astro",
+      "clangd",
+      "lua_ls",
+      "gopls",
+      "nil_ls",
       "rust_analyzer",
+      "taplo",
       "tsserver",
       "yamlls",
-      "nil_ls",
-      "lua_ls",
-      "astro",
+      "zls",
     },
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields

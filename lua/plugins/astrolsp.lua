@@ -7,7 +7,7 @@ return {
     features = {
       autoformat = true, -- enable or disable auto formatting on start
       codelens = true, -- enable/disable codelens refresh on start
-      inlay_hints = false, -- enable/disable inlay hints on start
+      inlay_hints = true, -- enable/disable inlay hints on start
       semantic_tokens = true, -- enable/disable semantic token highlighting
     },
     -- customize lsp formatting options
@@ -84,6 +84,32 @@ return {
           callback = function() vim.lsp.buf.clear_references() end,
         },
       },
+      -- No inlay hints for insert mode
+      no_insert_inlay_hints = {
+        -- only create for language servers that support inlay hints
+        -- (and only if vim.lsp.inlay_hint is available)
+        cond = vim.lsp.inlay_hint and "textDocument/inlayHint" or false,
+        {
+          -- when going into insert mode
+          event = "InsertEnter",
+          desc = "disable inlay hints on insert",
+          callback = function(args)
+            local filter = { bufnr = args.buf }
+            -- if the inlay hints are currently enabled
+            if vim.lsp.inlay_hint.is_enabled(filter) then
+              -- disable the inlay hints
+              vim.lsp.inlay_hint.enable(false, filter)
+              -- create a single use autocommand to turn the inlay hints back on
+              -- when leaving insert mode
+              vim.api.nvim_create_autocmd("InsertLeave", {
+                buffer = args.buf,
+                once = true,
+                callback = function() vim.lsp.inlay_hint.enable(true, filter) end,
+              })
+            end
+          end,
+        },
+      },
     },
     -- mappings to be set up on attaching of a language server
     mappings = {
@@ -102,6 +128,10 @@ return {
         -- },
         ["<Leader>ll"] = { "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "LSP CodeLens run" },
         ["<Leader>lL"] = { "<cmd>lua vim.lsp.codelens.refresh()<cr>", desc = "LSP CodeLens refresh" },
+        ["<Leader>lv"] = {
+          "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<cr>",
+          desc = "Toggle inlay hints",
+        },
       },
     },
     -- A custom `on_attach` function to be run after the default `on_attach` function

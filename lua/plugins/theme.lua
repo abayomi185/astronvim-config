@@ -35,6 +35,8 @@ return {
           left_bottom = "┗",
           right_arrow = "━",
         },
+        duration = 0,
+        delay = 0,
       },
       blank = {
         enable = false,

@@ -30,6 +30,7 @@ return {
         "tsserver",
         "typescript-tools",
         "lua_ls",
+        "jsonls",
       },
       timeout_ms = 2000, -- default format timeout
       -- filter = function(client) -- fully override the default formatting function

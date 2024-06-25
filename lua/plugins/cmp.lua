@@ -4,6 +4,7 @@ return {
     opts = {
       symbol_map = {
         Copilot = "",
+        cmp_ai = "[AI]",
       },
     },
   },
@@ -40,6 +41,9 @@ return {
       }
 
       opts.sources = cmp.config.sources {
+        {
+          name = "cmp_ai",
+        },
         {
           name = "copilot",
           priority = 1500,

@@ -33,6 +33,12 @@ return {
                   useParameterNames = true,
                 },
               },
+              files = {
+                excludeDirs = {
+                  ".direnv",
+                  ".git",
+                },
+              },
             },
           },
         },

@@ -45,6 +45,7 @@ return {
       "gopls",
       "nil_ls",
       "rust_analyzer",
+      "slint_lsp",
       "taplo",
       "tsserver",
       "yamlls",

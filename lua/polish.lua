@@ -86,3 +86,11 @@ local dap = require "dap"
 dap.adapters.debugpy = dap.adapters.python
 
 addPythonPathToDapConfigs(dap.configurations.python, os.getenv "VIRTUAL_ENV" or os.getenv "CONDA_PREFIX")
+
+-- Misc
+vim.cmd [[
+  augroup SlintFileType
+    autocmd!
+    autocmd BufRead,BufNewFile *.slint set filetype=slint
+  augroup END
+]]

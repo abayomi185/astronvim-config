@@ -4,7 +4,8 @@ return {
     opts = {
       symbol_map = {
         Copilot = "",
-        cmp_ai = "[AI]",
+        cmp_ai = "",
+        Codeium = "",
       },
     },
   },
@@ -42,7 +43,12 @@ return {
 
       opts.sources = cmp.config.sources {
         {
+          name = "codeium",
+          priority = 1700,
+        },
+        {
           name = "cmp_ai",
+          priority = 1600,
         },
         {
           name = "copilot",

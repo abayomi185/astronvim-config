@@ -14,7 +14,7 @@ return {
         snyk_ls = {
           init_options = {
             activateSnykCode = "true",
-            trustedFolders = { "~/projek/*" },
+            trustedFolders = { "/home/test/projek" },
             -- Tracking
             enableTelemetry = "false",
             sendErrorReports = "false",

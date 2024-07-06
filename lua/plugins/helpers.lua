@@ -4,21 +4,30 @@ return {
     -- since legendary.nvim handles all your keymaps/commands,
     -- its recommended to load legendary.nvim before other plugins
     -- priority = 10000,
-    lazy = false,
+    -- lazy = false,
+    event = "VeryLazy",
     -- sqlite is only needed if you want to use frecency sorting
     dependencies = { "kkharji/sqlite.lua" },
     opts = function()
-      -- vim.notify("astrocore.which_key_queue before: " .. vim.inspect(which_key_mappings))
+      local which_key_mappings = require("astrocore").config.mappings
 
-      -- local astrocore = require "astrocore"
+      -- Function to check if a value is a function
+      local function is_function(val) return type(val[1]) == "function" end
 
-      -- astrocore.set_mappings(astrocore.config.mappings)
-      -- local which_key_mappings = astrocore.which_key_queue
-      -- astrocore.which_key_queue = nil
+      -- Function to filter mappings
+      local function filter_mappings(mappings)
+        for mode, keymaps in pairs(mappings) do
+          for key, map in pairs(keymaps) do
+            if is_function(map) then keymaps[key] = nil end
+          end
+        end
+      end
 
-      -- local which_key_mappings = astrocore.config.mappings
+      -- Filter the which_key_mappings
+      filter_mappings(which_key_mappings)
+      PB(which_key_mappings)
 
-      -- vim.notify("astrocore.which_key_queue after: " .. vim.inspect(which_key_mappings))
+      pcall(require "legendary.extensions.codecompanion")
 
       return {
         extensions = {
@@ -26,9 +35,9 @@ return {
           diffview = true,
           which_key = {
             auto_register = false,
-            -- mappings = which_key_mappings,
+            mappings = which_key_mappings,
             do_binding = false,
-            use_groups = false,
+            -- use_groups = false,
           },
         },
       }

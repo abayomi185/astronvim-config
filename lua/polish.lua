@@ -25,6 +25,11 @@ P = function(v)
   return v
 end
 
+PB = function(v)
+  vim.cmd "new"
+  vim.api.nvim_buf_set_lines(0, 0, -1, false, vim.split(vim.inspect(v), "\n"))
+end
+
 local function addPythonPathToDapConfigs(configurations, venv_path)
   if not venv_path then return end
   for _, config in ipairs(configurations) do

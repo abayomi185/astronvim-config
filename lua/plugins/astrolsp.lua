@@ -44,6 +44,7 @@ return {
       "lua_ls",
       "gopls",
       "nil_ls",
+      "pyright",
       "rust_analyzer",
       "slint_lsp",
       "taplo",

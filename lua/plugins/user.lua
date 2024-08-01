@@ -54,7 +54,13 @@ return {
   {
     "max397574/better-escape.nvim",
     opts = {
-      mapping = { "jk" },
+      mappings = {
+        i = {
+          j = {
+            k = "<Esc>",
+          },
+        },
+      },
     },
     enabled = true,
   },

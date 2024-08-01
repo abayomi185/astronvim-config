@@ -205,7 +205,6 @@ return {
       t = {
         -- setting a mapping to false will disable it
         -- ["<esc>"] = false,
-        ["<Leader><esc>"] = "<C-\\><C-n>",
         ["<C-space>"] = "<C-\\><C-n>",
       },
     },

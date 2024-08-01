@@ -35,6 +35,14 @@ local function addPythonPathToDapConfigs(configurations, venv_path)
   end
 end
 
+-- Open file under cursor
+function OpenFileUnderCursor()
+  local line = vim.fn.getline "."
+  local nextline = vim.fn.getline(vim.fn.line "." + 1)
+  local filepath = string.match(line .. nextline, "/%S+")
+  vim.cmd("edit +" .. vim.fn.line "." .. " " .. filepath)
+end
+
 function _G.dump_lsp_config_to_buffer()
   -- Capture the output of the Lua command
   local output = vim.inspect(require("lspconfig").yamlls)

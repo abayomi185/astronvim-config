@@ -37,6 +37,7 @@ return {
     },
     opts = function(_, opts)
       return {
+        auto_save_chats = true,
         adapters = {
           openai = require("codecompanion.adapters").use("openai", {
             env = {
@@ -48,33 +49,38 @@ return {
             inline = "openai",
           },
         },
-        actions = {
-          {
-            name = "Custom Chat",
+        prompts = {
+          ["Custom Chat"] = {
             strategy = "chat",
             description = "Open/restore a chat buffer to converse with an LLM",
-            type = nil,
+            opts = {
+              mapping = "<LocalLeader>ci",
+              modes = { "n", "v" },
+              slash_cmd = "custom",
+              auto_submit = false,
+              stop_context_insertion = true,
+              user_prompt = true,
+            },
             prompts = {
-              n = function() return require("codecompanion").chat() end,
-              v = {
-                {
-                  role = "system",
-                  content = function(context)
-                    return "Don't make reponses overly verbose. Keep them short and conscise where possible.\n"
-                      .. "Respond as a knowledgeable and intelligent person known as AGI Yomi.\n"
-                      .. "Respond as someone knowledgeable about "
-                      .. context.filetype
-                      .. "."
-                  end,
-                },
-                {
-                  role = "user",
-                  contains_code = true,
-                  content = function(context)
-                    local text = require("codecompanion.helpers.code").get_code(context.start_line, context.end_line)
-                    return "\n```" .. context.filetype .. "\n" .. text .. "\n```\n\n"
-                  end,
-                },
+              {
+                role = "system",
+                condition = function(context) return context.is_visual end,
+                content = function(context)
+                  return "Don't make reponses overly verbose. Keep them short and conscise where possible.\n"
+                    .. "Respond as a knowledgeable and intelligent person known as AGI Yomi.\n"
+                    .. "Respond as someone knowledgeable about "
+                    .. context.filetype
+                    .. "."
+                end,
+              },
+              {
+                role = "user_header",
+                contains_code = true,
+                condition = function(context) return context.is_visual end,
+                content = function(context)
+                  local text = require("codecompanion.helpers.actions").get_code(context.start_line, context.end_line)
+                  return "\n```" .. context.filetype .. "\n" .. text .. "\n```\n\n"
+                end,
               },
             },
           },

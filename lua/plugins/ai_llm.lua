@@ -35,7 +35,7 @@ return {
       "nvim-treesitter/nvim-treesitter",
       "nvim-lua/plenary.nvim",
     },
-    opts = function(_, opts)
+    opts = function(_, _)
       return {
         auto_save_chats = true,
         adapters = {
@@ -49,17 +49,18 @@ return {
             inline = "openai",
           },
         },
-        prompts = {
-          ["Custom Chat"] = {
+        default_prompts = {
+          ["Yomi"] = {
             strategy = "chat",
             description = "Open/restore a chat buffer to converse with an LLM",
             opts = {
               mapping = "<LocalLeader>ci",
-              modes = { "n", "v" },
+              -- default_prompt = true,
+              -- modes = { "n", "v" },
               slash_cmd = "custom",
               auto_submit = false,
               stop_context_insertion = true,
-              user_prompt = true,
+              -- user_prompt = true,
             },
             prompts = {
               {

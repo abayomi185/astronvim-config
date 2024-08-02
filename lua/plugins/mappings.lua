@@ -174,6 +174,10 @@ return {
 
         -- Misc
         ["<leader>gf"] = { "<cmd>lua OpenFileUnderCursor()<CR>", desc = "Go to file under cursor" },
+        ["gx"] = {
+          function() require("astrocore").system_open(vim.fn.expand "<cfile>") end,
+          desc = "Opens path/URI under cursor",
+        },
       },
 
       -- PASSED: Visual Mode

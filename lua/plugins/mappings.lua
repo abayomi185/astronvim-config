@@ -171,6 +171,11 @@ return {
         -- OSC52
         -- ["<Leader>y"] = { "<cmd>lua require('osc52').copy_operator()<CR>", desc = "OSC52 yank" },
         -- ["<Leader>yy"] = { "<leader>y_", desc = "OSC52 yank line" },
+
+        ["gx"] = {
+          function() require("astrocore").system_open(vim.fn.expand "<cfile>") end,
+          desc = "Opens path/URI under cursor",
+        },
       },
 
       -- PASSED: Visual Mode

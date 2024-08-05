@@ -35,6 +35,7 @@ return {
     },
     opts = function(_, opts)
       return {
+        auto_save_chats = true,
         adapters = {
           openai = require("codecompanion.adapters").use("openai", {
             env = {
@@ -44,37 +45,6 @@ return {
           strategies = {
             chat = "openai",
             inline = "openai",
-          },
-        },
-        actions = {
-          {
-            name = "Custom Chat",
-            strategy = "chat",
-            description = "Open/restore a chat buffer to converse with an LLM",
-            type = nil,
-            prompts = {
-              n = function() return require("codecompanion").chat() end,
-              v = {
-                {
-                  role = "system",
-                  content = function(context)
-                    return "Don't make reponses overly verbose. Keep them short and conscise where possible.\n"
-                      .. "Respond as a knowledgeable and intelligent person known as AGI Yomi.\n"
-                      .. "Respond as someone knowledgeable about "
-                      .. context.filetype
-                      .. "."
-                  end,
-                },
-                {
-                  role = "user",
-                  contains_code = true,
-                  content = function(context)
-                    local text = require("codecompanion.helpers.code").get_code(context.start_line, context.end_line)
-                    return "\n```" .. context.filetype .. "\n" .. text .. "\n```\n\n"
-                  end,
-                },
-              },
-            },
           },
         },
       }

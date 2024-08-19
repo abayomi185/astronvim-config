@@ -46,7 +46,7 @@ return {
         -- ["<M-s>"] = ":w<CR>",
 
         -- NOTE: Git Diff
-        ["<Leader>gd"] = { ":DiffviewOpen<cr>", desc = "Open Git Diff" },
+        ["<Leader>gd"] = { ":DiffviewOpen<cr>", desc = "Open Diff View" },
         ["<Leader>gD"] = { ":DiffviewClose<cr>", desc = "Close Git Diff" },
 
         -- NOTE: Git Signs
@@ -76,9 +76,6 @@ return {
         -- NOTE: Custom workaround for vertical resize on macOS
         ["<C-M-l>"] = ":vertical resize -2<CR>",
         ["<C-M-h>"] = ":vertical resize +2<CR>",
-
-        -- NOTE: Git Diff
-        -- ["<Leader>gD"] = { ":DiffviewClose<cr>", desc = "Close Git Diff" },
 
         -- NOTE: Copilot mapping
         ["gp"] = ":Copilot panel<CR>",

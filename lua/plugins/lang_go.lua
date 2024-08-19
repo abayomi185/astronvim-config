@@ -65,37 +65,23 @@ return {
   --     )
   --   end,
   -- },
-  -- {
-  --   "leoluz/nvim-dap-go",
-  --   ft = "go",
-  --   dependencies = {
-  --     "mfussenegger/nvim-dap",
-  --     {
-  --       "jay-babu/mason-nvim-dap.nvim",
-  --       optional = true,
-  --       opts = function(_, opts)
-  --         opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "delve" })
-  --       end,
-  --     },
-  --   },
-  --   opts = {},
-  -- },
-  -- {
-  --   "olexsmir/gopher.nvim",
-  --   ft = "go",
-  --   build = function()
-  --     if not require("lazy.core.config").spec.plugins["mason.nvim"] then
-  --       vim.print "Installing go dependencies..."
-  --       vim.cmd.GoInstallDeps()
-  --     end
-  --   end,
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim",
-  --     "nvim-treesitter/nvim-treesitter",
-  --     { "williamboman/mason.nvim", optional = true }, -- by default use Mason for go dependencies
-  --   },
-  --   opts = {},
-  -- },
+  {
+    "leoluz/nvim-dap-go",
+    ft = "go",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+    },
+    opts = {},
+  },
+  {
+    "olexsmir/gopher.nvim",
+    ft = "go",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    opts = {},
+  },
   {
     "nvim-neotest/neotest",
     optional = true,

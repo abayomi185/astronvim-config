@@ -38,7 +38,7 @@ return {
         ["<Leader>W"] = { "<cmd>lua saveWithoutFormatting()<CR>", desc = "Save without formatting" },
 
         -- Terminal
-        ["<C-t>"] = { "<cmd>ToggleTerm direction=float<CR>", desc = "ToggleTerm float" },
+        -- ["<C-t>"] = { "<cmd>ToggleTerm direction=float<CR>", desc = "ToggleTerm float" }, -- This is defined in ./toggleterm.lua
 
         ["<Leader>h"] = { ":nohlsearch<cr>", desc = "No Highlight" },
 
@@ -201,7 +201,7 @@ return {
         -- setting a mapping to false will disable it
         -- ["<esc>"] = false,
         ["<C-space>"] = "<C-\\><C-n>",
-        ["<C-k>"] = "<cmd>wincmd l<cr>",
+        ["<C-k>"] = "<cmd>wincmd k<cr>",
       },
     },
   },

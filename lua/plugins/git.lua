@@ -58,14 +58,28 @@ return {
     "sindrets/diffview.nvim",
     event = "User AstroGitFile",
     cmd = { "DiffviewOpen" },
-    opts = {
-      enhanced_diff_hl = true,
-      view = {
-        default = { winbar_info = true },
-        file_history = { winbar_info = true },
-      },
-      hooks = { diff_buf_read = function(bufnr) vim.b[bufnr].view_activated = false end },
-    },
+    opts = function(_, opts)
+      local actions = require "diffview.actions"
+      return {
+        enhanced_diff_hl = true,
+        view = {
+          default = { winbar_info = true },
+          file_history = { winbar_info = true },
+        },
+        hooks = { diff_buf_read = function(bufnr) vim.b[bufnr].view_activated = false end },
+        keymaps = {
+          view = {
+            { "n", "<leader>e", actions.toggle_files, { desc = "Toggle the file panel" } },
+          },
+          file_panel = {
+            { "n", "<leader>e", actions.toggle_files, { desc = "Toggle the file panel" } },
+          },
+          file_history_panel = {
+            { "n", "<leader>e", actions.toggle_files, { desc = "Toggle the file panel" } },
+          },
+        },
+      }
+    end,
     specs = {
       {
         "NeogitOrg/neogit",

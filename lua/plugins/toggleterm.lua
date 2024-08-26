@@ -55,7 +55,12 @@ return {
         -- Custom toggleterm mappings
         maps.n["<C-t>"] = { "<Cmd>ToggleTerm direction=float<CR>", desc = "ToggleTerm float" }
         maps.t["<C-t>"] = { "<Cmd>ToggleTerm<CR>", desc = "Toggle terminal" }
-        maps.i["<C-t>"] = { "<Esc><Cmd>ToggleTerm direction=float<CR>", desc = "Toggle terminal" }
+        maps.i["<C-t>"] = { "<Cmd>ToggleTerm direction=float<CR>", desc = "Toggle terminal" }
+
+        maps.i["<C-l>"] = { "<Cmd>ToggleTerm direction=float<CR>", desc = "Toggle terminal" }
+        maps.t["<C-l>"] = { "<Cmd>ToggleTerm direction=float<CR>", desc = "Toggle terminal" }
+        maps.i["<C-k>"] = { "<Cmd>ToggleTerm direction=float<CR>", desc = "Toggle terminal" }
+        maps.t["<C-k>"] = { "<Cmd>ToggleTerm direction=float<CR>", desc = "Toggle terminal" }
       end,
     },
   },

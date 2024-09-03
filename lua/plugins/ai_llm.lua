@@ -38,16 +38,28 @@ return {
     opts = function(_, _)
       return {
         auto_save_chats = true,
+        strategies = {
+          chat = { adapter = "openai" },
+          inline = { adapter = "openai" },
+          agent = { adapter = "openai" },
+        },
         adapters = {
-          openai = require("codecompanion.adapters").use("openai", {
-            env = {
-              api_key = "cmd:age -d -i ~/.ssh/id_ed25519 ~/.openai-api-key.age",
-            },
-          }),
-          strategies = {
-            chat = "openai",
-            inline = "openai",
-          },
+          -- openai = require("codecompanion.adapters").extend("openai", {
+          --   env = {
+          --     api_key = "cmd:age -d -i ~/.ssh/id_ed25519 ~/.openai-api-key.age",
+          --   },
+          -- }),
+          -- strategies = {
+          --   chat = "openai",
+          --   inline = "openai",
+          -- },
+          openai = function()
+            return require("codecompanion.adapters").extend("openai", {
+              env = {
+                api_key = "cmd:age -d -i ~/.ssh/id_ed25519 ~/.openai-api-key.age",
+              },
+            })
+          end,
         },
         default_prompts = {
           ["Yomi"] = {

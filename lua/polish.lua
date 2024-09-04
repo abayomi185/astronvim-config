@@ -25,6 +25,11 @@ P = function(v)
   return v
 end
 
+PB = function(v)
+  vim.cmd "new"
+  vim.api.nvim_buf_set_lines(0, 0, -1, false, vim.split(vim.inspect(v), "\n"))
+end
+
 local function addPythonPathToDapConfigs(configurations, venv_path)
   if not venv_path then return end
   for _, config in ipairs(configurations) do
@@ -90,6 +95,11 @@ require("dap.ext.vscode").load_launchjs(
 
 -- Debugpy adapter for dap needs to be set
 local dap = require "dap"
-dap.adapters.debugpy = dap.adapters.python
-
-addPythonPathToDapConfigs(dap.configurations.python, os.getenv "VIRTUAL_ENV" or os.getenv "CONDA_PREFIX")
+-- Add python path to python/debugpy dap configurations
+-- addPythonPathToDapConfigs(dap.configurations.python, os.getenv "VIRTUAL_ENV" or os.getenv "CONDA_PREFIX")
+-- Set debugpy adapter
+dap.adapters.debugpy = {
+  type = "executable",
+  command = vim.fn.exepath "python",
+  args = { "-m", "debugpy.adapter" },
+}

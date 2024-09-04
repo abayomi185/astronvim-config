@@ -36,16 +36,18 @@ return {
     opts = function(_, opts)
       return {
         auto_save_chats = true,
+        strategies = {
+          chat = { adapter = "openai" },
+          inline = { adapter = "openai" },
+        },
         adapters = {
-          openai = require("codecompanion.adapters").use("openai", {
-            env = {
-              api_key = "cmd:gpg --decrypt ~/.openai-api-key.gpg 2>/dev/null",
-            },
-          }),
-          strategies = {
-            chat = "openai",
-            inline = "openai",
-          },
+          openai = function()
+            return require("codecompanion.adapters").extend("openai", {
+              env = {
+                api_key = "cmd:gpg --decrypt ~/.openai-api-key.gpg 2>/dev/null",
+              },
+            })
+          end,
         },
       }
     end,

@@ -37,9 +37,6 @@ return {
         ["<M-s>"] = { ":w<cr>", desc = "Save File" }, -- change description but the same command
         ["<Leader>W"] = { "<cmd>lua saveWithoutFormatting()<CR>", desc = "Save without formatting" },
 
-        -- Terminal
-        ["<C-t>"] = { ":ToggleTerm<cr>", desc = "ToggleTerm" },
-
         ["<Leader>h"] = { ":nohlsearch<cr>", desc = "No Highlight" },
 
         -- ["<C-s>"] = ":w<CR>",

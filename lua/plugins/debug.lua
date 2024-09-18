@@ -9,6 +9,13 @@ return {
     lazy = false,
   },
 
+  -- NOTE: nvim-dap
+  {
+    "mfussenegger/nvim-dap",
+    -- dev = true,
+    -- dir = "~/more-projek/nvim-dap",
+  },
+
   -- NOTE: nvim-dap-ui
   {
     "rcarriga/nvim-dap-ui",

@@ -32,7 +32,7 @@ return {
         opts = {
           mappings = {
             n = {
-              ["<Leader>O"] = { function() require("oil").toggle_float() end, desc = "Open folder in Oil" },
+              ["<Leader>."] = { function() require("oil").toggle_float() end, desc = "Open folder in Oil" },
             },
           },
           autocmds = {
@@ -95,10 +95,14 @@ return {
             directory = get_icon "FolderClosed",
           },
         },
+        view_options = {
+          show_hidden = true,
+        },
         -- For more keymaps
-        -- keymaps = {
-        --   ["-"] = "oil_up",
-        -- },
+        keymaps = {
+          ["."] = "actions.parent",
+          --   ["-"] = "oil_up",
+        },
       }
     end,
   },

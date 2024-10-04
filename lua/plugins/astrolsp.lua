@@ -27,7 +27,7 @@ return {
         },
       },
       disabled = { -- disable formatting capabilities for the listed language servers
-        "tsserver",
+        "ts_ls",
         "typescript-tools",
         "lua_ls",
         "jsonls",
@@ -42,7 +42,7 @@ return {
       -- "pyright"
       -- WARN: Change here when using NixOS
       "rust_analyzer",
-      "tsserver",
+      "ts_ls",
       "yamlls",
     },
     -- customize language server configuration options passed to `lspconfig`

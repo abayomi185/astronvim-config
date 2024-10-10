@@ -30,6 +30,7 @@ return {
         },
       }
     end,
+    enabled = false,
   },
   {
     "zbirenbaum/copilot.lua",
@@ -44,6 +45,7 @@ return {
         yaml = true,
         -- markdown = true,
       },
+      copilot_node_command = "/home/nixos/.local/share/fnm/node-versions/v18.20.4/installation/bin/node",
     },
     lazy = false,
   },

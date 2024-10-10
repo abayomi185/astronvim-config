@@ -30,7 +30,7 @@ return {
             },
           },
         },
-        handlers = { tsserver = false }, -- disable tsserver setup, this plugin does it
+        handlers = { tsserver = false, ts_ls = false }, -- disable tsserver setup, this plugin does it
         config = {
           ["typescript-tools"] = { -- enable inlay hints by default for `typescript-tools`
             settings = {

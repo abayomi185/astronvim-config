@@ -44,7 +44,7 @@ return {
           openai = function()
             return require("codecompanion.adapters").extend("openai", {
               env = {
-                api_key = "cmd:gpg --decrypt ~/.openai-api-key.gpg 2>/dev/null",
+                api_key = "cmd:age -d -i ~/.ssh/git_yomiikuru ~/.openai-api-key.age",
               },
             })
           end,

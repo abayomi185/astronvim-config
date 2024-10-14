@@ -32,6 +32,8 @@ return {
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-lua/plenary.nvim",
+      "hrsh7th/nvim-cmp",
+      "nvim-telescope/telescope.nvim",
     },
     opts = function(_, opts)
       return {

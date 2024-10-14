@@ -86,7 +86,7 @@ vim.on_key(function() end, vim.api.nvim_get_namespaces()["auto_hlsearch"])
 
 -- NOTE: DAP
 -- Load launch.json
--- require("dap.ext.vscode").json_decode = require("json5").parse
+require("dap.ext.vscode").json_decode = require("json5").parse
 -- Add remapping for debugpy
 -- NOTE: Explicit call to load_launchjs is not strictly needed anymore, configurations are duplicated otherwise
 require("dap.ext.vscode").load_launchjs(

@@ -101,6 +101,9 @@ local dap = require "dap"
 -- Set debugpy adapter
 dap.adapters.debugpy = {
   type = "executable",
-  command = vim.fn.exepath "python",
-  args = { "-m", "debugpy.adapter" },
+  command = vim.fn.exepath "zsh",
+  args = {
+    "-c",
+    "python" .. " -m debugpy.adapter",
+  },
 }

@@ -14,6 +14,7 @@ return {
       "hrsh7th/nvim-cmp",
     },
     config = function() require("codeium").setup {} end,
+    enabled = false,
   },
   {
     "tzachar/cmp-ai",

@@ -42,6 +42,7 @@ return {
       "astro",
       "clangd",
       "denols",
+      "jsonls",
       "lua_ls",
       "gopls",
       "nil_ls",

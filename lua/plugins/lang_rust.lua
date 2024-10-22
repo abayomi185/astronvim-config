@@ -16,7 +16,6 @@ return {
               },
               checkOnSave = {
                 command = "clippy",
-                allTargets = true,
               },
               assist = {
                 importEnforceGranularity = true,

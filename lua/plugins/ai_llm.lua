@@ -39,8 +39,9 @@ return {
       return {
         auto_save_chats = true,
         strategies = {
-          chat = { adapter = "openai" },
-          inline = { adapter = "openai" },
+          -- Default adapter is openai
+          chat = { adapter = "copilot" },
+          inline = { adapter = "copilot" },
         },
         adapters = {
           openai = function()
@@ -50,6 +51,11 @@ return {
               },
             })
           end,
+        },
+        display = {
+          chat = {
+            show_settings = true,
+          },
         },
       }
     end,

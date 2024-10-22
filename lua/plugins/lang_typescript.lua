@@ -13,6 +13,20 @@ return {
     opts = {},
   },
   {
+    "AstroNvim/astrolsp",
+    optional = true,
+    opts = {
+      config = {
+        denols = {
+          -- adjust deno ls root directory detection
+          root_dir = function(...)
+            return require("lspconfig.util").root_pattern("deno.json", "deno.jsonc", "deno.lock")(...)
+          end,
+        },
+      },
+    },
+  },
+  {
     "pmizio/typescript-tools.nvim",
     dependencies = {
       ---@type AstroLSPOpts
@@ -55,6 +69,11 @@ return {
             },
           },
         },
+        -- settings = {
+        --   single_file_support = false,
+        --   -- root_dir = function() end,
+        --   -- root_dir = function() end,
+        -- },
       },
     },
     ft = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
@@ -110,5 +129,50 @@ return {
         require("astrocore").extend_tbl(dap.configurations.javascript, js_config)
       end
     end,
+  },
+  {
+    "AstroNvim/astrocore",
+    ---@type AstroCoreOpts
+    opts = {
+      autocmds = {
+        -- set up autocommand to choose the correct language server
+        typescript_deno_switch = {
+          {
+            event = "LspAttach",
+            callback = function(args)
+              local bufnr = args.buf
+              local curr_client = vim.lsp.get_client_by_id(args.data.client_id)
+
+              -- if denols attached, disable prettierd in null-ls
+              -- and stop any attached typescript-tools clients
+              if curr_client and curr_client.name == "denols" then
+                local null_ls = require "null-ls"
+                for _, source in ipairs(null_ls.get_sources()) do
+                  if source.name == "prettierd" and source.methods.NULL_LS_FORMATTING == true then
+                    null_ls.disable "prettierd"
+                    break
+                  end
+                end
+
+                local clients = (vim.lsp.get_clients) {
+                  bufnr = bufnr,
+                  name = "typescript-tools",
+                }
+                for _, client in ipairs(clients) do
+                  vim.lsp.stop_client(client.id, true)
+                end
+              end
+
+              -- if typescript-tools attached, stop any attached denols clients
+              if curr_client and curr_client.name == "typescript-tools" then
+                if next((vim.lsp.get_clients) { bufnr = bufnr, name = "denols" }) then
+                  vim.lsp.stop_client(curr_client.id, true)
+                end
+              end
+            end,
+          },
+        },
+      },
+    },
   },
 }

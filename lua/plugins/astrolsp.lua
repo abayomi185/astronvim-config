@@ -41,6 +41,7 @@ return {
       -- WARN: Change here when using NixOS
       "astro",
       "clangd",
+      "denols",
       "lua_ls",
       "gopls",
       "nil_ls",

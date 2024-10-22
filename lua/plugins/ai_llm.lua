@@ -39,9 +39,10 @@ return {
       return {
         auto_save_chats = true,
         strategies = {
-          chat = { adapter = "openai" },
-          inline = { adapter = "openai" },
-          agent = { adapter = "openai" },
+          -- Default adapter is openai
+          chat = { adapter = "copilot" },
+          inline = { adapter = "copilot" },
+          agent = { adapter = "copilot" },
         },
         adapters = {
           -- openai = require("codecompanion.adapters").extend("openai", {
@@ -96,6 +97,11 @@ return {
                 end,
               },
             },
+          },
+        },
+        display = {
+          chat = {
+            show_settings = true,
           },
         },
       }

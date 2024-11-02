@@ -88,9 +88,10 @@ require("dap.ext.vscode").load_launchjs(
 
 -- Debugpy adapter for dap needs to be set
 local dap = require "dap"
-dap.adapters.debugpy = dap.adapters.python
 
-addPythonPathToDapConfigs(dap.configurations.python, os.getenv "VIRTUAL_ENV" or os.getenv "CONDA_PREFIX")
+-- Seemingly not needed anymore as seen in work branch
+-- dap.adapters.debugpy = dap.adapters.python
+-- addPythonPathToDapConfigs(dap.configurations.python, os.getenv "VIRTUAL_ENV" or os.getenv "CONDA_PREFIX")
 
 -- Misc
 vim.cmd [[

@@ -13,62 +13,135 @@ return {
     opts = {},
   },
   {
-    "pmizio/typescript-tools.nvim",
-    dependencies = {
-      ---@type AstroLSPOpts
-      "AstroNvim/astrolsp",
-      optional = true,
+    "AstroNvim/astrolsp",
+    ---@type AstroLSPOpts
+    opts = {
+      autocmds = {
+        -- eslint_fix_on_save = {
+        --   cond = function(client) return client.name == "eslint" and vim.fn.exists ":EslintFixAll" > 0 end,
+        --   {
+        --     event = "BufWritePost",
+        --     desc = "Fix all eslint errors",
+        --     callback = function() vim.cmd.EslintFixAll() end,
+        --   },
+        -- },
+      },
       ---@diagnostic disable: missing-fields
-      opts = {
-        autocmds = {
-          eslint_fix_on_save = {
-            cond = function(client) return client.name == "eslint" and vim.fn.exists ":EslintFixAll" > 0 end,
-            {
-              event = "BufWritePost",
-              desc = "Fix all eslint errors",
-              callback = function() vim.cmd.EslintFixAll() end,
+      config = {
+        vtsls = {
+          settings = {
+            typescript = {
+              updateImportsOnFileMove = { enabled = "always" },
+              inlayHints = {
+                parameterNames = { enabled = "all" },
+                parameterTypes = { enabled = true },
+                variableTypes = { enabled = true },
+                propertyDeclarationTypes = { enabled = true },
+                functionLikeReturnTypes = { enabled = true },
+                enumMemberValues = { enabled = true },
+              },
             },
-          },
-        },
-        handlers = { tsserver = false, ts_ls = false }, -- disable tsserver setup, this plugin does it
-        config = {
-          ["typescript-tools"] = { -- enable inlay hints by default for `typescript-tools`
-            settings = {
-              tsserver_file_preferences = {
-                includeInlayParameterNameHints = "all",
-                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-                includeInlayFunctionParameterTypeHints = true,
-                includeInlayVariableTypeHints = true,
-                includeInlayVariableTypeHintsWhenTypeMatchesName = false,
-                includeInlayPropertyDeclarationTypeHints = true,
-                includeInlayFunctionLikeReturnTypeHints = true,
-                includeInlayEnumMemberValueHints = true,
+            javascript = {
+              updateImportsOnFileMove = { enabled = "always" },
+              inlayHints = {
+                parameterNames = { enabled = "literals" },
+                parameterTypes = { enabled = true },
+                variableTypes = { enabled = true },
+                propertyDeclarationTypes = { enabled = true },
+                functionLikeReturnTypes = { enabled = true },
+                enumMemberValues = { enabled = true },
               },
-              expose_as_code_action = {
-                -- "fix_all",
-                "add_missing_imports",
-                "remove_unused",
-                "remove_unused_imports",
-                "organize_imports",
-              },
-              tsserver_max_memory = 3072,
+            },
+            vtsls = {
+              enableMoveToFileCodeAction = true,
             },
           },
         },
       },
     },
-    ft = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
-    -- get AstroLSP provided options like `on_attach` and `capabilities`
-    opts = function(_, opts)
-      local astrolsp_avail, astrolsp = pcall(require, "astrolsp")
-      -- -- New
-      -- opts.server = astrolsp_avail and astrolsp.lsp_opts "typescript-tools"
-      -- opts.server.root_dir = require("lspconfig.util").root_pattern ".git"
-      -- return opts
-      -- Old
-      if astrolsp_avail then return astrolsp.lsp_opts "typescript-tools" end
-    end,
   },
+  {
+    "yioneko/nvim-vtsls",
+    lazy = true,
+    dependencies = {
+      "AstroNvim/astrocore",
+      opts = {
+        autocmds = {
+          nvim_vtsls = {
+            {
+              event = "LspAttach",
+              desc = "Load nvim-vtsls with vtsls",
+              callback = function(args)
+                if assert(vim.lsp.get_client_by_id(args.data.client_id)).name == "vtsls" then
+                  require("vtsls")._on_attach(args.data.client_id, args.buf)
+                  vim.api.nvim_del_augroup_by_name "nvim_vtsls"
+                end
+              end,
+            },
+          },
+        },
+      },
+    },
+    config = function(_, opts) require("vtsls").config(opts) end,
+  },
+  -- {
+  --   "pmizio/typescript-tools.nvim",
+  --   enabled = false,
+  --   dependencies = {
+  --     ---@type AstroLSPOpts
+  --     "AstroNvim/astrolsp",
+  --     optional = true,
+  --     ---@diagnostic disable: missing-fields
+  --     opts = {
+  --       autocmds = {
+  --         eslint_fix_on_save = {
+  --           cond = function(client) return client.name == "eslint" and vim.fn.exists ":EslintFixAll" > 0 end,
+  --           {
+  --             event = "BufWritePost",
+  --             desc = "Fix all eslint errors",
+  --             callback = function() vim.cmd.EslintFixAll() end,
+  --           },
+  --         },
+  --       },
+  --       handlers = { tsserver = false, ts_ls = false }, -- disable tsserver setup, this plugin does it
+  --       config = {
+  --         ["typescript-tools"] = { -- enable inlay hints by default for `typescript-tools`
+  --           settings = {
+  --             tsserver_file_preferences = {
+  --               includeInlayParameterNameHints = "all",
+  --               includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+  --               includeInlayFunctionParameterTypeHints = true,
+  --               includeInlayVariableTypeHints = true,
+  --               includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+  --               includeInlayPropertyDeclarationTypeHints = true,
+  --               includeInlayFunctionLikeReturnTypeHints = true,
+  --               includeInlayEnumMemberValueHints = true,
+  --             },
+  --             expose_as_code_action = {
+  --               -- "fix_all",
+  --               "add_missing_imports",
+  --               "remove_unused",
+  --               "remove_unused_imports",
+  --               "organize_imports",
+  --             },
+  --             tsserver_max_memory = 3072,
+  --           },
+  --         },
+  --       },
+  --     },
+  --   },
+  --   ft = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+  --   -- get AstroLSP provided options like `on_attach` and `capabilities`
+  --   opts = function(_, opts)
+  --     local astrolsp_avail, astrolsp = pcall(require, "astrolsp")
+  --     -- -- New
+  --     -- opts.server = astrolsp_avail and astrolsp.lsp_opts "typescript-tools"
+  --     -- opts.server.root_dir = require("lspconfig.util").root_pattern ".git"
+  --     -- return opts
+  --     -- Old
+  --     if astrolsp_avail then return astrolsp.lsp_opts "typescript-tools" end
+  --   end,
+  -- },
   {
     "mfussenegger/nvim-dap",
     optional = true,

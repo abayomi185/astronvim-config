@@ -12,7 +12,15 @@ return {
 
   {
     "folke/trouble.nvim",
-    cmd = "TroubleToggle",
+    specs = {
+      {
+        "ibhagwan/fzf-lua",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        opts = {},
+      },
+    },
+    cmd = "Trouble",
+    opts = {},
   },
   {
     "folke/todo-comments.nvim",

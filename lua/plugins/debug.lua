@@ -75,6 +75,9 @@ return {
           size = 10,
         },
       },
+      mappings = {
+        edit = "i",
+      },
     },
   },
 

@@ -36,15 +36,16 @@ return {
       },
       null_ls.builtins.formatting.prettierd.with {
         filetypes = {
-          "typescript",
-          "typescriptreact",
           "javascript",
           "javascriptreact",
-          "vue",
-          "svelte",
           "json",
           "jsonc",
           "markdown",
+          "svelte",
+          "typescript",
+          "typescriptreact",
+          "vue",
+          "yaml",
         },
       },
     }

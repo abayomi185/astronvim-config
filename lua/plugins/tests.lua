@@ -73,6 +73,19 @@ return {
       --       return vim.fn.getcwd()
       --     end,
       --   })
+      opts.icons = {
+        expanded = "",
+        child_prefix = "",
+        child_indent = "",
+        final_child_prefix = "",
+        non_collapsible = "",
+        collapsed = "",
+
+        passed = "",
+        running = "",
+        failed = "",
+        unknown = "",
+      }
     end,
     config = function(_, opts)
       vim.diagnostic.config({

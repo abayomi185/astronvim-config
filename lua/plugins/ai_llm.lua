@@ -53,15 +53,7 @@ return {
               },
             })
           end,
-          copilot = function()
-            return require("codecompanion.adapters").extend("copilot", {
-              schema = {
-                model = {
-                  default = "claude-3.5-sonnet", -- Use claude-3.5-sonnet as default over OpenAI GPT-4o
-                },
-              },
-            })
-          end,
+          copilot = function() return require("codecompanion.adapters").extend("copilot", {}) end,
         },
         display = {
           chat = {

@@ -64,7 +64,6 @@ return {
     },
     opts = function(_, opts)
       if not opts.adapters then opts.adapters = {} end
-      table.insert(opts.adapters, require "neotest-python"(require("astrocore").plugin_opts "neotest-python"))
       table.insert(opts.adapters, require "neotest-jest"(require("astrocore").plugin_opts "neotest-jest"))
       -- table.insert(opts.adapters, require "neotest-jest"({
       --     jestCommand = "npm test --",

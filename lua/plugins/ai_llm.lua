@@ -34,6 +34,10 @@ return {
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-lua/plenary.nvim",
+      "hrsh7th/nvim-cmp", -- Optional: For using slash commands and variables in the chat buffer
+      "nvim-telescope/telescope.nvim", -- Optional: For using slash commands
+      { "MeanderingProgrammer/render-markdown.nvim", ft = { "markdown", "codecompanion" } },
+      { "stevearc/dressing.nvim", opts = {} }, -- Optional: Improves `vim.ui.select`
     },
     opts = function(_, _)
       return {
@@ -45,19 +49,19 @@ return {
           agent = { adapter = "copilot" },
         },
         adapters = {
-          -- openai = require("codecompanion.adapters").extend("openai", {
-          --   env = {
-          --     api_key = "cmd:age -d -i ~/.ssh/id_ed25519 ~/.openai-api-key.age",
-          --   },
-          -- }),
-          -- strategies = {
-          --   chat = "openai",
-          --   inline = "openai",
-          -- },
           openai = function()
             return require("codecompanion.adapters").extend("openai", {
               env = {
                 api_key = "cmd:age -d -i ~/.ssh/id_ed25519 ~/.openai-api-key.age",
+              },
+            })
+          end,
+          copilot = function()
+            return require("codecompanion.adapters").extend("copilot", {
+              schema = {
+                model = {
+                  default = "claude-3.5-sonnet", -- Use claude-3.5-sonnet as default over OpenAI GPT-4o
+                },
               },
             })
           end,

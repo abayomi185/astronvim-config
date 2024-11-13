@@ -32,7 +32,7 @@ return {
         opts = {
           mappings = {
             n = {
-              ["<Leader>O"] = { function() require("oil").toggle_float() end, desc = "Open folder in Oil" },
+              ["<Leader>E"] = { function() require("oil").toggle_float() end, desc = "Open folder in Oil" },
             },
           },
           autocmds = {

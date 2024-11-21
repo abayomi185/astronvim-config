@@ -21,6 +21,11 @@ return {
     },
   },
   {
+    "ellisonleao/gruvbox.nvim",
+    -- priority = 1000,
+    config = true,
+  },
+  {
     "shellRaining/hlchunk.nvim",
     enabled = true,
     event = { "User AstroFile" },

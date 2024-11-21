@@ -47,6 +47,7 @@ return {
           "svelte",
           "json",
           "jsonc",
+          "yaml",
           "markdown",
         },
       },

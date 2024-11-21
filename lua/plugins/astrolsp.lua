@@ -44,6 +44,7 @@ return {
       "pyright",
       "rust_analyzer",
       "ts_ls",
+      -- "vtsls",
       "yamlls",
     },
     -- customize language server configuration options passed to `lspconfig`

@@ -2,7 +2,7 @@ return {
   -- NOTE: neo-tree
   {
     "nvim-neo-tree/neo-tree.nvim",
-    config = function(_, opts)
+    opts = function(_, opts)
       opts.window = {
         position = "right",
         width = 30,
@@ -17,8 +17,7 @@ return {
           Y = "copy_selector",
         },
       }
-      -- return opts
-      require("neo-tree").setup(opts)
+      opts.filesystem.filtered_items.visible = true
     end,
   },
 

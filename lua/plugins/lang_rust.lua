@@ -122,31 +122,17 @@ return {
   {
     "Saecki/crates.nvim",
     lazy = true,
-    dependencies = {
-      "AstroNvim/astrocore",
-      opts = {
-        autocmds = {
-          CmpSourceCargo = {
-            {
-              event = "BufRead",
-              desc = "Load crates.nvim into Cargo buffers",
-              pattern = "Cargo.toml",
-              callback = function()
-                require("cmp").setup.buffer { sources = { { name = "crates" } } }
-                require "crates"
-              end,
-            },
-          },
-        },
-      },
-    },
+    event = { "BufRead Cargo.toml" },
     opts = {
-      src = {
-        cmp = { enabled = true },
+      completion = {
+        crates = { enabled = true },
       },
-      null_ls = {
+      lsp = {
         enabled = true,
-        name = "crates.nvim",
+        on_attach = function(...) require("astrolsp").on_attach(...) end,
+        actions = true,
+        completion = true,
+        hover = true,
       },
     },
   },

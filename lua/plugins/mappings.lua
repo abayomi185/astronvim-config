@@ -195,7 +195,6 @@ return {
         -- NOTE: Code Companion
         ["<Leader>lc"] = { "<cmd>CodeCompanionActions<cr>", desc = "Show CodeCompanion Actions" },
         ["<Leader>lo"] = { "<cmd>CodeCompanionAdd<cr>", desc = "Add to CodeCompanion Chat" },
-        ["<Leader>lt"] = { "<cmd>CodeCompanionToggle<cr>", desc = "Toggle CodeCompanion" },
       },
 
       -- PASSED: Terminal

@@ -123,6 +123,15 @@ return {
     "Saecki/crates.nvim",
     lazy = true,
     event = { "BufRead Cargo.toml" },
+    dependencies = {
+      "AstroNvim/astrocore",
+      ---@type AstroCoreOpts
+      opts = {
+        mappings = {
+          -- Mappings could go here
+        },
+      },
+    },
     opts = {
       completion = {
         crates = { enabled = true },

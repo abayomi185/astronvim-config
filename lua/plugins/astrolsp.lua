@@ -43,6 +43,7 @@ return {
       "lua_ls",
       "pyright",
       "rust_analyzer",
+      "taplo",
       "ts_ls",
       -- "vtsls",
       "yamlls",

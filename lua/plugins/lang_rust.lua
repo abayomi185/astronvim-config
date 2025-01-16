@@ -81,7 +81,7 @@ return {
         end
         adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path)
       else
-        adapter = cfg.get_codelldb_adapter()
+        vim.notify "codelldb not found. Install it to enable debugging"
       end
 
       local astrolsp_avail, astrolsp = pcall(require, "astrolsp")

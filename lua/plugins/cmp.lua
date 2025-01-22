@@ -54,7 +54,7 @@ return {
   opts = {
     -- remember to enable your providers here
     sources = {
-      default = { "copilot", "lsp", "path", "snippets", "buffer" },
+      default = { "lsp", "path", "snippets", "buffer", "copilot", "codecompanion" },
     },
     keymap = {
       ["<C-Space>"] = { "show", "show_documentation", "hide_documentation" },

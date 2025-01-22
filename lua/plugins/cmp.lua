@@ -79,7 +79,7 @@ return {
       ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
     },
     completion = {
-      list = { selection = function(ctx) return ctx.mode == "cmdline" and "auto_insert" or "preselect" end },
+      list = { selection = { preselect = false, auto_insert = true } },
       menu = {
         border = "rounded",
         winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",

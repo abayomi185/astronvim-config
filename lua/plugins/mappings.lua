@@ -115,7 +115,7 @@ return {
         -- ["<Leader>br"] = false, -- Disabled for Legendary.nvim support
 
         -- NOTE: Harpoon
-        ["<Leader>m"] = { name = "Harpoon" },
+        ["<Leader>m"] = { desc = "Harpoon" },
         ["<Leader>mm"] = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", desc = "Quick Menu" },
         ["<Leader>mt"] = { "<cmd>lua require('harpoon.ui').toggle_file()<CR>", desc = "Toggle File" },
         ["<Leader>ml"] = { "<cmd>lua require('harpoon.ui').nav_next()<CR>", desc = "Navigate next" },
@@ -133,7 +133,7 @@ return {
         -- }
 
         -- NOTE: Rust
-        ["<Leader>r"] = { name = "Rust" },
+        ["<Leader>r"] = { desc = "Rust" },
         ["<Leader>rj"] = { "<cmd>RustRunnables<Cr>", desc = "Runnables" },
         ["<Leader>rt"] = { "<cmd>lua _CARGO_TEST()<cr>", desc = "Cargo Test" },
         ["<Leader>rm"] = { "<cmd>RustExpandMacro<Cr>", desc = "Expand Macro" },
@@ -147,7 +147,7 @@ return {
         },
 
         -- NOTE: Crates
-        ["<Leader>R"] = { name = "Crates" },
+        ["<Leader>R"] = { desc = "Crates" },
         ["<Leader>Ro"] = { "<cmd>lua require('crates').show_popup()<CR>", desc = "Show popup" },
         ["<Leader>Rr"] = { "<cmd>lua require('crates').reload()<CR>", desc = "Reload" },
         ["<Leader>Rv"] = { "<cmd>lua require('crates').show_versions_popup()<CR>", desc = "Show Versions" },

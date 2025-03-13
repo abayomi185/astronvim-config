@@ -46,13 +46,6 @@ return {
           inline = { adapter = "copilot" },
         },
         adapters = {
-          openai = function()
-            return require("codecompanion.adapters").extend("openai", {
-              env = {
-                api_key = "cmd:age -d -i ~/.ssh/git_yomiikuru ~/.openai-api-key.age",
-              },
-            })
-          end,
           copilot = function() return require("codecompanion.adapters").extend("copilot", {}) end,
         },
         display = {

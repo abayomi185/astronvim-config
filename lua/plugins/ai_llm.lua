@@ -14,6 +14,7 @@ return {
       -- ollama_url = "https://astrysk-ollama-testflight.duckdns.org/api/generate",
     },
     lazy = false,
+    enabled = false,
   },
 
   -- NOTE: llm.nvim
@@ -37,7 +38,26 @@ return {
       "hrsh7th/nvim-cmp", -- Optional: For using slash commands and variables in the chat buffer
       "nvim-telescope/telescope.nvim", -- Optional: For using slash commands
       { "MeanderingProgrammer/render-markdown.nvim", ft = { "markdown", "codecompanion" } },
-      { "stevearc/dressing.nvim", opts = {} }, -- Optional: Improves `vim.ui.select`
+      {
+        "AstroNvim/astrocore",
+        ---@type AstroCoreOpts
+        opts = {
+          mappings = {
+            n = {
+              ["<localleader>cc"] = {
+                "<cmd>CodeCompanionChat Toggle<CR>",
+                desc = "Toggle CodeCompanion Chat",
+              },
+            },
+            v = {
+              ["<localleader>ca"] = {
+                "<cmd>CodeCompanionChat Add<CR>",
+                desc = "Add selected text to CodeCompanion Chat",
+              },
+            },
+          },
+        },
+      },
     },
     opts = function(_, _)
       return {

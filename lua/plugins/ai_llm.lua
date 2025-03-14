@@ -43,9 +43,18 @@ return {
           -- Default adapter is openai
           chat = { adapter = "copilot" },
           inline = { adapter = "copilot" },
+          agent = { adapter = "copilot" },
         },
         adapters = {
-          copilot = function() return require("codecompanion.adapters").extend("copilot", {}) end,
+          copilot = function()
+            return require("codecompanion.adapters").extend("copilot", {
+              schema = {
+                model = {
+                  default = "o3-mini",
+                },
+              },
+            })
+          end,
         },
         display = {
           chat = {

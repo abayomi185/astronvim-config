@@ -63,7 +63,16 @@ return {
       return {
         strategies = {
           chat = { adapter = "copilot" },
-          inline = { adapter = "copilot" },
+          inline = {
+            adapter = "copilot",
+            keymaps = {
+              reject_change = {
+                modes = {
+                  n = "gA",
+                },
+              },
+            },
+          },
           agent = { adapter = "copilot" },
         },
         adapters = {

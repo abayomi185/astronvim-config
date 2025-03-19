@@ -29,6 +29,7 @@ return {
       disabled = { -- disable formatting capabilities for the listed language servers
         "tsserver",
         "lua_ls",
+        "ts_ls",
       },
       timeout_ms = 2000, -- default format timeout
       -- filter = function(client) -- fully override the default formatting function
@@ -42,6 +43,7 @@ return {
       "astro",
       "clangd",
       "denols",
+      "eslint",
       "jsonls",
       "lua_ls",
       "gopls",
@@ -50,7 +52,7 @@ return {
       "rust_analyzer",
       "slint_lsp",
       "taplo",
-      "tsserver",
+      "ts_ls",
       "yamlls",
       "zls",
     },

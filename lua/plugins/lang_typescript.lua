@@ -27,66 +27,78 @@ return {
     },
   },
   {
-    "pmizio/typescript-tools.nvim",
+    "yioneko/nvim-vtsls",
+    lazy = true,
     dependencies = {
-      ---@type AstroLSPOpts
-      "AstroNvim/astrolsp",
-      optional = true,
-      ---@diagnostic disable: missing-fields
+      "AstroNvim/astrocore",
       opts = {
         autocmds = {
-          eslint_fix_on_save = {
-            cond = function(client) return client.name == "eslint" and vim.fn.exists ":EslintFixAll" > 0 end,
+          nvim_vtsls = {
             {
-              event = "BufWritePost",
-              desc = "Fix all eslint errors",
-              callback = function() vim.cmd.EslintFixAll() end,
+              event = "LspAttach",
+              desc = "Load nvim-vtsls with vtsls",
+              callback = function(args)
+                if assert(vim.lsp.get_client_by_id(args.data.client_id)).name == "vtsls" then
+                  require("vtsls")._on_attach(args.data.client_id, args.buf)
+                  vim.api.nvim_del_augroup_by_name "nvim_vtsls"
+                end
+              end,
             },
           },
         },
-        handlers = { tsserver = false }, -- disable tsserver setup, this plugin does it
-        config = {
-          ["typescript-tools"] = { -- enable inlay hints by default for `typescript-tools`
-            settings = {
-              tsserver_file_preferences = {
-                includeInlayParameterNameHints = "all",
-                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-                includeInlayFunctionParameterTypeHints = true,
-                includeInlayVariableTypeHints = true,
-                includeInlayVariableTypeHintsWhenTypeMatchesName = false,
-                includeInlayPropertyDeclarationTypeHints = true,
-                includeInlayFunctionLikeReturnTypeHints = true,
-                includeInlayEnumMemberValueHints = true,
-              },
-              expose_as_code_action = {
-                -- "fix_all",
-                "add_missing_imports",
-                "remove_unused",
-                "remove_unused_imports",
-                "organize_imports",
-              },
-              tsserver_max_memory = 3072,
-            },
-          },
-        },
-        -- settings = {
-        --   single_file_support = false,
-        --   -- root_dir = function() end,
-        --   -- root_dir = function() end,
-        -- },
       },
     },
-    ft = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
-    -- get AstroLSP provided options like `on_attach` and `capabilities`
-    opts = function(_, opts)
-      local astrolsp_avail, astrolsp = pcall(require, "astrolsp")
-      -- -- New
-      -- opts.server = astrolsp_avail and astrolsp.lsp_opts "typescript-tools"
-      -- opts.server.root_dir = require("lspconfig.util").root_pattern ".git"
-      -- return opts
-      -- Old
-      if astrolsp_avail then return astrolsp.lsp_opts "typescript-tools" end
-    end,
+    config = function(_, opts) require("vtsls").config(opts) end,
+  },
+  {
+    "AstroNvim/astrolsp",
+    ---@type AstroLSPOpts
+    opts = {
+      autocmds = {
+        eslint_fix_on_save = {
+          cond = function(client) return client.name == "eslint" and vim.fn.exists ":EslintFixAll" > 0 end,
+          {
+            event = "BufWritePost",
+            desc = "Fix all eslint errors",
+            callback = function(args)
+              if vim.F.if_nil(vim.b[args.buf].autoformat, vim.g.autoformat, true) then vim.cmd.EslintFixAll() end
+            end,
+          },
+        },
+      },
+      ---@diagnostic disable: missing-fields
+      config = {
+        vtsls = {
+          settings = {
+            typescript = {
+              updateImportsOnFileMove = { enabled = "always" },
+              inlayHints = {
+                parameterNames = { enabled = "all" },
+                parameterTypes = { enabled = true },
+                variableTypes = { enabled = true },
+                propertyDeclarationTypes = { enabled = true },
+                functionLikeReturnTypes = { enabled = true },
+                enumMemberValues = { enabled = true },
+              },
+            },
+            javascript = {
+              updateImportsOnFileMove = { enabled = "always" },
+              inlayHints = {
+                parameterNames = { enabled = "literals" },
+                parameterTypes = { enabled = true },
+                variableTypes = { enabled = true },
+                propertyDeclarationTypes = { enabled = true },
+                functionLikeReturnTypes = { enabled = true },
+                enumMemberValues = { enabled = true },
+              },
+            },
+            vtsls = {
+              enableMoveToFileCodeAction = true,
+            },
+          },
+        },
+      },
+    },
   },
   {
     "mfussenegger/nvim-dap",
@@ -156,16 +168,16 @@ return {
 
                 local clients = (vim.lsp.get_clients) {
                   bufnr = bufnr,
-                  name = "typescript-tools",
+                  name = "vtsls",
                 }
                 for _, client in ipairs(clients) do
                   vim.lsp.stop_client(client.id, true)
                 end
               end
 
-              -- if typescript-tools attached, stop any attached denols clients
-              if curr_client and curr_client.name == "typescript-tools" then
-                if next((vim.lsp.get_clients) { bufnr = bufnr, name = "denols" }) then
+              -- if vtsls attached, stop it if there is a denols server attached
+              if curr_client and curr_client.name == "vtsls" then
+                if next((vim.lsp.get_clients or vim.lsp.get_active_clients) { bufnr = bufnr, name = "denols" }) then
                   vim.lsp.stop_client(curr_client.id, true)
                 end
               end

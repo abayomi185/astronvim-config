@@ -19,6 +19,11 @@ return {
         filetypes = { "lua" },
       },
 
+      null_ls.builtins.formatting.sqlfluff.with {
+        filetypes = { "sql" },
+        extra_args = { "--dialect", "mysql" },
+      },
+
       null_ls.builtins.formatting.alejandra.with {
         filetypes = { "nix" },
       },

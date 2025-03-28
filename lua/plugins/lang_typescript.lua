@@ -89,6 +89,7 @@ return {
     optional = true,
     config = function()
       local dap = require "dap"
+      local outPath = vim.fn.trim(vim.fn.system "nix eval nixpkgs#vscode-js-debug.outPath --raw")
       if not dap.adapters["pwa-node"] then
         dap.adapters["pwa-node"] = {
           type = "server",
@@ -97,8 +98,7 @@ return {
           executable = {
             command = "node",
             args = {
-              require("mason-registry").get_package("js-debug-adapter"):get_install_path()
-                .. "/js-debug/src/dapDebugServer.js",
+              outPath .. "/lib/node_modules/js-debug/dist/src/dapDebugServer.js",
               "${port}",
             },
           },
@@ -162,4 +162,5 @@ return {
       vscode_filetypes["pwa-node"] = js_filetypes
     end,
   },
+  { "lbrayner/vim-rzip" },
 }

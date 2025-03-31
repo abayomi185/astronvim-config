@@ -15,6 +15,7 @@ return {
     opts = function(_, opts)
       require("telescope").load_extension "live_grep_args"
       local actions = require "telescope.actions"
+      opts.defaults = opts.defaults or {}
       opts.defaults.mappings = {
         i = {
           ["<C-j>"] = actions.cycle_history_next,

@@ -22,29 +22,25 @@ return {
 
   -- == Examples of Overriding Plugins ==
 
-  -- customize alpha options
   {
-    "goolord/alpha-nvim",
+    "folke/snacks.nvim",
     opts = function(_, opts)
-      -- customize the dashboard header
-      opts.section.header.val = {
-        " █████  ███████ ████████ ██████   ██████",
+      opts.dashboard.preset.header = table.concat({
+        " █████  ███████ ████████ ██████   ██████ ",
         "██   ██ ██         ██    ██   ██ ██    ██",
         "███████ ███████    ██    ██████  ██    ██",
         "██   ██      ██    ██    ██   ██ ██    ██",
-        "██   ██ ███████    ██    ██   ██  ██████",
-        " ",
-        "    ███    ██ ██    ██ ██ ███    ███",
-        "    ████   ██ ██    ██ ██ ████  ████",
-        "    ██ ██  ██ ██    ██ ██ ██ ████ ██",
-        "    ██  ██ ██  ██  ██  ██ ██  ██  ██",
-        "    ██   ████   ████   ██ ██      ██",
-      }
+        "██   ██ ███████    ██    ██   ██  ██████ ",
+        "",
+        "███    ██ ██    ██ ██ ███    ███",
+        "████   ██ ██    ██ ██ ████  ████",
+        "██ ██  ██ ██    ██ ██ ██ ████ ██",
+        "██  ██ ██  ██  ██  ██ ██  ██  ██",
+        "██   ████   ████   ██ ██      ██",
+      }, "\n")
 
-      -- Added option to load session for current directory
-      local button, get_icon = require("alpha.themes.dashboard").button, require("astroui").get_icon
-      local new_button = button("LDR S .", get_icon("FolderClosed", 2, true) .. "Current Dir Session  ")
-      table.insert(opts.section.buttons.val, 1, new_button)
+      -- Move last item to the top
+      table.insert(opts.dashboard.preset.keys, 1, table.remove(opts.dashboard.preset.keys))
 
       return opts
     end,

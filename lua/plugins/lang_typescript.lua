@@ -162,5 +162,4 @@ return {
       vscode_filetypes["pwa-node"] = js_filetypes
     end,
   },
-  { "lbrayner/vim-rzip" },
 }

@@ -19,8 +19,10 @@ return {
     },
     -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
     diagnostics = {
-      virtual_text = true,
+      virtual_text = { current_line = false, severity = { min = "HINT", max = "WARN" } },
+      virtual_lines = { current_line = false, severity = { min = "ERROR" } },
       underline = true,
+      severity_sort = true,
     },
     -- vim options can be configured here
     options = {

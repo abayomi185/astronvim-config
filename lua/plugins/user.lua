@@ -21,30 +21,32 @@ return {
 
   -- == Examples of Overriding Plugins ==
 
-  -- customize alpha options
+  -- customize snacks dashboard options
   {
-    "goolord/alpha-nvim",
+    "folke/snacks.nvim",
     opts = function(_, opts)
-      -- customize the dashboard header
-      opts.section.header.val = {
-        " █████  ███████ ████████ ██████   ██████",
+      opts.dashboard.preset.header = table.concat({
+        " █████  ███████ ████████ ██████   ██████ ",
         "██   ██ ██         ██    ██   ██ ██    ██",
         "███████ ███████    ██    ██████  ██    ██",
         "██   ██      ██    ██    ██   ██ ██    ██",
-        "██   ██ ███████    ██    ██   ██  ██████",
-        " ",
-        "    ███    ██ ██    ██ ██ ███    ███",
-        "    ████   ██ ██    ██ ██ ████  ████",
-        "    ██ ██  ██ ██    ██ ██ ██ ████ ██",
-        "    ██  ██ ██  ██  ██  ██ ██  ██  ██",
-        "    ██   ████   ████   ██ ██      ██",
-      }
+        "██   ██ ███████    ██    ██   ██  ██████ ",
+        "",
+        "███    ██ ██    ██ ██ ███    ███",
+        "████   ██ ██    ██ ██ ████  ████",
+        "██ ██  ██ ██    ██ ██ ██ ████ ██",
+        "██  ██ ██  ██  ██  ██ ██  ██  ██",
+        "██   ████   ████   ██ ██      ██",
+      }, "\n")
 
-      -- Added option to load session for current directory
-      local button, get_icon = require("alpha.themes.dashboard").button, require("astroui").get_icon
-      local new_button = button("LDR S .", get_icon("FolderClosed", 2, true) .. "Current Dir Session  ")
-      table.insert(opts.section.buttons.val, 1, new_button)
+      local get_icon = require("astroui").get_icon
 
+      table.insert(opts.dashboard.preset.keys, 1, {
+        key = ".",
+        action = "<Leader>S.",
+        icon = get_icon("Refresh", 0, true),
+        desc = "Current Dir Session  ",
+      })
       return opts
     end,
   },

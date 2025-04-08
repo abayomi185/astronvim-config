@@ -42,6 +42,9 @@ return {
       -- Move last item to the top
       table.insert(opts.dashboard.preset.keys, 1, table.remove(opts.dashboard.preset.keys))
 
+      opts.dashboard.preset.keys[1].action = "<leader>S."
+      opts.dashboard.preset.keys[1].desc = "Current Dir Session  "
+
       return opts
     end,
   },

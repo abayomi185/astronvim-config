@@ -63,7 +63,6 @@ return {
       return {
         auto_save_chats = true,
         strategies = {
-          -- Default adapter is openai
           chat = { adapter = "copilot" },
           inline = { adapter = "copilot" },
           agent = { adapter = "copilot" },

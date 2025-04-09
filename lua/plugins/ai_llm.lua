@@ -90,6 +90,31 @@ return {
             show_settings = true,
           },
         },
+        prompt_library = {
+          ["Generate Docstring"] = {
+            strategy = "inline",
+            description = "Generate a docstring for the selected code",
+            opts = {
+              is_slash_cmd = false,
+              user_prompt = false,
+            },
+            prompts = {
+              {
+                role = "system",
+                content = function(context)
+                  return string.format(
+                    [[You are a code generation assistant for %s. Your task is to generate a docstring for the given code. I want you to return raw code only (no codeblocks and no explanations). If you can't respond with code, respond with nothing]],
+                    context.filetype
+                  )
+                end,
+                opts = {
+                  visible = false,
+                  tag = "system_tag",
+                },
+              },
+            },
+          },
+        },
       }
     end,
     lazy = false,

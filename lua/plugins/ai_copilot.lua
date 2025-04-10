@@ -72,7 +72,7 @@ return {
       panel = { enabled = false },
       filetypes = {
         yaml = true,
-        -- markdown = true,
+        markdown = true,
       },
     },
     lazy = false,

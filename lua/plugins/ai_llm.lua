@@ -61,7 +61,6 @@ return {
     },
     opts = function(_, _)
       return {
-        auto_save_chats = true,
         strategies = {
           chat = { adapter = "copilot" },
           inline = { adapter = "copilot" },
@@ -79,52 +78,40 @@ return {
             return require("codecompanion.adapters").extend("copilot", {
               schema = {
                 model = {
-                  default = "claude-3.5-sonnet", -- Use claude-3.5-sonnet as default over OpenAI GPT-4o
+                  default = "o3-mini", -- Use claude-3.5-sonnet as default over OpenAI GPT-4o
                 },
               },
             })
           end,
         },
-        default_prompts = {
-          ["Yomi"] = {
-            strategy = "chat",
-            description = "Open/restore a chat buffer to converse with an LLM",
+        display = {
+          chat = {
+            show_settings = true,
+          },
+        },
+        prompt_library = {
+          ["Generate Docstring"] = {
+            strategy = "inline",
+            description = "Generate a docstring for the selected code",
             opts = {
-              mapping = "<LocalLeader>ci",
-              -- default_prompt = true,
-              -- modes = { "n", "v" },
-              slash_cmd = "custom",
-              auto_submit = false,
-              stop_context_insertion = true,
-              -- user_prompt = true,
+              is_slash_cmd = false,
+              user_prompt = false,
             },
             prompts = {
               {
                 role = "system",
-                condition = function(context) return context.is_visual end,
                 content = function(context)
-                  return "Don't make reponses overly verbose. Keep them short and conscise where possible.\n"
-                    .. "Respond as a knowledgeable and intelligent person known as AGI Yomi.\n"
-                    .. "Respond as someone knowledgeable about "
-                    .. context.filetype
-                    .. "."
+                  return string.format(
+                    [[You are a code generation assistant for %s. Your task is to generate a docstring for the given code. I want you to return raw code only (no codeblocks and no explanations). If you can't respond with code, respond with nothing]],
+                    context.filetype
+                  )
                 end,
-              },
-              {
-                role = "user_header",
-                contains_code = true,
-                condition = function(context) return context.is_visual end,
-                content = function(context)
-                  local text = require("codecompanion.helpers.actions").get_code(context.start_line, context.end_line)
-                  return "\n```" .. context.filetype .. "\n" .. text .. "\n```\n\n"
-                end,
+                opts = {
+                  visible = false,
+                  tag = "system_tag",
+                },
               },
             },
-          },
-        },
-        display = {
-          chat = {
-            show_settings = true,
           },
         },
       }

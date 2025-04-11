@@ -52,7 +52,7 @@ return {
       "rust_analyzer",
       "slint_lsp",
       "taplo",
-      "ts_ls",
+      "vtsls",
       "yamlls",
       "zls",
     },

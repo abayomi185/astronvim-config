@@ -30,6 +30,7 @@ return {
         "tsserver",
         "lua_ls",
         "ts_ls",
+        "vtsls",
       },
       timeout_ms = 2000, -- default format timeout
       -- filter = function(client) -- fully override the default formatting function

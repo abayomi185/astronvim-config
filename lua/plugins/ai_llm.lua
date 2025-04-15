@@ -95,7 +95,7 @@ return {
         },
         display = {
           chat = {
-            show_settings = true,
+            show_settings = false, -- Unable to change model in chat if true
           },
         },
         prompt_library = {

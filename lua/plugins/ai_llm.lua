@@ -87,7 +87,7 @@ return {
             return require("codecompanion.adapters").extend("copilot", {
               schema = {
                 model = {
-                  default = "o3-mini", -- Use claude-3.5-sonnet as default over OpenAI GPT-4o
+                  default = "claude-3.5-sonnet", -- Use claude-3.5-sonnet as default over OpenAI GPT-4o
                 },
               },
             })

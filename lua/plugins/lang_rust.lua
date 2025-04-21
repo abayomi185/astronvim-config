@@ -36,7 +36,14 @@ return {
                 excludeDirs = {
                   ".direnv",
                   ".git",
+                  "target",
                 },
+              },
+              runnables = {
+                -- extraArgs = {},
+                -- extraTestBinaryArgs = {
+                --   "--show-output",
+                -- },
               },
             },
           },
@@ -46,7 +53,7 @@ return {
   },
   {
     "mrcjkb/rustaceanvim",
-    version = "^5",
+    version = "^6",
     ft = "rust",
     specs = {
       {
@@ -110,16 +117,13 @@ return {
 
       return {
         server = final_server,
-        dap = { adapter = adapter },
+        dap = { adapter = adapter, load_rust_types = true },
         tools = {
-          inlay_hints = {
-            parameter_hints_prefix = "  ",
-            other_hints_prefix = "  ",
-          },
           --   autoSetHints = true,
           --   runnables = {
           --     use_telescope = true,
           --   },
+          -- enable_clippy = false,
         },
       }
     end,

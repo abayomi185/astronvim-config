@@ -12,8 +12,8 @@ return {
           cursorline = "#22252b",
         },
         light = {
-          cursorline = "#f2ebd9",
-          bg = "#f7f3e8", -- formely absent from config
+          cursorline = "#e8e8de",
+          bg = "#eeeee7",
         },
       },
       options = {

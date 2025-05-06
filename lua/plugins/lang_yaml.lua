@@ -32,7 +32,6 @@ return {
                       "deployment.yaml",
                       "ingress.yaml",
                       "job.yaml",
-                      "ks.yaml",
                       "namespace.yaml",
                       "networkpolicy.yaml",
                       "persistentvolume.yaml",
@@ -44,6 +43,9 @@ return {
                       "service.yaml",
                       "serviceaccount.yaml",
                       "statefulset.yaml",
+                    },
+                    ["https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/refs/heads/main/kustomization-kustomize-v1.json"] = {
+                      "ks.yaml",
                     },
                   },
                 },

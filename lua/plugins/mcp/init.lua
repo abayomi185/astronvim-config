@@ -23,7 +23,7 @@ return {
     build = "bundled_build.lua",
     opts = {
       port = 3000,
-      config = vim.fn.expand "~/mcpservers.json",
+      config = vim.fn.stdpath "config" .. "lua/plugins/mcp/mcpservers.json",
       use_bundled_binary = true,
       log = {
         level = vim.log.levels.WARN,

@@ -39,9 +39,9 @@ return {
     },
     -- enable servers that you already have installed without mason
     servers = {
-      -- "pyright"
       -- WARN: Change here when using NixOS
       "astro",
+      "basedpyright",
       "clangd",
       "denols",
       "eslint",
@@ -49,11 +49,11 @@ return {
       "lua_ls",
       "gopls",
       "nil_ls",
-      "pyright",
       "rust_analyzer",
       "slint_lsp",
       "taplo",
-      "vtsls",
+      "ts_ls",
+      -- "vtsls",
       "yamlls",
       "zls",
     },

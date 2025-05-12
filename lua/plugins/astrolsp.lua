@@ -49,6 +49,7 @@ return {
       "lua_ls",
       "gopls",
       "nil_ls",
+      "ruff",
       "rust_analyzer",
       "slint_lsp",
       "taplo",

@@ -35,7 +35,6 @@ return {
   },
   {
     "mfussenegger/nvim-dap",
-    optional = true,
     specs = {
       {
         "mfussenegger/nvim-dap-python",
@@ -50,7 +49,6 @@ return {
   },
   {
     "nvim-neotest/neotest",
-    optional = true,
     dependencies = {
       "nvim-neotest/neotest-python",
       opts = {
@@ -69,5 +67,13 @@ return {
       if not opts.adapters then opts.adapters = {} end
       table.insert(opts.adapters, require "neotest-python"(require("astrocore").plugin_opts "neotest-python"))
     end,
+  },
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        python = { "ruff_organize_imports", "ruff_format" },
+      },
+    },
   },
 }

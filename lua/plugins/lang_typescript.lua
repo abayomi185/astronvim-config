@@ -1,3 +1,18 @@
+local conform_formatter = function(_) return { "prettierd" } or {} end
+
+local format_filetypes = {
+  "javascript",
+  "javascriptreact",
+  "json",
+  "jsonc",
+  "markdown",
+  "svelte",
+  "typescript",
+  "typescriptreact",
+  "vue",
+  "yaml",
+}
+
 ---@type LazySpec
 return {
   {
@@ -204,5 +219,15 @@ return {
         },
       },
     },
+  },
+  {
+    "stevearc/conform.nvim",
+    optional = true,
+    opts = function(_, opts)
+      if not opts.formatters_by_ft then opts.formatters_by_ft = {} end
+      for _, filetype in ipairs(format_filetypes) do
+        opts.formatters_by_ft[filetype] = conform_formatter
+      end
+    end,
   },
 }

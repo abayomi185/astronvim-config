@@ -34,6 +34,20 @@ return {
     },
   },
   {
+    "mfussenegger/nvim-dap",
+    specs = {
+      {
+        "mfussenegger/nvim-dap-python",
+        dependencies = "mfussenegger/nvim-dap",
+        ft = "python",
+        config = function(_, opts)
+          local path = "uv"
+          require("dap-python").setup(path, opts)
+        end,
+      },
+    },
+  },
+  {
     "nvim-neotest/neotest",
     optional = true,
     dependencies = {

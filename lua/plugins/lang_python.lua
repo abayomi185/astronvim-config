@@ -6,22 +6,28 @@ return {
     ---@param opts AstroLSPOpts
     opts = {
       config = {
-        python = {
-          analysis = {
-            typeCheckingMode = "basic",
-            -- autoSearchPaths = true,
-            -- useLibraryCodeForTypes = true,
-            -- diagnosticMode = "workspace",
-            -- typeCheckingMode = "basic",
-            -- autoImportCompletions = true,
-            -- autoSearchPaths = true,
-            -- diagnosticSeverityOverrides = {
-            --   reportUnusedImport = "information",
-            --   reportMissingImports = "information",
-            --   reportUndefinedVariable = "information",
-            --   reportMissingTypeStubs = "information",
-            --   reportMissingModuleSource = "information",
-            -- },
+        basedpyright = {
+          before_init = function(_, c)
+            if not c.settings then c.settings = {} end
+            if not c.settings.python then c.settings.python = {} end
+            c.settings.python.pythonPath = vim.fn.exepath "python"
+          end,
+          settings = {
+            basedpyright = {
+              analysis = {
+                typeCheckingMode = "basic",
+                autoImportCompletions = true,
+                diagnosticSeverityOverrides = {
+                  reportUnusedImport = "information",
+                  reportUnusedFunction = "information",
+                  reportUnusedVariable = "information",
+                  -- reportGeneralTypeIssues = "none",
+                  -- reportOptionalMemberAccess = "none",
+                  -- reportOptionalSubscript = "none",
+                  -- reportPrivateImportUsage = "none",
+                },
+              },
+            },
           },
         },
       },

@@ -29,7 +29,7 @@ return {
   -- NOTE: VectorCode
   {
     "Davidyz/VectorCode",
-    version = "0.6.9",
+    version = "*",
     dependencies = { "nvim-lua/plenary.nvim" },
     cmd = "VectorCode",
     lazy = false,
@@ -82,7 +82,7 @@ return {
       },
     },
     opts = function(_, opts)
-      return {
+      return vim.tbl_deep_extend("force", opts, {
         auto_save_chats = true,
         strategies = {
           chat = { adapter = "copilot" },
@@ -139,7 +139,7 @@ return {
             },
           },
         },
-      }
+      })
     end,
     lazy = false,
   },

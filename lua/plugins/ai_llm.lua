@@ -83,7 +83,7 @@ return {
     },
     opts = function(_, opts)
       return vim.tbl_deep_extend("force", opts, {
-        auto_save_chats = true,
+        log_level = "DEBUG",
         strategies = {
           chat = { adapter = "copilot" },
           inline = {

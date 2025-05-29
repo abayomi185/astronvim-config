@@ -26,6 +26,31 @@ return {
     enabled = false,
   },
 
+  -- NOTE: VectorCode
+  {
+    "Davidyz/VectorCode",
+    version = "0.6.9",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    cmd = "VectorCode",
+    lazy = false,
+    specs = {
+      {
+        "olimorris/codecompanion.nvim",
+        opts = {
+          extensions = {
+            vectorcode = {
+              opts = {
+                add_tool = true,
+                add_slash_command = true,
+                tool_opts = {},
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+
   -- NOTE: codecompanion
   {
     "olimorris/codecompanion.nvim",

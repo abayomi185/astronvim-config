@@ -46,8 +46,8 @@ return {
       "lua_ls",
       "rust_analyzer",
       "taplo",
-      "ts_ls",
-      -- "vtsls",
+      -- "ts_ls",
+      "vtsls",
       "yamlls",
     },
     -- customize language server configuration options passed to `lspconfig`

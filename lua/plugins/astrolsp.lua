@@ -52,6 +52,7 @@ return {
       "ruff",
       "rust_analyzer",
       "slint_lsp",
+      "tailwindcss",
       "taplo",
       "ts_ls",
       -- "vtsls",

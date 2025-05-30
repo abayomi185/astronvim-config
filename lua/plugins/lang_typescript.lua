@@ -136,8 +136,10 @@ return {
   {
     "mfussenegger/nvim-dap",
     optional = true,
-    config = function()
+    opts = function()
       local dap = require "dap"
+      local outPath = vim.fn.trim(vim.fn.system "nix eval nixpkgs#vscode-js-debug.outPath --raw")
+
       dap.adapters["pwa-node"] = {
         type = "server",
         host = "localhost",
@@ -145,9 +147,10 @@ return {
         executable = {
           command = "node",
           args = {
-            require("mason-registry").get_package("js-debug-adapter"):get_install_path()
-              .. "/js-debug/src/dapDebugServer.js",
-            "${port}",
+            args = {
+              outPath .. "/lib/node_modules/js-debug/dist/src/dapDebugServer.js",
+              "${port}",
+            },
           },
         },
       }

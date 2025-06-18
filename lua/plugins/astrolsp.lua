@@ -45,6 +45,7 @@ return {
       "jsonls",
       "lua_ls",
       "rust_analyzer",
+      -- "sonarlint-ls",
       "taplo",
       -- "ts_ls",
       "vtsls",

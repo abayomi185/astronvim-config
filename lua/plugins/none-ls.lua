@@ -56,7 +56,7 @@ return {
           "markdown",
         },
       },
-      require("none-ls.diagnostics.eslint_d").with {
+      require("none-ls.diagnostics.eslint").with {
         filetypes = {
           "javascript",
           "javascriptreact",

@@ -66,6 +66,11 @@ return {
           inline = {
             adapter = "copilot",
             keymaps = {
+              accept_change = {
+                modes = {
+                  n = "ga",
+                },
+              },
               reject_change = {
                 modes = {
                   n = "gA",

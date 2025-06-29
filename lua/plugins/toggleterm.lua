@@ -88,6 +88,6 @@ return {
     end,
     shading_factor = 2,
     direction = "float",
-    float_opts = { border = "rounded", height = 33 },
+    float_opts = { border = "rounded", height = function() return math.floor(vim.o.lines * 0.8) end },
   },
 }

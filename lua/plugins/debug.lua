@@ -6,7 +6,6 @@ return {
     opts = {
       load_breakpoints_event = { "BufReadPost" },
     },
-    lazy = false,
   },
 
   -- NOTE: nvim-dap
@@ -14,6 +13,7 @@ return {
     "mfussenegger/nvim-dap",
     -- dev = true,
     -- dir = "~/more-projek/nvim-dap",
+    lazy = true,
   },
 
   -- NOTE: nvim-dap-ui

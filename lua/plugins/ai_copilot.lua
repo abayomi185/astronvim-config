@@ -45,7 +45,7 @@ return {
         yaml = true,
         -- markdown = true,
       },
-      copilot_node_command = "/home/nixos/.local/share/fnm/node-versions/v20.19.0/installation/bin/node",
+      copilot_node_command = "/home/nixos/.local/share/fnm/node-versions/v22.14.0/installation/bin/node",
     },
     lazy = false,
   },

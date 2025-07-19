@@ -14,9 +14,7 @@ return {
               cargo = {
                 allFeatures = true,
               },
-              checkOnSave = {
-                command = "clippy",
-              },
+              -- checkOnSave = true, --defaults to true
               assist = {
                 importEnforceGranularity = true,
                 importPrefix = "crate",

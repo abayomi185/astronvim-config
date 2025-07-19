@@ -1,6 +1,7 @@
 local conform_formatter = function(_) return { "prettierd" } or {} end
 
 local format_filetypes = {
+  "css",
   "javascript",
   "javascriptreact",
   "json",

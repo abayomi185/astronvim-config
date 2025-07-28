@@ -1,4 +1,4 @@
-local prefix = "<Leader>fd"
+local dap_prefix = "<Leader>fd"
 return {
   {
     "nvim-telescope/telescope-ui-select.nvim",
@@ -41,23 +41,23 @@ return {
         opts = {
           mappings = {
             n = {
-              [prefix .. "c"] = {
+              [dap_prefix .. "c"] = {
                 "<Cmd>lua require('telescope').extensions.dap.commands()<CR>",
                 desc = "Telescope DAP commands",
               },
-              [prefix .. "f"] = {
+              [dap_prefix .. "f"] = {
                 "<Cmd>lua require('telescope').extensions.dap.frames()<CR>",
                 desc = "Telescope DAP frames",
               },
-              [prefix .. "g"] = {
+              [dap_prefix .. "g"] = {
                 "<Cmd>lua require('telescope').extensions.dap.configurations()<CR>",
                 desc = "Telescope DAP configurations",
               },
-              [prefix .. "l"] = {
+              [dap_prefix .. "l"] = {
                 "<Cmd>lua require('telescope').extensions.dap.list_breakpoints()<CR>",
                 desc = "Telescope DAP list breakpoints",
               },
-              [prefix .. "v"] = {
+              [dap_prefix .. "v"] = {
                 "<Cmd>lua require('telescope').extensions.dap.variables()<CR>",
                 desc = "Telescope DAP variables",
               },
@@ -67,5 +67,27 @@ return {
       },
     },
     opts = function() require("telescope").load_extension "dap" end,
+  },
+  {
+    "folke/snacks.nvim",
+    ---@type snacks.Config
+    opts = {
+      picker = {
+        win = {
+          input = {
+            keys = {
+              ["<c-u>"] = "preview_scroll_up",
+              ["<c-d>"] = "preview_scroll_down",
+            },
+          },
+          list = {
+            keys = {
+              ["<c-u>"] = "preview_scroll_up",
+              ["<c-d>"] = "preview_scroll_down",
+            },
+          },
+        },
+      },
+    },
   },
 }

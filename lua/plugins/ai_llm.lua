@@ -37,33 +37,7 @@ return {
       "nvim-lua/plenary.nvim",
       "hrsh7th/nvim-cmp", -- Optional: For using slash commands and variables in the chat buffer
       "nvim-telescope/telescope.nvim", -- Optional: For using slash commands
-      {
-        -- For history management
-        "ravitemer/codecompanion-history.nvim",
-        specs = {
-          {
-            "olimorris/codecompanion.nvim",
-            opts = {
-              extensions = {
-                history = {
-                  enabled = true,
-                  opts = {
-                    expiration_days = 30,
-                    picker = "snacks", --- ("telescope", "snacks", "fzf-lua", or "default")
-                    continue_last_chat = false,
-                    delete_on_clearing_chat = true,
-
-                    -- Memory system (requires VectorCode CLI)
-                    memory = {
-                      index_on_startup = true,
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
+      "ravitemer/codecompanion-history.nvim", -- For history management
       { "MeanderingProgrammer/render-markdown.nvim", ft = { "markdown", "codecompanion" } },
       {
         "AstroNvim/astrocore",
@@ -151,6 +125,22 @@ return {
                   visible = false,
                   tag = "system_tag",
                 },
+              },
+            },
+          },
+        },
+        extensions = {
+          history = {
+            enabled = true,
+            opts = {
+              expiration_days = 30,
+              picker = "snacks", --- ("telescope", "snacks", "fzf-lua", or "default")
+              continue_last_chat = false,
+              delete_on_clearing_chat = true,
+
+              -- Memory system (requires VectorCode CLI)
+              memory = {
+                index_on_startup = true,
               },
             },
           },

@@ -42,9 +42,6 @@ return {
 
         ["<Leader>h"] = { ":nohlsearch<cr>", desc = "No Highlight" },
 
-        -- ["<C-s>"] = ":w<CR>",
-        -- ["<M-s>"] = ":w<CR>",
-
         -- NOTE: Git Diff
         ["<Leader>gd"] = { ":DiffviewOpen<cr>", desc = "Open Diff View" },
         ["<Leader>gD"] = { ":DiffviewClose<cr>", desc = "Close Git Diff" },
@@ -89,8 +86,6 @@ return {
 
         -- NOTE: LSP mappings
         ["gh"] = { "<cmd>lua vim.lsp.buf.hover()<cr>", desc = "Show hover" },
-        -- ["<Leader>ll"] = { "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "LSP CodeLens run" },
-        -- ["<Leader>lL"] = { "<cmd>lua vim.lsp.codelens.refresh()<cr>", desc = "LSP CodeLens refresh" },
 
         -- NOTE: Debug Mappings
         ["<Leader>db"] = { ":PBToggleBreakpoint<CR>", desc = "Toggle Breakpoint" },
@@ -113,11 +108,6 @@ return {
           desc = "Close all buffers to the right",
         },
         -- ["<Leader>br"] = false, -- Disabled for Legendary.nvim support
-
-        -- NOTE: Live Grep
-        -- lvim.builtin.which_key.mappings["st"] = {
-        --   "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", "text-with-args"
-        -- }
 
         -- NOTE: Rust
         ["<Leader>r"] = { desc = "Rust" },
@@ -151,10 +141,6 @@ return {
         ["<Leader>RR"] = { "<cmd>lua require('crates').open_repository()<CR>", desc = "Open Repository" },
         ["<Leader>RD"] = { "<cmd>lua require('crates').open_documentation()<CR>", desc = "Open Documentation" },
         ["<Leader>RC"] = { "<cmd>lua require('crates').open_crates_io()<CR>", desc = "Open Crate.io" },
-
-        -- OSC52
-        -- ["<Leader>y"] = { "<cmd>lua require('osc52').copy_operator()<CR>", desc = "OSC52 yank" },
-        -- ["<Leader>yy"] = { "<leader>y_", desc = "OSC52 yank line" },
 
         ["gx"] = {
           function() require("astrocore").system_open(vim.fn.expand "<cfile>") end,

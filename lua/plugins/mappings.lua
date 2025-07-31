@@ -109,20 +109,6 @@ return {
         },
         -- ["<Leader>br"] = false, -- Disabled for Legendary.nvim support
 
-        -- NOTE: Rust
-        ["<Leader>r"] = { desc = "Rust" },
-        ["<Leader>rj"] = { "<cmd>RustRunnables<Cr>", desc = "Runnables" },
-        ["<Leader>rt"] = { "<cmd>lua _CARGO_TEST()<cr>", desc = "Cargo Test" },
-        ["<Leader>rm"] = { "<cmd>RustExpandMacro<Cr>", desc = "Expand Macro" },
-        ["<Leader>rc"] = { "<cmd>RustOpenCargo<Cr>", desc = "Open Cargo" },
-        ["<Leader>rp"] = { "<cmd>RustParentModule<Cr>", desc = "Parent Module" },
-        ["<Leader>rd"] = { "<cmd>RustDebuggables<Cr>", desc = "Debuggables" },
-        ["<Leader>rv"] = { "<cmd>RustViewCrateGraph<Cr>", desc = "View Crate Graph" },
-        ["<Leader>rR"] = {
-          "<cmd>lua require('rust-tools/workspace_refresh')._reload_workspace_from_cargo_toml()<Cr>",
-          desc = "Reload Workspace",
-        },
-
         -- NOTE: Crates
         ["<Leader>R"] = { desc = "Crates" },
         ["<Leader>Ro"] = { "<cmd>lua require('crates').show_popup()<CR>", desc = "Show popup" },

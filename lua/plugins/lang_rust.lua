@@ -1,5 +1,22 @@
+local prefix = "<Leader>m"
+
 ---@type LazySpec
 return {
+  {
+    "AstroNvim/astrocore",
+    opts = function(_, opts)
+      local maps = opts.mappings
+
+      -- Rust mappings
+      maps.n[prefix] = { desc = "󱘗 Rust" }
+      maps.n[prefix .. "e"] = { "<cmd>RustLsp expandMacro<Cr>", desc = "Expand Macro" }
+      maps.n[prefix .. "g"] = { "<cmd>RustLsp crateGraph<Cr>", desc = "Expand Macro" }
+      maps.n[prefix .. "o"] = { "<cmd>RustLsp openCargo<Cr>", desc = "Expand Macro" }
+      maps.n[prefix .. "d"] = { "<cmd>RustLsp openDocs<Cr>", desc = "Expand Macro" }
+      maps.n[prefix .. "r"] = { "<cmd>RustLsp reloadWorkspace<Cr>", desc = "Expand Macro" }
+      maps.n[prefix .. "l"] = { "<cmd>RustLsp explainError<Cr>", desc = "Expand Macro" }
+    end,
+  },
   {
     "AstroNvim/astrolsp",
     optional = true,

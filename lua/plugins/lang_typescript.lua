@@ -47,6 +47,7 @@ return {
         ---@diagnostic disable: missing-fields
         config = {
           vtsls = {
+            root_dir = require("lspconfig.util").root_pattern ".git",
             settings = {
               typescript = {
                 updateImportsOnFileMove = { enabled = "always" },
@@ -73,7 +74,6 @@ return {
               vtsls = {
                 enableMoveToFileCodeAction = true,
                 autoUseWorkspaceTsdk = true,
-                root_dir = function() return require("lspconfig.util").root_pattern ".git" end,
               },
             },
           },

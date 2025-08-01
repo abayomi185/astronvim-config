@@ -10,6 +10,8 @@ return {
       {
         "nvim-neotest/neotest-jest",
         config = function(_, opts) end,
+        -- dir = "~/more-projek/neotest-jest",
+        -- dev = true,
       },
       {
         "AstroNvim/astrocore",

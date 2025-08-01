@@ -31,52 +31,56 @@ return {
   },
   {
     "AstroNvim/astrolsp",
-    ---@type AstroLSPOpts
-    opts = {
-      autocmds = {
-        -- eslint_fix_on_save = {
-        --   cond = function(client) return client.name == "eslint" and vim.fn.exists ":EslintFixAll" > 0 end,
-        --   {
-        --     event = "BufWritePost",
-        --     desc = "Fix all eslint errors",
-        --     callback = function() vim.cmd.EslintFixAll() end,
-        --   },
-        -- },
-      },
-      ---@diagnostic disable: missing-fields
-      config = {
-        vtsls = {
-          settings = {
-            typescript = {
-              updateImportsOnFileMove = { enabled = "always" },
-              inlayHints = {
-                parameterNames = { enabled = "all" },
-                parameterTypes = { enabled = true },
-                variableTypes = { enabled = true },
-                propertyDeclarationTypes = { enabled = true },
-                functionLikeReturnTypes = { enabled = true },
-                enumMemberValues = { enabled = true },
+    opts = function(_, opts)
+      ---@type AstroLSPOpts
+      local ts_opts = {
+        autocmds = {
+          -- eslint_fix_on_save = {
+          --   cond = function(client) return client.name == "eslint" and vim.fn.exists ":EslintFixAll" > 0 end,
+          --   {
+          --     event = "BufWritePost",
+          --     desc = "Fix all eslint errors",
+          --     callback = function() vim.cmd.EslintFixAll() end,
+          --   },
+          -- },
+        },
+        ---@diagnostic disable: missing-fields
+        config = {
+          vtsls = {
+            settings = {
+              typescript = {
+                updateImportsOnFileMove = { enabled = "always" },
+                inlayHints = {
+                  parameterNames = { enabled = "all" },
+                  parameterTypes = { enabled = true },
+                  variableTypes = { enabled = true },
+                  propertyDeclarationTypes = { enabled = true },
+                  functionLikeReturnTypes = { enabled = true },
+                  enumMemberValues = { enabled = true },
+                },
               },
-            },
-            javascript = {
-              updateImportsOnFileMove = { enabled = "always" },
-              inlayHints = {
-                parameterNames = { enabled = "literals" },
-                parameterTypes = { enabled = true },
-                variableTypes = { enabled = true },
-                propertyDeclarationTypes = { enabled = true },
-                functionLikeReturnTypes = { enabled = true },
-                enumMemberValues = { enabled = true },
+              javascript = {
+                updateImportsOnFileMove = { enabled = "always" },
+                inlayHints = {
+                  parameterNames = { enabled = "literals" },
+                  parameterTypes = { enabled = true },
+                  variableTypes = { enabled = true },
+                  propertyDeclarationTypes = { enabled = true },
+                  functionLikeReturnTypes = { enabled = true },
+                  enumMemberValues = { enabled = true },
+                },
               },
-            },
-            vtsls = {
-              enableMoveToFileCodeAction = true,
-              autoUseWorkspaceTsdk = true,
+              vtsls = {
+                enableMoveToFileCodeAction = true,
+                autoUseWorkspaceTsdk = true,
+                root_dir = function() return require("lspconfig.util").root_pattern ".git" end,
+              },
             },
           },
         },
-      },
-    },
+      }
+      return require("astrocore").extend_tbl(opts, ts_opts)
+    end,
   },
   {
     "yioneko/nvim-vtsls",

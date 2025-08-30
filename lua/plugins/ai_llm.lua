@@ -82,22 +82,47 @@ return {
           agent = { adapter = "copilot" },
         },
         adapters = {
-          openai = function()
-            return require("codecompanion.adapters").extend("openai", {
-              env = {
-                api_key = "cmd:age -d -i ~/.ssh/id_ed25519 ~/.openai-api-key.age",
-              },
-            })
-          end,
-          copilot = function()
-            return require("codecompanion.adapters").extend("copilot", {
-              schema = {
-                model = {
-                  default = "gpt-4.1",
+          http = {
+            openai = function()
+              return require("codecompanion.adapters").extend("openai", {
+                env = {
+                  api_key = "cmd:age -d -i ~/.ssh/id_ed25519 ~/.openai-api-key.age",
                 },
-              },
-            })
-          end,
+              })
+            end,
+            copilot = function()
+              return require("codecompanion.adapters").extend("copilot", {
+                schema = {
+                  model = {
+                    default = "gpt-4.1",
+                  },
+                },
+              })
+            end,
+            llamacpp = function()
+              return require("codecompanion.adapters").extend("openai_compatible", {
+                env = {
+                  url = "http://127.0.0.1:8080",
+                },
+              })
+            end,
+          },
+          acp = {
+            qwen_code = function()
+              return require("codecompanion.adapters").extend("gemini_cli", {
+                commands = {
+                  default = {
+                    "qwen",
+                    "--experimental-acp",
+                  },
+                },
+                defaults = {
+                  -- mcpServers = {},
+                  timeout = 20000, -- 20 seconds
+                },
+              })
+            end,
+          },
         },
         display = {
           chat = {

@@ -30,7 +30,7 @@ return {
         mappings = {
           n = {
             ["<Leader>lf"] = { function() vim.cmd.Format() end, desc = "Format buffer" },
-            ["<Leader>lc"] = { function() vim.cmd.ConformInfo() end, desc = "Conform information" },
+            -- ["<Leader>lc"] = { function() vim.cmd.ConformInfo() end, desc = "Conform information" },
             ["<Leader>uf"] = {
               function()
                 vim.b.autoformat = not vim.F.if_nil(vim.b.autoformat, vim.g.autoformat, true)

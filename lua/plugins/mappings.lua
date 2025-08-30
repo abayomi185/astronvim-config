@@ -77,10 +77,6 @@ return {
         -- NOTE: Copilot mapping
         ["gp"] = ":Copilot panel<CR>",
 
-        -- NOTE: Code Companion
-        ["<Leader>lc"] = { "<cmd>CodeCompanionActions<CR>", desc = "Show CodeCompanion Actions" },
-        ["<Leader>lt"] = { "<cmd>CodeCompanionToggle<CR>", desc = "Toggle CodeCompanion" },
-
         -- NOTE: Telescope mappings
         -- ["<Leader>ss"] = ":Telescope<CR>",
 
@@ -148,11 +144,6 @@ return {
         -- Better indenting
         ["<"] = "<gv",
         [">"] = ">gv",
-
-        -- NOTE: Code Companion
-        ["<Leader>lc"] = { "<cmd>CodeCompanionActions<cr>", desc = "Show CodeCompanion Actions" },
-        ["<Leader>lo"] = { "<cmd>CodeCompanionAdd<cr>", desc = "Add to CodeCompanion Chat" },
-        ["<Leader>lt"] = { "<cmd>CodeCompanionToggle<cr>", desc = "Toggle CodeCompanion" },
       },
 
       -- PASSED: Terminal

@@ -45,16 +45,14 @@ return {
         opts = {
           mappings = {
             n = {
-              ["<localleader>cc"] = {
-                "<cmd>CodeCompanionChat Toggle<CR>",
-                desc = "Toggle CodeCompanion Chat",
-              },
+              ["<leader>lc"] = { "<cmd>CodeCompanionActions<cr>", desc = "Show CodeCompanion Actions" },
             },
             v = {
-              ["<localleader>ca"] = {
+              ["<leader>lo"] = {
                 "<cmd>CodeCompanionChat Add<CR>",
                 desc = "Add selected text to CodeCompanion Chat",
               },
+              ["<leader>lc"] = { "<cmd>CodeCompanionActions<cr>", desc = "Show CodeCompanion Actions" },
             },
           },
         },

@@ -69,4 +69,12 @@ return {
       table.insert(opts.adapters, require "neotest-python"(require("astrocore").plugin_opts "neotest-python"))
     end,
   },
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        python = { "ruff_organize_imports", "ruff_format" },
+      },
+    },
+  },
 }

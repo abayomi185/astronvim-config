@@ -69,6 +69,7 @@ return {
 
       -- NOTE: Flake8 linter
       require("none-ls.diagnostics.flake8").with {
+        filetypes = { "python" },
         extra_args = {
           "--format",
           "default",

@@ -34,7 +34,10 @@ return {
           analyzers_path .. "sonarxml.jar",
         },
       },
-      filetypes = sonarlint_ft,
+      filetypes = {
+        "python",
+        "javascript",
+      },
     },
   },
 }

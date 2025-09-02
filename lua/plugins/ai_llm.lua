@@ -99,10 +99,11 @@ return {
               },
             },
             v = {
-              ["<localleader>lo"] = {
+              ["<leader>lo"] = {
                 "<cmd>CodeCompanionChat Add<CR>",
                 desc = "Add selected text to CodeCompanion Chat",
               },
+              ["<leader>lc"] = { "<cmd>CodeCompanionActions<cr>", desc = "Show CodeCompanion Actions" },
             },
           },
         },
@@ -126,15 +127,33 @@ return {
           agent = { adapter = "copilot" },
         },
         adapters = {
-          copilot = function()
-            return require("codecompanion.adapters").extend("copilot", {
-              schema = {
-                model = {
-                  default = "gpt-5-mini",
+          http = {
+            copilot = function()
+              return require("codecompanion.adapters").extend("copilot", {
+                schema = {
+                  model = {
+                    default = "gpt-5-mini",
+                  },
                 },
-              },
-            })
-          end,
+              })
+            end,
+          },
+          acp = {
+            qwen_code = function()
+              return require("codecompanion.adapters").extend("gemini_cli", {
+                commands = {
+                  default = {
+                    "qwen",
+                    "--experimental-acp",
+                  },
+                },
+                defaults = {
+                  -- mcpServers = {},
+                  timeout = 20000, -- 20 seconds
+                },
+              })
+            end,
+          },
         },
         display = {
           chat = {

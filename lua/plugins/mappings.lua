@@ -80,10 +80,6 @@ return {
         -- NOTE: Copilot mapping
         ["gp"] = ":Copilot panel<CR>",
 
-        -- NOTE: Code Companion
-        ["<Leader>lc"] = { "<cmd>CodeCompanionActions<CR>", desc = "Show CodeCompanion Actions" },
-        ["<Leader>lt"] = { "<cmd>CodeCompanionToggle<CR>", desc = "Toggle CodeCompanion" },
-
         -- NOTE: Telescope mappings
         -- ["<Leader>ss"] = ":Telescope<CR>",
 

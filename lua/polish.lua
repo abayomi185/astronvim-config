@@ -102,6 +102,3 @@ vim.cmd [[
     autocmd BufRead,BufNewFile *.slint set filetype=slint
   augroup END
 ]]
-
-vim.filetype.add { extension = { mdx = "mdx" } }
-vim.treesitter.language.register("markdown", "mdx")

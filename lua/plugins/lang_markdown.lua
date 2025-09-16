@@ -1,4 +1,7 @@
+vim.treesitter.language.register("markdown", "mdx")
+
 local prefix = "<Leader>m"
+
 ---@type LazySpec
 return {
   {
@@ -13,7 +16,7 @@ return {
             vim.api.nvim_buf_set_lines(0, row, row, false, { date, "" })
           end,
           -- the rest are options for creating user commands (:h nvim_create_user_command)
-          desc = "Reload AstroNvim (Experimental)",
+          desc = "Add Markdown header with current date",
         },
       }
 
@@ -85,5 +88,17 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
     config = function() require("render-markdown").setup {} end,
+  },
+  {
+    "AstroNvim/astrocore",
+    ---@type AstroCoreOpts
+    opts = { filetypes = { extension = {
+      mdx = "markdown.mdx",
+    } } },
+  },
+  {
+    "davidmh/mdx.nvim",
+    config = true,
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
   },
 }

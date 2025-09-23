@@ -48,6 +48,7 @@ return {
       "jsonls",
       "lua_ls",
       "gopls",
+      "mdx_analyzer",
       "nil_ls",
       "ruff",
       "rust_analyzer",

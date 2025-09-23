@@ -1,5 +1,3 @@
-vim.treesitter.language.register("markdown", "mdx")
-
 local prefix = "<Leader>m"
 
 ---@type LazySpec
@@ -97,7 +95,24 @@ return {
     } } },
   },
   {
+    "AstroNvim/astrolsp",
+    optional = true,
+    ---@param opts AstroLSPOpts
+    opts = {
+      config = {
+        mdx_analyzer = {
+          init_options = {
+            typescript = {
+              enabled = true,
+            },
+          },
+        },
+      },
+    },
+  },
+  {
     "davidmh/mdx.nvim",
+    event = "BufEnter *.mdx",
     config = true,
     dependencies = { "nvim-treesitter/nvim-treesitter" },
   },

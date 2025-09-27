@@ -7,6 +7,7 @@ local format_filetypes = {
   "json",
   "jsonc",
   "markdown",
+  "mdx",
   "svelte",
   "typescript",
   "typescriptreact",

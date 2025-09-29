@@ -1,3 +1,20 @@
+local conform_formatter = function(_) return { "prettierd" } or {} end
+
+local format_filetypes = {
+  "css",
+  "javascript",
+  "javascriptreact",
+  "json",
+  "jsonc",
+  "markdown",
+  "mdx",
+  "svelte",
+  "typescript",
+  "typescriptreact",
+  "vue",
+  "yaml",
+}
+
 ---@type LazySpec
 return {
   {
@@ -182,6 +199,16 @@ return {
       local vscode_filetypes = require("dap.ext.vscode").type_to_filetypes
       vscode_filetypes["node"] = js_filetypes
       vscode_filetypes["pwa-node"] = js_filetypes
+    end,
+  },
+  {
+    "stevearc/conform.nvim",
+    optional = true,
+    opts = function(_, opts)
+      if not opts.formatters_by_ft then opts.formatters_by_ft = {} end
+      for _, filetype in ipairs(format_filetypes) do
+        opts.formatters_by_ft[filetype] = conform_formatter
+      end
     end,
   },
 }

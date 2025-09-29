@@ -42,20 +42,6 @@ return {
         filetypes = { "python" },
         extra_args = { "--profile", "black" },
       },
-      null_ls.builtins.formatting.prettierd.with {
-        filetypes = {
-          "typescript",
-          "typescriptreact",
-          "javascript",
-          "javascriptreact",
-          "vue",
-          "svelte",
-          "json",
-          "jsonc",
-          "yaml",
-          "markdown",
-        },
-      },
       require("none-ls.diagnostics.eslint").with {
         filetypes = {
           "javascript",

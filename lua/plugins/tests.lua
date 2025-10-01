@@ -14,6 +14,9 @@ return {
         -- dev = true,
       },
       {
+        "marilari88/neotest-vitest",
+      },
+      {
         "AstroNvim/astrocore",
         opts = {
           mappings = {
@@ -52,14 +55,7 @@ return {
     opts = function(_, opts)
       if not opts.adapters then opts.adapters = {} end
       table.insert(opts.adapters, require "neotest-jest"(require("astrocore").plugin_opts "neotest-jest"))
-      -- table.insert(opts.adapters, require "neotest-jest"({
-      --     jestCommand = "npm test --",
-      --     jestConfigFile = "custom.jest.config.ts",
-      --     env = { CI = true },
-      --     cwd = function(path)
-      --       return vim.fn.getcwd()
-      --     end,
-      --   })
+      table.insert(opts.adapters, require "neotest-vitest"(require("astrocore").plugin_opts "neotest-vitest"))
       opts.icons = {
         expanded = "",
         child_prefix = "",

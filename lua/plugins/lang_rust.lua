@@ -1,4 +1,4 @@
-local prefix = "<Leader>m"
+local prefix = "<Leader>r"
 
 ---@type LazySpec
 return {

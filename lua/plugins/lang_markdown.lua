@@ -38,6 +38,16 @@ return {
         function() vim.api.nvim_put({ "[link text](url)" }, "c", true, true) end,
         desc = "Insert link",
       }
+      maps.v[prefix .. "l"] = {
+        function()
+          -- Use substitute to wrap selection in link format
+          vim.cmd "'<,'>s/\\%V.*\\%V./[&](url)/"
+
+          -- Position cursor at 'url' for easy replacement
+          vim.cmd "normal! `<f(lviw" -- Go to start, find (, move right, select 'url'
+        end,
+        desc = "Wrap selection in link",
+      }
       maps.n[prefix .. "a"] = {
         function() vim.api.nvim_put({ "![alt text](image_url)" }, "c", true, true) end,
         desc = "Insert image",

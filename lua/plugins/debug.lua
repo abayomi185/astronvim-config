@@ -11,6 +11,16 @@ return {
   -- NOTE: nvim-dap
   {
     "mfussenegger/nvim-dap",
+    specs = {
+      {
+        "AstroNvim/astrocore",
+        opts = function(_, opts)
+          local maps = opts.mappings
+          maps.n["<Leader>dQ"] = { function() require("dap").close() end, desc = "Close Session" }
+          maps.n["<Leader>dq"] = { function() require("dap").terminate() end, desc = "Terminate Session (S-F5)" }
+        end,
+      },
+    },
     -- dev = true,
     -- dir = "~/more-projek/nvim-dap",
     lazy = true,

@@ -125,7 +125,6 @@ return {
   },
   {
     "mfussenegger/nvim-dap",
-    optional = true,
     config = function()
       local dap = require "dap"
       local outPath = vim.fn.trim(vim.fn.system "nix eval nixpkgs#vscode-js-debug.outPath --raw")

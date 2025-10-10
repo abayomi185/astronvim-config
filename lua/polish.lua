@@ -89,10 +89,10 @@ vim.on_key(function() end, vim.api.nvim_get_namespaces()["auto_hlsearch"])
 require("dap.ext.vscode").json_decode = require("json5").parse
 -- Add remapping for debugpy
 -- NOTE: Explicit call to load_launchjs is not strictly needed anymore, configurations are duplicated otherwise
-require("dap.ext.vscode").load_launchjs(
-  nil,
-  { debugpy = { "python" }, rt_lldb = { "rust" }, ["probe-rs-debug"] = { "rust" } }
-)
+-- require("dap.ext.vscode").load_launchjs(
+--   nil,
+--   { debugpy = { "python" }, rt_lldb = { "rust" }, ["probe-rs-debug"] = { "rust" } }
+-- )
 
 -- Debugpy adapter for dap needs to be set
 local dap = require "dap"

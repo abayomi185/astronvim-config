@@ -79,12 +79,9 @@ vim.on_key(function() end, vim.api.nvim_get_namespaces()["auto_hlsearch"])
 -- NOTE: DAP
 -- Load launch.json
 require("dap.ext.vscode").json_decode = require("json5").parse
--- Add remapping for debugpy
-require("dap.ext.vscode").load_launchjs(
-  nil,
-  -- Associate filetypes with debug adapters
-  { debugpy = { "python" }, rt_lldb = { "rust" }, ["probe-rs-debug"] = { "rust" } }
-)
+
+-- Associate filetypes with debug adapters
+require("dap.ext.vscode").type_to_filetypes = { rt_lldb = { "rust" }, ["probe-rs-debug"] = { "rust" } }
 
 -- Debugpy adapter for dap needs to be set
 local dap = require "dap"

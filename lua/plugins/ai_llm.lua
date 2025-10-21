@@ -193,7 +193,7 @@ return {
             function() require("opencode").ask "@cursor: " end,
             desc = "Ask about this",
           }
-          maps.n[prefix .. "+"] = {
+          maps.n[prefix .. "i"] = {
             function() require("opencode").prompt("@buffer", { append = true }) end,
             desc = "Add buffer to prompt",
           }
@@ -223,7 +223,7 @@ return {
             function() require("opencode").ask "@selection: " end,
             desc = "Ask about selection",
           }
-          maps.v[prefix .. "+"] = {
+          maps.v[prefix .. "i"] = {
             function() require("opencode").prompt("@selection", { append = true }) end,
             desc = "Add selection to prompt",
           }

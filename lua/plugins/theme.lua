@@ -14,6 +14,7 @@ return {
         light = {
           cursorline = "#e8e8de",
           bg = "#eeeee7",
+          inlay_hint = "#b2b2b2",
         },
       },
       options = {

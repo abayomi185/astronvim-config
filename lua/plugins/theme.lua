@@ -12,8 +12,8 @@ return {
           cursorline = "#22252b",
         },
         light = {
-          cursorline = "#e8e8de",
-          bg = "#eeeee7",
+          cursorline = "#e0e0d6",
+          bg = "#e6e6df",
           inlay_hint = "#b2b2b2",
         },
       },

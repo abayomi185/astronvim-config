@@ -10,11 +10,13 @@ return {
       colors = {
         dark = {
           cursorline = "#22252b",
+          inlay_hint = "#616976",
         },
         light = {
           cursorline = "#e0e0d6",
           bg = "#e6e6df",
           inlay_hint = "#a2a2a2",
+          yellow = "#ed8b1b",
         },
       },
       options = {

@@ -175,7 +175,10 @@ return {
   {
     "NickvanDyke/opencode.nvim",
     dependencies = {
-      { "folke/snacks.nvim", opts = { input = { enabled = true } } },
+      {
+        "folke/snacks.nvim",
+        opts = { input = { enabled = true }, picker = { enabled = true }, terminal = { enabled = true } },
+      },
     },
     specs = {
       {
@@ -224,7 +227,7 @@ return {
             desc = "Ask about selection",
           }
           maps.v[prefix .. "i"] = {
-            function() require("opencode").prompt("@selection", { append = true }) end,
+            function() require("opencode").prompt "@this" end,
             desc = "Add selection to prompt",
           }
           maps.v[prefix .. "s"] = {

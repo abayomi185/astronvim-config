@@ -26,7 +26,8 @@ return {
           maps.n[prefix .. "L"] =
             { function() require("gitsigns").blame_line { full = true } end, desc = "View full Git blame" }
           maps.n[prefix .. "p"] =
-            { function() require("gitsigns").preview_hunk_inline() end, desc = "Preview Git hunk" }
+            { function() require("gitsigns").preview_hunk_inline() end, desc = "Preview Git hunk inline" }
+          maps.n[prefix .. "P"] = { function() require("gitsigns").preview_hunk() end, desc = "Preview Git hunk" }
           maps.n[prefix .. "r"] = { function() require("gitsigns").reset_hunk() end, desc = "Reset Git hunk" }
           maps.v[prefix .. "r"] = {
             function() require("gitsigns").reset_hunk { vim.fn.line ".", vim.fn.line "v" } end,
@@ -39,7 +40,6 @@ return {
             desc = "Stage Git hunk",
           }
           maps.n[prefix .. "S"] = { function() require("gitsigns").stage_buffer() end, desc = "Stage Git buffer" }
-          maps.n[prefix .. "u"] = { function() require("gitsigns").undo_stage_hunk() end, desc = "Unstage Git hunk" }
           -- maps.n[prefix .. "d"] = { function() require("gitsigns").diffthis() end, desc = "View Git diff" }
 
           maps.n["]g"] = { function() require("gitsigns").next_hunk() end, desc = "Next Git hunk" }

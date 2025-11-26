@@ -18,9 +18,9 @@ return {
       -- null_ls.builtins.formatting.stylua,
       -- null_ls.builtins.formatting.prettier,
 
-      null_ls.builtins.formatting.stylua.with {
-        filetypes = { "lua" },
-      },
+      -- null_ls.builtins.formatting.stylua.with {
+      --   filetypes = { "lua" },
+      -- },
 
       null_ls.builtins.formatting.sqlfluff.with {
         filetypes = { "sql" },

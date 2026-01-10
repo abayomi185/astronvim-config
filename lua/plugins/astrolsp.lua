@@ -48,6 +48,7 @@ return {
       "jsonls",
       "lua_ls",
       "gopls",
+      "markdown_oxide",
       "mdx_analyzer",
       "nil_ls",
       "ruff",

@@ -193,7 +193,7 @@ return {
             desc = "Toggle embedded",
           }
           maps.n[prefix .. "a"] = {
-            function() require("opencode").ask "@cursor: " end,
+            function() require("opencode").ask "@this: " end,
             desc = "Ask about this",
           }
           maps.n[prefix .. "i"] = {
@@ -201,11 +201,11 @@ return {
             desc = "Add buffer to prompt",
           }
           maps.n[prefix .. "e"] = {
-            function() require("opencode").prompt "Explain @cursor and its context" end,
+            function() require("opencode").prompt "Explain @this and its context" end,
             desc = "Explain this code",
           }
           maps.n[prefix .. "n"] = {
-            function() require("opencode").command "session_new" end,
+            function() require("opencode").command "session.new" end,
             desc = "New session",
           }
           maps.n[prefix .. "s"] = {
@@ -213,17 +213,17 @@ return {
             desc = "Select prompt",
           }
           maps.n["<S-C-u>"] = {
-            function() require("opencode").command "messages_half_page_up" end,
+            function() require("opencode").command "messages.half.page.up" end,
             desc = "Messages half page up",
           }
           maps.n["<S-C-d>"] = {
-            function() require("opencode").command "messages_half_page_down" end,
+            function() require("opencode").command "messages.half.page.down" end,
             desc = "Messages half page down",
           }
 
           maps.v[prefix] = { desc = require("astroui").get_icon("OpenCode", 1, true) .. "OpenCode" }
           maps.v[prefix .. "a"] = {
-            function() require("opencode").ask "@selection: " end,
+            function() require("opencode").ask "@this: " end,
             desc = "Ask about selection",
           }
           maps.v[prefix .. "i"] = {

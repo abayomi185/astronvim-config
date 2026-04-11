@@ -31,6 +31,7 @@ return {
   -- NOTE: codecompanion
   {
     "olimorris/codecompanion.nvim",
+    enabled = false,
     -- dir = "~/oss-projek/codecompanion.nvim",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",

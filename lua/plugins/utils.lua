@@ -27,16 +27,6 @@ return {
     lazy = false,
   },
 
-  -- NOTE: vim-illuminate
-  {
-    "RRethy/vim-illuminate",
-    opts = {
-      options = {
-        delay = 120,
-      },
-    },
-  },
-
   -- NOTE: nvim-notify
   {
     "rcarriga/nvim-notify",

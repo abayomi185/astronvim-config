@@ -29,6 +29,7 @@ return {
   -- NOTE: VectorCode
   {
     "Davidyz/VectorCode",
+    enabled = false,
     version = "*",
     dependencies = { "nvim-lua/plenary.nvim" },
     cmd = "VectorCode",
@@ -54,6 +55,7 @@ return {
   -- NOTE: codecompanion
   {
     "olimorris/codecompanion.nvim",
+    enabled = false,
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-lua/plenary.nvim",
@@ -196,6 +198,16 @@ return {
   },
   {
     "NickvanDyke/opencode.nvim",
+    enabled = false,
+    ---@param opts opencode.config.Opts
+    opts = function(_, opts)
+      -- Connect to oc-sandbox container when OPENCODE_SANDBOX_PORT is set (via direnv)
+      local port = tonumber(vim.env.OPENCODE_SANDBOX_PORT)
+      if port then
+        opts.port = port
+        opts.provider = { enabled = false }
+      end
+    end,
     dependencies = {
       {
         "folke/snacks.nvim",

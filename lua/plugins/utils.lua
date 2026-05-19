@@ -7,7 +7,7 @@ return {
   },
   {
     "nvim-treesitter/playground",
-    enable = false,
+    enabled = false,
   },
 
   {

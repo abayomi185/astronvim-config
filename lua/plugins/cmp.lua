@@ -53,7 +53,7 @@ return {
   opts_extend = { "sources.default", "sources.cmdline" },
   opts = {
     sources = {
-      default = { "lsp", "path", "snippets", "buffer", "copilot", "codecompanion" },
+      default = { "lsp", "path", "snippets", "buffer", "copilot" },
     },
     keymap = {
       ["<C-Space>"] = { "show", "show_documentation", "hide_documentation" },

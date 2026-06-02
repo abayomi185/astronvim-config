@@ -180,7 +180,7 @@ return {
       t = {
         -- setting a mapping to false will disable it
         -- ["<esc>"] = false,
-        ["<C-space>"] = "<C-\\><C-n>",
+        ["<S-Space>"] = "<C-\\><C-n>",
       },
     },
   },
